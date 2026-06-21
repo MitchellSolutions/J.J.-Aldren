@@ -14,12 +14,23 @@
     --bg-mid: #1e5238;
     --bg-light: #2e6a50;
     --gold: #C9A961;
-    --gold-dim: rgba(201,169,97,0.35);
+    --gold-dim: rgba(201,169,97,0.65);
     --gold-ghost: rgba(201,169,97,0.06);
     --gold-glow: rgba(201,169,97,0.15);
     --font-t: 'VT323', monospace;
     --font-b: 'IM Fell English', serif;
   }
+
+  /* ── ORNATE FRAME ───────────────────────────────────────────── */
+  /* SVG border-image: acanthus outer, egg-and-dart inner, layered gold */
+  .ornate-frame {
+    border: 36px solid transparent;
+    border-image-source: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cdefs%3E%3ClinearGradient id='g1' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23c9a961'/%3E%3Cstop offset='30%25' stop-color='%23e8cd85'/%3E%3Cstop offset='55%25' stop-color='%23c9a961'/%3E%3Cstop offset='80%25' stop-color='%23a07830'/%3E%3Cstop offset='100%25' stop-color='%23c9a961'/%3E%3C/linearGradient%3E%3C/defs%3E%3C!-- outer fill --%3E%3Crect x='0' y='0' width='120' height='120' fill='%230a0f2e'/%3E%3C!-- outer gold band --%3E%3Crect x='0' y='0' width='120' height='120' fill='url(%23g1)'/%3E%3C!-- acanthus outer edge: repeating leaf bumps --%3E%3Cg fill='%23a07830' opacity='0.6'%3E%3Cellipse cx='10' cy='6' rx='7' ry='4'/%3E%3Cellipse cx='30' cy='6' rx='7' ry='4'/%3E%3Cellipse cx='50' cy='6' rx='7' ry='4'/%3E%3Cellipse cx='70' cy='6' rx='7' ry='4'/%3E%3Cellipse cx='90' cy='6' rx='7' ry='4'/%3E%3Cellipse cx='110' cy='6' rx='7' ry='4'/%3E%3Cellipse cx='10' cy='114' rx='7' ry='4'/%3E%3Cellipse cx='30' cy='114' rx='7' ry='4'/%3E%3Cellipse cx='50' cy='114' rx='7' ry='4'/%3E%3Cellipse cx='70' cy='114' rx='7' ry='4'/%3E%3Cellipse cx='90' cy='114' rx='7' ry='4'/%3E%3Cellipse cx='110' cy='114' rx='7' ry='4'/%3E%3Cellipse cx='6' cy='10' rx='4' ry='7'/%3E%3Cellipse cx='6' cy='30' rx='4' ry='7'/%3E%3Cellipse cx='6' cy='50' rx='4' ry='7'/%3E%3Cellipse cx='6' cy='70' rx='4' ry='7'/%3E%3Cellipse cx='6' cy='90' rx='4' ry='7'/%3E%3Cellipse cx='6' cy='110' rx='4' ry='7'/%3E%3Cellipse cx='114' cy='10' rx='4' ry='7'/%3E%3Cellipse cx='114' cy='30' rx='4' ry='7'/%3E%3Cellipse cx='114' cy='50' rx='4' ry='7'/%3E%3Cellipse cx='114' cy='70' rx='4' ry='7'/%3E%3Cellipse cx='114' cy='90' rx='4' ry='7'/%3E%3Cellipse cx='114' cy='110' rx='4' ry='7'/%3E%3C/g%3E%3C!-- acanthus highlight --%3E%3Cg fill='%23e8cd85' opacity='0.35'%3E%3Cellipse cx='10' cy='5' rx='4' ry='2'/%3E%3Cellipse cx='30' cy='5' rx='4' ry='2'/%3E%3Cellipse cx='50' cy='5' rx='4' ry='2'/%3E%3Cellipse cx='70' cy='5' rx='4' ry='2'/%3E%3Cellipse cx='90' cy='5' rx='4' ry='2'/%3E%3Cellipse cx='110' cy='5' rx='4' ry='2'/%3E%3Cellipse cx='10' cy='115' rx='4' ry='2'/%3E%3Cellipse cx='30' cy='115' rx='4' ry='2'/%3E%3Cellipse cx='50' cy='115' rx='4' ry='2'/%3E%3Cellipse cx='70' cy='115' rx='4' ry='2'/%3E%3Cellipse cx='90' cy='115' rx='4' ry='2'/%3E%3Cellipse cx='110' cy='115' rx='4' ry='2'/%3E%3C/g%3E%3C!-- inner dark recess band --%3E%3Crect x='11' y='11' width='98' height='98' fill='%230d1235'/%3E%3C!-- egg and dart band --%3E%3Crect x='11' y='11' width='98' height='98' fill='none' stroke='%23c9a961' stroke-width='2'/%3E%3Cg fill='%23c9a961' opacity='0.8'%3E%3Cellipse cx='21' cy='14' rx='3.5' ry='2'/%3E%3Cellipse cx='31' cy='14' rx='3.5' ry='2'/%3E%3Cellipse cx='41' cy='14' rx='3.5' ry='2'/%3E%3Cellipse cx='51' cy='14' rx='3.5' ry='2'/%3E%3Cellipse cx='61' cy='14' rx='3.5' ry='2'/%3E%3Cellipse cx='71' cy='14' rx='3.5' ry='2'/%3E%3Cellipse cx='81' cy='14' rx='3.5' ry='2'/%3E%3Cellipse cx='91' cy='14' rx='3.5' ry='2'/%3E%3Cellipse cx='101' cy='14' rx='3.5' ry='2'/%3E%3Cellipse cx='21' cy='106' rx='3.5' ry='2'/%3E%3Cellipse cx='31' cy='106' rx='3.5' ry='2'/%3E%3Cellipse cx='41' cy='106' rx='3.5' ry='2'/%3E%3Cellipse cx='51' cy='106' rx='3.5' ry='2'/%3E%3Cellipse cx='61' cy='106' rx='3.5' ry='2'/%3E%3Cellipse cx='71' cy='106' rx='3.5' ry='2'/%3E%3Cellipse cx='81' cy='106' rx='3.5' ry='2'/%3E%3Cellipse cx='91' cy='106' rx='3.5' ry='2'/%3E%3Cellipse cx='101' cy='106' rx='3.5' ry='2'/%3E%3Cellipse cx='14' cy='21' rx='2' ry='3.5'/%3E%3Cellipse cx='14' cy='31' rx='2' ry='3.5'/%3E%3Cellipse cx='14' cy='41' rx='2' ry='3.5'/%3E%3Cellipse cx='14' cy='51' rx='2' ry='3.5'/%3E%3Cellipse cx='14' cy='61' rx='2' ry='3.5'/%3E%3Cellipse cx='14' cy='71' rx='2' ry='3.5'/%3E%3Cellipse cx='14' cy='81' rx='2' ry='3.5'/%3E%3Cellipse cx='14' cy='91' rx='2' ry='3.5'/%3E%3Cellipse cx='14' cy='101' rx='2' ry='3.5'/%3E%3Cellipse cx='106' cy='21' rx='2' ry='3.5'/%3E%3Cellipse cx='106' cy='31' rx='2' ry='3.5'/%3E%3Cellipse cx='106' cy='41' rx='2' ry='3.5'/%3E%3Cellipse cx='106' cy='51' rx='2' ry='3.5'/%3E%3Cellipse cx='106' cy='61' rx='2' ry='3.5'/%3E%3Cellipse cx='106' cy='71' rx='2' ry='3.5'/%3E%3Cellipse cx='106' cy='81' rx='2' ry='3.5'/%3E%3Cellipse cx='106' cy='91' rx='2' ry='3.5'/%3E%3Cellipse cx='106' cy='101' rx='2' ry='3.5'/%3E%3C/g%3E%3C!-- inner line --%3E%3Crect x='17' y='17' width='86' height='86' fill='none' stroke='%23c9a961' stroke-width='0.75' opacity='0.5'/%3E%3C!-- corner rosettes --%3E%3Ccircle cx='14' cy='14' r='5' fill='%23c9a961' opacity='0.9'/%3E%3Ccircle cx='14' cy='14' r='2.5' fill='%23e8cd85'/%3E%3Ccircle cx='106' cy='14' r='5' fill='%23c9a961' opacity='0.9'/%3E%3Ccircle cx='106' cy='14' r='2.5' fill='%23e8cd85'/%3E%3Ccircle cx='14' cy='106' r='5' fill='%23c9a961' opacity='0.9'/%3E%3Ccircle cx='14' cy='106' r='2.5' fill='%23e8cd85'/%3E%3Ccircle cx='106' cy='106' r='5' fill='%23c9a961' opacity='0.9'/%3E%3Ccircle cx='106' cy='106' r='2.5' fill='%23e8cd85'/%3E%3C!-- interior transparent --%3E%3Crect x='20' y='20' width='80' height='80' fill='transparent'/%3E%3C/svg%3E");
+    border-image-slice: 40;
+    border-image-repeat: round;
+    background-clip: padding-box;
+  }
+  /* ── END ORNATE FRAME ───────────────────────────────────────── */
 
   html, body { height: 100%; background: var(--bg); color: var(--gold); font-family: var(--font-t); overflow: hidden; }
   html { background: #0f3520; }
@@ -72,9 +83,9 @@
   }
 
   .genome-line {
-    font-family: var(--font-t); font-size: 0.75rem;
-    letter-spacing: 0.06em; line-height: 1.5;
-    color: rgba(201,169,97,0.22);
+    font-family: var(--font-t); font-size: 1.1rem;
+    letter-spacing: 0.06em; line-height: 1.6;
+    color: rgba(201,169,97,0.7);
     overflow: hidden; word-break: break-all;
     position: relative;
   }
@@ -186,11 +197,11 @@
     opacity: 0; transition: opacity 0.8s;
   }
 
-  .status-item { font-size: 11px; letter-spacing: 0.18em; color: var(--gold-dim); }
+  .status-item { font-size: 15px; letter-spacing: 0.18em; color: var(--gold-dim); }
   .status-item.highlight { color: var(--gold); }
 
   #rank-display {
-    font-size: 12px; letter-spacing: 0.15em;
+    font-size: 15px; letter-spacing: 0.15em;
     color: var(--gold-dim); transition: color 0.5s;
   }
 
@@ -201,7 +212,7 @@
 
   /* GATE LABEL */
   #gate-label {
-    font-size: 11px; letter-spacing: 0.25em;
+    font-size: 15px; letter-spacing: 0.25em;
     color: var(--gold-dim); margin-bottom: 1.2rem;
     opacity: 0; transition: opacity 0.5s; min-height: 16px;
   }
@@ -234,21 +245,20 @@
   }
 
   .fragment-box {
-    border: 0.5px solid var(--gold-dim);
     background: var(--gold-ghost);
-    padding: 10px 14px; font-size: 0.95rem; line-height: 1.6;
+    padding: 20px 22px; font-size: 1.05rem; line-height: 1.6;
   }
 
-  .fragment-title { font-size: 10px; letter-spacing: 0.2em; color: var(--gold-dim); margin-bottom: 4px; }
+  .fragment-title { font-size: 15px; letter-spacing: 0.2em; color: var(--gold-dim); margin-bottom: 4px; }
   .fragment-name { color: var(--gold); font-size: 1.1rem; }
-  .fragment-sub { color: var(--gold-dim); font-size: 0.85rem; }
-  .fragment-class { font-size: 9px; letter-spacing: 0.18em; color: var(--gold-dim); margin-top: 3px; text-transform: uppercase; }
+  .fragment-sub { color: var(--gold-dim); font-size: 1rem; }
+  .fragment-class { font-size: 15px; letter-spacing: 0.18em; color: var(--gold-dim); margin-top: 3px; text-transform: uppercase; }
 
   /* RANK UP */
   #rank-notify { margin-top: 0.8rem; opacity: 0; transition: opacity 0.4s; min-height: 30px; }
 
   .rank-up-box {
-    font-size: 11px; letter-spacing: 0.2em;
+    font-size: 15px; letter-spacing: 0.2em;
     color: var(--gold); border-left: 2px solid var(--gold);
     padding: 6px 12px; animation: slideUp 0.4s ease;
   }
@@ -260,7 +270,7 @@
   }
 
   .consequence-text {
-    font-size: 0.9rem; letter-spacing: 0.1em;
+    font-size: 1rem; letter-spacing: 0.1em;
     color: var(--gold-dim); font-style: italic;
     border-left: 1px solid rgba(201,169,97,0.15);
     padding-left: 10px;
@@ -268,9 +278,10 @@
 
   /* OPTIONS */
   #branch-label {
-    font-size: 11px; letter-spacing: 0.18em;
-    color: var(--gold-dim); margin-top: 1.6rem; margin-bottom: 0.6rem;
+    font-size: 15px; letter-spacing: 0.18em;
+    color: var(--gold); margin-top: 1.8rem; margin-bottom: 0.8rem;
     opacity: 0; transition: opacity 0.4s; min-height: 16px;
+    text-align: center; position: relative;
   }
 
   #options { opacity: 0; transition: opacity 0.4s; margin-top: 0.4rem; }
@@ -292,13 +303,13 @@
   .opt-btn:hover {
     color: var(--gold); border-color: var(--gold);
     background: var(--gold-ghost);
-    text-shadow: 0 0 8px rgba(201,169,97,0.35);
+    text-shadow: 0 0 8px rgba(201,169,97,0.65);
   }
   .opt-btn:hover::before { opacity: 1; }
 
   .opt-btn.restore-btn {
-    border-color: var(--gold); color: var(--gold);
-    background: var(--gold-ghost);
+    border-color: #4caf6e; color: #4caf6e;
+    background: rgba(76,175,110,0.07);
     animation: blink 1.2s step-end infinite;
   }
 
@@ -326,7 +337,7 @@
   }
 
   .seal-meta { display: flex; justify-content: space-between; }
-  .seal-label { font-size: 11px; letter-spacing: 0.12em; color: var(--gold-dim); }
+  .seal-label { font-size: 15px; letter-spacing: 0.12em; color: var(--gold-dim); }
 
   /* DOORS */
   .doors-wrap {
@@ -357,7 +368,7 @@
   }
 
   .gate-svg { display: block; transition: filter 0.3s; }
-  .gate-wrap:hover .gate-svg { filter: drop-shadow(0 0 14px rgba(201,169,97,0.35)); }
+  .gate-wrap:hover .gate-svg { filter: drop-shadow(0 0 14px rgba(201,169,97,0.65)); }
 
   .gate-label {
     font-family: var(--font-t); font-size: 1.1rem;
@@ -368,18 +379,12 @@
 
   /* CHAMBER */
   .chamber-wrap {
-    border: 0.5px solid var(--gold-dim);
-    padding: 1.4rem 1.6rem; margin-top: 1.2rem;
+    padding: 1.8rem 2rem; margin-top: 1.2rem;
     background: rgba(201,169,97,0.03); position: relative;
     animation: fadeIn 0.6s ease;
   }
 
-  .chamber-wrap::before {
-    content: 'CHAMBER';
-    position: absolute; top: -9px; left: 1rem;
-    font-size: 9px; letter-spacing: 0.22em; color: var(--gold-dim);
-    background: var(--bg); padding: 0 6px; font-family: var(--font-t);
-  }
+  /* chamber label removed — ornate frame replaces plain border */
 
   .chamber-text { font-size: 1.4rem; line-height: 1.8; white-space: pre-wrap; text-shadow: 0 0 6px rgba(201,169,97,0.15); }
 
@@ -393,14 +398,14 @@
   #video-stage.visible { display: flex; }
 
   .v-eyebrow {
-    font-family: var(--font-t); font-size: 11px;
+    font-family: var(--font-t); font-size: 15px;
     letter-spacing: 0.25em; color: var(--gold-dim);
     margin-bottom: 1rem; text-align: center; animation: fadeIn 1s ease;
   }
 
   #yt-facade {
     position: relative; width: 100%; max-width: 800px; height: 220px;
-    background: var(--bg-mid); border: 0.5px solid var(--gold-dim);
+    background: var(--bg-mid);
     cursor: pointer; overflow: hidden; flex-shrink: 0;
     display: flex; flex-direction: column;
     align-items: center; justify-content: center; gap: 14px;
@@ -420,7 +425,7 @@
   .play-btn svg { width: 26px; height: 26px; fill: var(--gold); margin-left: 4px; }
 
   .play-label {
-    font-family: var(--font-t); font-size: 12px;
+    font-family: var(--font-t); font-size: 15px;
     letter-spacing: 0.25em; color: var(--gold-dim); transition: color 0.2s;
   }
 
@@ -434,17 +439,17 @@
   }
   #vault.visible { opacity: 1; }
 
-  .vault-title { font-family: var(--font-t); font-size: 11px; letter-spacing: 0.22em; color: var(--gold-dim); margin-bottom: 10px; }
+  .vault-title { font-family: var(--font-t); font-size: 15px; letter-spacing: 0.22em; color: var(--gold-dim); margin-bottom: 10px; }
 
   .vault-grid {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 8px; margin-bottom: 1.5rem;
   }
 
-  .vault-fragment { border: 0.5px solid var(--gold-dim); background: var(--gold-ghost); padding: 10px 12px; font-family: var(--font-t); }
-  .vf-id { font-size: 9px; letter-spacing: 0.2em; color: var(--gold-dim); margin-bottom: 3px; }
+  .vault-fragment { background: var(--gold-ghost); padding: 18px 16px; font-family: var(--font-t); }
+  .vf-id { font-size: 15px; letter-spacing: 0.2em; color: var(--gold-dim); margin-bottom: 3px; }
   .vf-name { font-size: 1rem; color: var(--gold); line-height: 1.3; }
-  .vf-date { font-size: 9px; color: var(--gold-dim); margin-top: 3px; }
+  .vf-date { font-size: 15px; color: var(--gold-dim); margin-top: 3px; }
 
   /* CTA */
   #cta {
@@ -454,7 +459,7 @@
   #cta.visible { opacity: 1; }
 
   .cta-access-line {
-    font-family: var(--font-t); font-size: 14px; letter-spacing: 0.25em;
+    font-family: var(--font-t); font-size: 15px; letter-spacing: 0.25em;
     color: rgba(201,169,97,0.25); margin-bottom: 1.4rem;
     border-top: 0.5px solid rgba(201,169,97,0.1);
     padding-top: 1rem;
@@ -463,12 +468,12 @@
   .cta-headline { font-family: var(--font-t); font-size: 1.2rem; letter-spacing: 0.08em; color: var(--gold-dim); margin-bottom: 0.3rem; }
 
   .cta-fragment-note {
-    font-family: var(--font-t); font-size: 0.95rem;
+    font-family: var(--font-t); font-size: 1.05rem;
     color: rgba(201,169,97,0.4); margin-bottom: 1rem;
     letter-spacing: 0.06em;
   }
 
-  .cta-sub-line { font-family: var(--font-b); font-size: 13px; color: var(--gold-dim); font-style: italic; margin-bottom: 1.2rem; }
+  .cta-sub-line { font-family: var(--font-b); font-size: 15px; color: var(--gold-dim); font-style: italic; margin-bottom: 1.2rem; }
   .cta-buttons { display: flex; flex-direction: column; gap: 10px; align-items: center; }
 
   .cta-primary {
@@ -483,7 +488,7 @@
   .cta-secondary {
     font-family: var(--font-t); font-size: 1.1rem;
     letter-spacing: 0.12em; color: var(--gold);
-    text-decoration: none; border: 0.5px solid var(--gold-dim);
+    text-decoration: none;
     padding: 10px 24px; display: inline-block;
     transition: background 0.2s, border-color 0.2s;
   }
@@ -500,13 +505,13 @@
   /* SKIP / FORCE DECODE */
   #skip {
     display: block; width: 100%; text-align: center;
-    margin-bottom: 0.8rem;
-    font-family: var(--font-t); font-size: 12px;
-    letter-spacing: 0.15em; color: var(--gold-dim);
+    margin-top: 1rem; margin-bottom: 0.8rem;
+    font-family: var(--font-t); font-size: 15px;
+    letter-spacing: 0.15em; color: rgba(180,40,40,0.75);
     cursor: pointer; border: none; background: transparent;
     transition: color 0.2s; z-index: 500;
   }
-  #skip:hover { color: var(--gold); }
+  #skip:hover { color: #cc2222; }
 
   /* TERMINAL WRAP */
   #terminal-wrap { opacity: 1; transition: opacity 0.6s; overflow-y: auto; max-height: 100vh; padding-bottom: 2rem; }
@@ -554,9 +559,9 @@
       <div id="consequence"></div>
       <div id="branch-label"></div>
       <div id="options"></div>
-      <button id="skip">[ TAP TO FORCE DECODE ]</button>
       <div id="seal-progress">
         <div class="seal-row" id="seal-row"></div>
+        <button id="skip">CLICK TO ACCESS DECODE</button>
         <div class="seal-meta">
           <span class="seal-label" id="seals-broken-label">SEALS BROKEN: 0 OF 5</span>
           <span class="seal-label" id="fragments-label">FRAGMENTS: 0</span>
@@ -568,7 +573,7 @@
 
 <div id="video-stage">
   <div class="v-eyebrow">TRANSMISSION UNLOCKED — PLAY TO RECEIVE</div>
-  <div id="yt-facade" onclick="activateTrailer(this)">
+  <div id="yt-facade" class="ornate-frame" onclick="activateTrailer(this)">
     <div class="play-btn">
       <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
     </div>
@@ -585,7 +590,7 @@
     <div class="cta-sub-line">The full transmission continues in Where Do We Really Come From? by J.J. Aldren.</div>
     <div class="cta-buttons">
       <a href="https://www.amazon.com/dp/9798259421349" target="_blank" rel="noopener" class="cta-primary">[ CLAIM THE FULL RECORD ]</a>
-      <a href="/explore" class="cta-secondary">[ WATCH CHAPTER ONE ]</a>
+      <a href="/explore" class="cta-secondary ornate-frame">[ WATCH CHAPTER ONE ]</a>
       <button class="cta-tertiary" onclick="restartExperience()">[ RETURN TO GATE 01 ]</button>
     </div>
   </div>
@@ -647,13 +652,14 @@ function playUnlock(){
 
 function playRestore(){
   resume();
-  const o=AC.createOscillator(),g=AC.createGain();
-  o.type='sine'; o.frequency.setValueAtTime(800,AC.currentTime);
-  o.frequency.exponentialRampToValueAtTime(200,AC.currentTime+0.4);
-  g.gain.setValueAtTime(0.15,AC.currentTime);
-  g.gain.exponentialRampToValueAtTime(0.001,AC.currentTime+0.4);
-  o.connect(g); g.connect(AC.destination);
-  o.start(); o.stop(AC.currentTime+0.45);
+  const now = AC.currentTime;
+  // dimensional rift — rising harmonic hum, shimmer
+  [110,220,330,440,550].forEach((fr,i)=>{ const o=AC.createOscillator(),g=AC.createGain(); o.type='sine'; o.frequency.setValueAtTime(fr*0.5,now+i*0.06); o.frequency.exponentialRampToValueAtTime(fr,now+i*0.06+0.8); g.gain.setValueAtTime(0.0001,now+i*0.06); g.gain.linearRampToValueAtTime(0.06-i*0.008,now+i*0.06+0.3); g.gain.exponentialRampToValueAtTime(0.001,now+i*0.06+1.4); o.connect(g); g.connect(AC.destination); o.start(now+i*0.06); o.stop(now+1.8); });
+  const buf=AC.createBuffer(1,Math.floor(AC.sampleRate*1.5),AC.sampleRate); const d=buf.getChannelData(0);
+  for(let i=0;i<d.length;i++){ const t=i/d.length; d[i]=(Math.random()*2-1)*Math.pow(t,0.3)*Math.pow(1-t,0.8)*0.15; }
+  const src=AC.createBufferSource(),f=AC.createBiquadFilter(),g=AC.createGain();
+  f.type='highpass'; f.frequency.value=2000; g.gain.setValueAtTime(0.12,now); g.gain.exponentialRampToValueAtTime(0.001,now+1.5);
+  src.buffer=buf; src.connect(f); f.connect(g); g.connect(AC.destination); src.start(now); src.stop(now+1.6);
 }
 
 // ─── STATE ───────────────────────────────────────────────────
@@ -668,7 +674,7 @@ let skipQueued = false;
 let sealsBroken = 0;
 
 const FRAGMENTS = {
-  f01: { id:'FRAGMENT 01', name:'The Late Story', date:'Signal age: 450,000 years', classification:'Origin Breach', status:'Sealed' },
+  f01: { id:'FRAGMENT 01', name:'The Late Story', date:'Archive age: 450,000 years', classification:'Origin Breach', status:'Sealed' },
   f02: { id:'FRAGMENT 02', name:'The Reign Record', date:'Pre-flood. Approx. 241,200 years', classification:'Administrative Record', status:'Sealed' },
   f03: { id:'FRAGMENT 03', name:'The Intervention', date:'Approx. 200,000 years ago', classification:'Genetic Event', status:'Sealed' },
   f04: { id:'FRAGMENT 04', name:'The Convergence', date:'Six independent traditions', classification:'Cross-Signal Confirmation', status:'Sealed' },
@@ -690,12 +696,12 @@ const GATES = [
 
   // GATE 01
   {
-    gate: '01', gateLabel: 'GATE 01 — THE LATE STORY',
+    gate: '00', gateLabel: 'GATE 01 — THE LATE STORY',
     rank: null,
     symbol: 'seal',
     text: `You arrived too late.\n\nCivilisation is only the public record.\n\nThe primary sequence begins 450,000 years ago.\n\nBefore kings. Before scripture. Before cities.\n\nThe books are still open.\n\nEnter.`,
     fragment: null,
-    branchLabel: 'OPEN THE FIRST SEAL',
+    branchLabel: 'OPEN THE FIRST SEAL — SELECT A DOOR',
     doors: true,
     options: [
       { label:'HISTORY', next: 1, branch: 'H', consequence: 'H' },
@@ -705,11 +711,11 @@ const GATES = [
 
   // GATE 02
   {
-    gate: '02', gateLabel: 'GATE 02 — THE SAME CHAMBER',
+    gate: '01', gateLabel: 'GATE 02 — THE SAME CHAMBER',
     rank: 'OBSERVER',
     chamber: true,
-    textH: `Both doors open into the same chamber.\n\nHistory calls it the Sumerian King List.\nMyth calls it the Age of the Gods.\n\nThey are the same document.\n\nThe list names eight kings who ruled before a global flood.\nCombined reign: 241,200 years.\n\nOrthodox academia classifies this as mythology.\n\nThey had to.\n\nIf the timeline is literal, the last two centuries of anthropology require rebuilding from the beginning.`,
-    textM: `Both doors open into the same chamber.\n\nMyth calls it the Age of the Gods.\nHistory calls it the Sumerian King List.\n\nThey are the same document.\n\nBefore the flood, eight kings ruled. Their combined reign: 241,200 years. After the flood, reign lengths collapse to decades. To human scale.\n\nEvery ancient tradition has a version of what happened between those two eras.\n\nNone of them agree on the details.\n\nAll of them agree on the event.`,
+    textH: `Both doors open into the same chamber.\n\nHistory calls it the Sumerian King List.\nMyth calls it the Age of the Gods.\n\nThey are the same document.\n\nThe list names eight kings who ruled before a global flood.\nCombined reign: 241,200 years.\n\nOrthodox academia classifies this as mythology.\n\nThey had to.\n\nIf the timeline is literal, the last two centuries of anthropology require reconstruction.`,
+    textM: `Both doors open into the same chamber.\n\nMyth calls it the Age of the Gods.\nHistory calls it the Sumerian King List.\n\nThey are the same document.\n\nBefore the flood, eight kings ruled. Their combined reign: 241,200 years. After the flood, reign lengths collapse to decades. Suddenly, human.\n\nEvery ancient tradition has a version of what happened between those two eras.\n\nNone of them agree on the details.\n\nAll of them agree on the event.`,
     fragment: 'f01',
     branchLabel: 'WHAT DO THE NUMBERS TELL YOU?',
     options: [
@@ -721,14 +727,14 @@ const GATES = [
 
   // GATE 03 — REDACTED
   {
-    gate: '03', gateLabel: 'GATE 03 — THE CORRUPTED LINE',
+    gate: '02', gateLabel: 'GATE 03 — THE CORRUPTED LINE',
     rank: 'WITNESS',
     symbol: 'genome',
     text: `All answers lead to the same gap.\n\nThe record says mankind evolved slowly over millions of years.\n\nThe older record says something `,
     redacted: `████████████`,
     textAfterRedacted: ` in the human genome.\n\nThe gap between those two statements is 200,000 years of missing explanation.`,
     fragment: 'f02',
-    restoreLabel: '[ CLICK TO RESTORE SIGNAL ]',
+    restoreLabel: '[ CLICK TO FORCE DECODE ]',
     restoredText: `<span style="color:#cc2222;font-style:italic;">intervened</span>`,
     branchLabel: null,
     options: [
@@ -738,7 +744,7 @@ const GATES = [
 
   // GATE 04
   {
-    gate: '04', gateLabel: 'GATE 04 — THE CONVERGENCE',
+    gate: '03', gateLabel: 'GATE 04 — THE CONVERGENCE',
     rank: null,
     svgGate: true,
     text: `\x00WARNING\x00\n\nContinuing will alter your reading of civilisation, scripture, and origin myths.\n\nSix independent ancient traditions describe the same event.\n\nThe Atrahasis Epic. The Enuma Elish. Genesis. The Book of Enoch. The Popol Vuh. The Rig Veda.\n\nNo shared author. No common language. No cultural contact.\n\nThe same event. Described the same way.\n\nAn external intelligence intervening in the biological development of a pre-existing hominid species.`,
@@ -752,10 +758,10 @@ const GATES = [
 
   // GATE 05 — SURFACE DENIED
   {
-    gate: '05', gateLabel: 'GATE 05 — THE DESCENT',
+    gate: '04', gateLabel: 'GATE 05 — THE DESCENT',
     rank: 'DECODER',
     symbol: 'tablet',
-    text: `After the flood, they returned.\n\nThe Sumerian King List records it precisely:\n\n"Then the flood swept over. After the flood had swept over, when kingship was lowered again from heaven, kingship was first in Kish."\n\nNot metaphor. Administrative notation.\n\nKingship was lowered from heaven.\n\nThe word translated as heaven is AN.U — a proper noun, not a location. It is a name.\n\nYou now hold four fragments of the suppressed record.\n\nThe fifth is in the book.`,
+    text: `After the flood, they returned.\n\nThe Sumerian King List records it precisely:\n\n"Then the flood swept over. After the flood had swept over, when kingship was lowered again from heaven, kingship was first in Kish."\n\nNot metaphor. Administrative notation.\n\nKingship was lowered from heaven.\n\nThe word translated as heaven is AN.U: a proper noun, not a location. It is a name.\n\nYou now hold four fragments of the suppressed record.\n\nThe fifth is in the book.`,
     fragment: 'f04',
     branchLabel: 'YOU HAVE REACHED THE LIMIT OF THE PUBLIC RECORD',
     options: [
@@ -1041,7 +1047,7 @@ function showFragment(fKey){
   playFragment();
   const f=FRAGMENTS[fKey];
   DOM.fragmentNotify.innerHTML=`
-    <div class="fragment-box fragment-arriving">
+    <div class="fragment-box fragment-arriving ornate-frame">
       <div class="fragment-title">ARCHIVE OBJECT RECOVERED</div>
       <div class="fragment-name">${f.id} — ${f.name}</div>
       <div class="fragment-sub">${f.date}</div>
@@ -1067,7 +1073,7 @@ function loadRedactedGate(data){
 
   DOM.output.innerHTML='';
   DOM.options.style.opacity=0; DOM.options.innerHTML='';
-  DOM.branchLabel.style.opacity=0; DOM.branchLabel.textContent='';
+  setBranchLabel(DOM.branchLabel, '');
   DOM.fragmentNotify.style.opacity=0; DOM.fragmentNotify.innerHTML='';
   DOM.gateLabel.textContent=data.gateLabel;
   DOM.gateLabel.style.opacity=1;
@@ -1150,10 +1156,10 @@ function sealSVG() {
       <!-- rotating outer glyph ring -->
       <g class="seal-outer">
         <circle cx="55" cy="55" r="44" fill="none" stroke="rgba(201,169,97,0.12)" stroke-width="0.5" stroke-dasharray="4 6"/>
-        <text x="55" y="12" text-anchor="middle" font-size="7" fill="rgba(201,169,97,0.35)" font-family="serif">𒀭</text>
-        <text x="98" y="58" text-anchor="middle" font-size="7" fill="rgba(201,169,97,0.35)" font-family="serif">𒁹</text>
-        <text x="55" y="103" text-anchor="middle" font-size="7" fill="rgba(201,169,97,0.35)" font-family="serif">𒀭</text>
-        <text x="12" y="58" text-anchor="middle" font-size="7" fill="rgba(201,169,97,0.35)" font-family="serif">𒁹</text>
+        <text x="55" y="12" text-anchor="middle" font-size="7" fill="rgba(201,169,97,0.65)" font-family="serif">𒀭</text>
+        <text x="98" y="58" text-anchor="middle" font-size="7" fill="rgba(201,169,97,0.65)" font-family="serif">𒁹</text>
+        <text x="55" y="103" text-anchor="middle" font-size="7" fill="rgba(201,169,97,0.65)" font-family="serif">𒀭</text>
+        <text x="12" y="58" text-anchor="middle" font-size="7" fill="rgba(201,169,97,0.65)" font-family="serif">𒁹</text>
         <text x="82" y="20" text-anchor="middle" font-size="6" fill="rgba(201,169,97,0.2)" font-family="serif">𒌋</text>
         <text x="93" y="82" text-anchor="middle" font-size="6" fill="rgba(201,169,97,0.2)" font-family="serif">𒌋</text>
         <text x="28" y="95" text-anchor="middle" font-size="6" fill="rgba(201,169,97,0.2)" font-family="serif">𒌋</text>
@@ -1182,23 +1188,42 @@ function genomeSVG() {
   let chars = '';
   for(let i=0;i<bases.length;i++){
     if(corrupt.includes(i)){
-      chars += `<tspan fill="rgba(201,50,50,0.55)">█</tspan>`;
+      chars += `<tspan fill="rgba(201,50,50,0.85)">█</tspan>`;
     } else {
-      chars += `<tspan fill="rgba(201,169,97,0.28)">${bases[i]}</tspan>`;
+      chars += `<tspan fill="rgba(201,169,97,0.75)" class="base-char">${bases[i]}</tspan>`;
     }
   }
-  return `<div class="genome-wrap">
-    <svg width="100%" height="48" viewBox="0 0 400 48" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
-      <text x="0" y="14" font-family="'VT323',monospace" font-size="11" letter-spacing="3">${chars}</text>
-      <text x="0" y="28" font-family="'VT323',monospace" font-size="11" letter-spacing="3">
-        <tspan fill="rgba(201,169,97,0.18)">HOMO SAPIENS — CHROMOSOME 7 — SEGMENT 4.2 — </tspan><tspan fill="rgba(201,50,50,0.4)">GAP: 200,000Y</tspan>
+  return `<div class="genome-wrap" style="position:relative;overflow:hidden;">
+    <svg width="100%" height="80" viewBox="0 0 420 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" style="display:block;">
+      <defs>
+        <radialGradient id="torchGrad" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="rgba(255,235,160,0.55)"/>
+          <stop offset="40%" stop-color="rgba(201,169,97,0.18)"/>
+          <stop offset="100%" stop-color="rgba(201,169,97,0)"/>
+        </radialGradient>
+        <!-- torch spotlight that sweeps across -->
+        <radialGradient id="torch" cx="0%" cy="50%" r="25%" gradientUnits="userSpaceOnUse"
+          x1="0" y1="0" x2="420" y2="0">
+          <stop offset="0%" stop-color="rgba(255,240,180,0.7)"/>
+          <stop offset="100%" stop-color="rgba(255,240,180,0)"/>
+        </radialGradient>
+      </defs>
+      <!-- LINE 1: base sequence -->
+      <text x="8" y="22" font-family="'VT323',monospace" font-size="18" letter-spacing="5" font-weight="bold">${chars}</text>
+      <!-- LINE 2: chromosome label -->
+      <text x="8" y="46" font-family="'VT323',monospace" font-size="16" letter-spacing="3">
+        <tspan fill="rgba(201,169,97,0.72)">HOMO SAPIENS — CHROMOSOME 7 — SEGMENT 4.2 — </tspan><tspan fill="rgba(220,60,60,0.9)">GAP: 200,000Y</tspan>
       </text>
-      <text x="0" y="42" font-family="'VT323',monospace" font-size="10" letter-spacing="2" fill="rgba(201,169,97,0.15)">SIGNAL CORRUPTED — MANUAL RESTORATION REQUIRED</text>
-      <!-- scanning line -->
-      <line x1="0" y1="0" x2="400" y2="0" stroke="rgba(201,169,97,0.06)" stroke-width="48">
-        <animate attributeName="x1" values="-400;400" dur="3s" repeatCount="indefinite"/>
-        <animate attributeName="x2" values="0;800" dur="3s" repeatCount="indefinite"/>
-      </line>
+      <!-- LINE 3: status -->
+      <text x="8" y="68" font-family="'VT323',monospace" font-size="15" letter-spacing="2" fill="rgba(201,169,97,0.6)">SIGNAL CORRUPTED — MANUAL RESTORATION REQUIRED</text>
+      <!-- torch spotlight ellipse sweeping left to right -->
+      <ellipse cx="-60" cy="40" rx="90" ry="45" fill="rgba(255,240,160,0.09)">
+        <animate attributeName="cx" values="-80;500;-80" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.6 1; 0.4 0 0.6 1"/>
+      </ellipse>
+      <!-- inner bright core of torch -->
+      <ellipse cx="-60" cy="40" rx="40" ry="28" fill="rgba(255,245,200,0.13)">
+        <animate attributeName="cx" values="-80;500;-80" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.6 1; 0.4 0 0.6 1"/>
+      </ellipse>
     </svg>
   </div>`;
 }
@@ -1211,7 +1236,7 @@ function tabletSVG() {
       <rect x="10" y="8" width="160" height="104" rx="4" fill="#0a1408" stroke="rgba(201,169,97,0.25)" stroke-width="1"/>
       <rect x="14" y="12" width="152" height="96" rx="3" fill="none" stroke="rgba(201,169,97,0.08)" stroke-width="0.5"/>
       <!-- cuneiform rows -->
-      <text x="22" y="30" font-family="serif" font-size="9" fill="rgba(201,169,97,0.35)" letter-spacing="4">𒀭 𒁹 𒌋 𒀭 𒁹</text>
+      <text x="22" y="30" font-family="serif" font-size="9" fill="rgba(201,169,97,0.65)" letter-spacing="4">𒀭 𒁹 𒌋 𒀭 𒁹</text>
       <text x="22" y="44" font-family="serif" font-size="9" fill="rgba(201,169,97,0.28)" letter-spacing="4">𒌋 𒀭 𒁹 𒌋 𒀭</text>
       <text x="22" y="58" font-family="serif" font-size="9" fill="rgba(201,169,97,0.22)" letter-spacing="4">𒁹 𒌋 𒀭 𒁹 𒌋</text>
       <!-- divider -->
@@ -1238,47 +1263,20 @@ function tabletSVG() {
 function playDoorOpen(){
   resume();
   const now = AC.currentTime;
-  const duration = 1.25;
-  const buf = AC.createBuffer(1, Math.floor(AC.sampleRate * duration), AC.sampleRate);
-  const data = buf.getChannelData(0);
-  for(let i=0;i<data.length;i++){
-    const t = i / data.length;
-    data[i] = (Math.random()*2-1) * Math.sin(Math.PI * t) * Math.pow(1 - t * 0.55, 1.4) * 0.32;
-  }
-  const src = AC.createBufferSource();
-  const scrapeFilter = AC.createBiquadFilter();
-  const scrapeGain = AC.createGain();
-  scrapeFilter.type = 'bandpass';
-  scrapeFilter.frequency.setValueAtTime(85, now);
-  scrapeFilter.frequency.exponentialRampToValueAtTime(520, now + duration);
-  scrapeFilter.Q.value = 1.6;
-  scrapeGain.gain.setValueAtTime(0.0001, now);
-  scrapeGain.gain.exponentialRampToValueAtTime(0.14, now + 0.08);
-  scrapeGain.gain.exponentialRampToValueAtTime(0.02, now + duration);
-  src.buffer = buf;
-  src.connect(scrapeFilter); scrapeFilter.connect(scrapeGain); scrapeGain.connect(AC.destination);
-  src.start(now); src.stop(now + duration);
-  [54, 81, 132].forEach((fr, i) => {
-    const o = AC.createOscillator(), g = AC.createGain();
-    o.type = i === 0 ? 'sawtooth' : 'triangle';
-    o.frequency.setValueAtTime(fr, now);
-    o.frequency.exponentialRampToValueAtTime(fr * 0.78, now + 1.1);
-    g.gain.setValueAtTime(0.0001, now + i * 0.04);
-    g.gain.exponentialRampToValueAtTime(i === 0 ? 0.09 : 0.045, now + 0.18 + i * 0.04);
-    g.gain.exponentialRampToValueAtTime(0.001, now + 1.45);
-    o.connect(g); g.connect(AC.destination);
-    o.start(now + i * 0.04); o.stop(now + 1.5);
+  // tomb door — very low, very slow, stone and rot
+  [[55,30,0],[70,38,0.1],[45,25,0.2]].forEach(([s,e,d])=>{
+    const o=AC.createOscillator(),g=AC.createGain(),f=AC.createBiquadFilter();
+    o.type='sawtooth'; f.type='lowpass'; f.frequency.value=200; f.Q.value=2;
+    o.frequency.setValueAtTime(s,now+d); o.frequency.exponentialRampToValueAtTime(e,now+d+2.5);
+    g.gain.setValueAtTime(0.0001,now+d); g.gain.linearRampToValueAtTime(0.1,now+d+0.4);
+    g.gain.setValueAtTime(0.1,now+d+1.8); g.gain.exponentialRampToValueAtTime(0.001,now+d+2.6);
+    o.connect(f); f.connect(g); g.connect(AC.destination); o.start(now+d); o.stop(now+2.8);
   });
-  setTimeout(() => {
-    const o = AC.createOscillator(), g = AC.createGain();
-    o.type = 'sine';
-    o.frequency.setValueAtTime(72, AC.currentTime);
-    o.frequency.exponentialRampToValueAtTime(38, AC.currentTime + 0.22);
-    g.gain.setValueAtTime(0.16, AC.currentTime);
-    g.gain.exponentialRampToValueAtTime(0.001, AC.currentTime + 0.28);
-    o.connect(g); g.connect(AC.destination);
-    o.start(); o.stop(AC.currentTime + 0.3);
-  }, 870);
+  const buf=AC.createBuffer(1,Math.floor(AC.sampleRate*2.5),AC.sampleRate),d=buf.getChannelData(0);
+  for(let i=0;i<d.length;i++){ const t=i/d.length; d[i]=(Math.random()*2-1)*Math.sin(Math.PI*t*0.6)*0.18; }
+  const src=AC.createBufferSource(),f=AC.createBiquadFilter(),g=AC.createGain();
+  f.type='lowpass'; f.frequency.value=120; g.gain.setValueAtTime(0.3,now); g.gain.exponentialRampToValueAtTime(0.001,now+2.5);
+  src.buffer=buf; src.connect(f); f.connect(g); g.connect(AC.destination); src.start(now); src.stop(now+2.6);
 }
 
 function doorSVG(id, handleSide) {
@@ -1337,10 +1335,10 @@ function doorSVG(id, handleSide) {
     <!-- winged disc -->
     <ellipse cx="65" cy="30" rx="14" ry="5" fill="rgba(100,70,10,0.25)" stroke="rgba(201,169,97,0.45)" stroke-width="0.7"/>
     <ellipse cx="65" cy="30" rx="7" ry="3" fill="rgba(120,85,15,0.25)"/>
-    <line x1="51" y1="30" x2="28" y2="24" stroke="rgba(201,169,97,0.35)" stroke-width="0.6"/>
-    <line x1="51" y1="30" x2="28" y2="36" stroke="rgba(201,169,97,0.35)" stroke-width="0.6"/>
-    <line x1="79" y1="30" x2="102" y2="24" stroke="rgba(201,169,97,0.35)" stroke-width="0.6"/>
-    <line x1="79" y1="30" x2="102" y2="36" stroke="rgba(201,169,97,0.35)" stroke-width="0.6"/>
+    <line x1="51" y1="30" x2="28" y2="24" stroke="rgba(201,169,97,0.65)" stroke-width="0.6"/>
+    <line x1="51" y1="30" x2="28" y2="36" stroke="rgba(201,169,97,0.65)" stroke-width="0.6"/>
+    <line x1="79" y1="30" x2="102" y2="24" stroke="rgba(201,169,97,0.65)" stroke-width="0.6"/>
+    <line x1="79" y1="30" x2="102" y2="36" stroke="rgba(201,169,97,0.65)" stroke-width="0.6"/>
     <!-- door body -->
     <rect x="18" y="34" width="94" height="316" fill="url(#gd${id})"/>
     <rect x="18" y="34" width="94" height="316" fill="none" stroke="rgba(201,169,97,0.28)" stroke-width="0.5"/>
@@ -1467,7 +1465,7 @@ function renderDoors(opts) {
     col.className = 'door-col';
     col.id = 'dcol-' + idx;
     const handleSide = idx === 0 ? 'right' : 'left';
-    col.innerHTML = doorSVG('door' + idx, handleSide) + `<div class="door-label">[ ${opt.label} ]</div>`;
+    col.innerHTML = doorSVG('door' + idx, handleSide) + `<div class="door-label">${opt.label}</div>`;
     col.onclick = () => {
       playDoorOpen();
       if(opt.branch) branch = opt.branch;
@@ -1526,8 +1524,7 @@ function renderGate(opts, text, branchLabel, onFragment) {
         if(onFragment) onFragment();
         printText(text, () => {
           if(branchLabel) {
-            DOM.branchLabel.textContent = branchLabel;
-            DOM.branchLabel.style.opacity = 1;
+            setBranchLabel(DOM.branchLabel, branchLabel);
           }
           setTimeout(() => {
             renderOptions(opts);
@@ -1543,15 +1540,14 @@ function renderGate(opts, text, branchLabel, onFragment) {
 function renderChamber(text, opts, branchLabel) {
   DOM.output.innerHTML = '';
   const wrap = document.createElement('div');
-  wrap.className = 'chamber-wrap';
+  wrap.className = 'chamber-wrap ornate-frame';
   const inner = document.createElement('div');
   inner.className = 'chamber-text';
   wrap.appendChild(inner);
   DOM.output.appendChild(wrap);
   printIntoEl(inner, text, () => {
     if(branchLabel) {
-      DOM.branchLabel.textContent = branchLabel;
-      DOM.branchLabel.style.opacity = 1;
+      setBranchLabel(DOM.branchLabel, branchLabel);
     }
     setTimeout(() => renderOptions(opts), 1200);
   });
@@ -1569,7 +1565,7 @@ function renderOptions(opts){
       if(opt.branch!==null&&opt.branch!==undefined) branch=opt.branch;
       if(opt.consequence) showConsequence(opt.consequence);
       DOM.options.style.opacity=0;
-      DOM.branchLabel.style.opacity=0;
+      setBranchLabel(DOM.branchLabel, '');
       if(opt.next==='video'){ setTimeout(()=>transitionToVideo(),500); return; }
       if(opt.next==='surface'){ setTimeout(()=>loadGateData(SURFACE_GATE),500); return; }
       setTimeout(()=>loadState(opt.next),500);
@@ -1591,6 +1587,65 @@ function injectSymbol(symbolKey) {
   }
 }
 
+// ─── ORNATE BRANCH LABEL ─────────────────────────────────────
+function setBranchLabel(el, text) {
+  if(!text){ el.textContent=''; el.style.opacity=0; return; }
+  el.innerHTML = `
+  <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 520 44" preserveAspectRatio="xMidYMid meet" style="overflow:visible;display:block;margin:0 auto;">
+    <defs>
+      <linearGradient id="bronzeH" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%"   stop-color="rgba(201,169,97,0)"/>
+        <stop offset="18%"  stop-color="rgba(201,169,97,0.55)"/>
+        <stop offset="50%"  stop-color="rgba(221,189,117,0.9)"/>
+        <stop offset="82%"  stop-color="rgba(201,169,97,0.55)"/>
+        <stop offset="100%" stop-color="rgba(201,169,97,0)"/>
+      </linearGradient>
+      <linearGradient id="bronzeHDim" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%"   stop-color="rgba(201,169,97,0)"/>
+        <stop offset="20%"  stop-color="rgba(201,169,97,0.2)"/>
+        <stop offset="50%"  stop-color="rgba(201,169,97,0.35)"/>
+        <stop offset="80%"  stop-color="rgba(201,169,97,0.2)"/>
+        <stop offset="100%" stop-color="rgba(201,169,97,0)"/>
+      </linearGradient>
+    </defs>
+    <!-- outer rule -->
+    <line x1="0" y1="4"  x2="520" y2="4"  stroke="url(#bronzeH)" stroke-width="0.75"/>
+    <!-- inner rule -->
+    <line x1="0" y1="8"  x2="520" y2="8"  stroke="url(#bronzeHDim)" stroke-width="0.5"/>
+    <!-- left flourish -->
+    <g transform="translate(28,22)" fill="none" stroke="rgba(201,169,97,0.7)" stroke-width="0.8">
+      <path d="M0,0 C-6,-8 -14,-6 -14,0 C-14,6 -6,8 0,0"/>
+      <path d="M0,0 C-4,-5 -9,-4 -9,0 C-9,4 -4,5 0,0" stroke-width="0.5" stroke="rgba(201,169,97,0.4)"/>
+      <line x1="-14" y1="0" x2="-22" y2="0" stroke-width="0.6"/>
+      <circle cx="-23" cy="0" r="1.2" fill="rgba(201,169,97,0.6)" stroke="none"/>
+      <path d="M0,-1 C3,-7 8,-9 10,-6" stroke-width="0.7"/>
+      <path d="M0,1  C3,7  8,9  10,6"  stroke-width="0.7"/>
+      <circle cx="11" cy="-5.5" r="1" fill="rgba(201,169,97,0.5)" stroke="none"/>
+      <circle cx="11" cy="5.5"  r="1" fill="rgba(201,169,97,0.5)" stroke="none"/>
+    </g>
+    <!-- right flourish (mirrored) -->
+    <g transform="translate(492,22) scale(-1,1)" fill="none" stroke="rgba(201,169,97,0.7)" stroke-width="0.8">
+      <path d="M0,0 C-6,-8 -14,-6 -14,0 C-14,6 -6,8 0,0"/>
+      <path d="M0,0 C-4,-5 -9,-4 -9,0 C-9,4 -4,5 0,0" stroke-width="0.5" stroke="rgba(201,169,97,0.4)"/>
+      <line x1="-14" y1="0" x2="-22" y2="0" stroke-width="0.6"/>
+      <circle cx="-23" cy="0" r="1.2" fill="rgba(201,169,97,0.6)" stroke="none"/>
+      <path d="M0,-1 C3,-7 8,-9 10,-6" stroke-width="0.7"/>
+      <path d="M0,1  C3,7  8,9  10,6"  stroke-width="0.7"/>
+      <circle cx="11" cy="-5.5" r="1" fill="rgba(201,169,97,0.5)" stroke="none"/>
+      <circle cx="11" cy="5.5"  r="1" fill="rgba(201,169,97,0.5)" stroke="none"/>
+    </g>
+    <!-- text -->
+    <text x="260" y="26" text-anchor="middle" dominant-baseline="middle"
+      font-family="'VT323', monospace" font-size="15" letter-spacing="3"
+      fill="rgba(221,189,117,0.95)">${text}</text>
+    <!-- inner rule bottom -->
+    <line x1="0" y1="36" x2="520" y2="36" stroke="url(#bronzeHDim)" stroke-width="0.5"/>
+    <!-- outer rule bottom -->
+    <line x1="0" y1="40" x2="520" y2="40" stroke="url(#bronzeH)" stroke-width="0.75"/>
+  </svg>`;
+  el.style.opacity=1;
+}
+
 // ─── LOAD STATE ──────────────────────────────────────────────
 function loadState(index){
   const data=GATES[index];
@@ -1607,7 +1662,7 @@ function loadGateData(data){
 
   DOM.output.innerHTML='';
   DOM.options.style.opacity=0; DOM.options.innerHTML='';
-  DOM.branchLabel.style.opacity=0; DOM.branchLabel.textContent='';
+  setBranchLabel(DOM.branchLabel, '');
   DOM.fragmentNotify.style.opacity=0; DOM.fragmentNotify.innerHTML='';
   DOM.consequence.style.opacity=0; DOM.consequence.innerHTML='';
 
@@ -1648,8 +1703,7 @@ function loadGateData(data){
     if(data.fragment) showFragment(data.fragment);
     setTimeout(()=>{
       if(data.branchLabel){
-        DOM.branchLabel.textContent=data.branchLabel;
-        DOM.branchLabel.style.opacity=1;
+        setBranchLabel(DOM.branchLabel, data.branchLabel);
       }
       setTimeout(()=>{
         if(data.doors) {
@@ -1697,7 +1751,7 @@ function buildVault(){
   fragmentsCollected.forEach(fKey=>{
     const f=FRAGMENTS[fKey];
     const div=document.createElement('div');
-    div.className='vault-fragment';
+    div.className='vault-fragment ornate-frame';
     div.innerHTML=`<div class="vf-id">${f.id}</div><div class="vf-name">${f.name}</div><div class="vf-date">${f.classification}</div>`;
     DOM.vaultGrid.appendChild(div);
   });
