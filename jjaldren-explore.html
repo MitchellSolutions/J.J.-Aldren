@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chronological Record — J.J. Aldren</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --amber: #EF9F27;
+    --amber-light: #FAC775;
+    --amber-dark: #854F0B;
+    --slate: #12151f;
+    --slate-mid: #1c2030;
+    --slate-light: #252c3d;
+    --text-primary: #e8e0cc;
+    --text-muted: #9a9080;
+    --text-dim: #4a4840;
+    --border: rgba(239,159,39,0.15);
+    --border-glow: rgba(239,159,39,0.4);
+    --font-display: 'Cinzel', serif;
+    --font-body: 'IM Fell English', serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--slate);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    min-height: 100vh;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(18,21,31,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 0.5px solid var(--border);
+    padding: 0 2rem;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-brand {
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--amber);
+    text-decoration: none;
+  }
+
+  .nav-subtitle {
+    font-family: var(--font-display);
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+
+  /* HERO */
+  .hero {
+    padding: 100px 2rem 0;
+    text-align: center;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--font-display);
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 1.2rem;
+    display: block;
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(26px, 5vw, 44px);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    letter-spacing: 0.05em;
+  }
+
+  .hero-title em {
+    color: var(--amber);
+    font-style: normal;
+  }
+
+  .hero-desc {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--text-muted);
+    font-style: italic;
+    max-width: 520px;
+    margin: 0 auto 2.5rem;
+  }
+
+  /* TRAILER */
+  .trailer-wrap {
+    max-width: 860px;
+    margin: 0 auto 0;
+    padding: 0 2rem 3rem;
+  }
+
+  .trailer-label {
+    font-family: var(--font-display);
+    font-size: 8.5px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    text-align: center;
+    margin-bottom: 14px;
+  }
+
+  .yt-facade {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    background: #000;
+    border: 0.5px solid var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .yt-facade img {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: opacity 0.2s;
+  }
+
+  .yt-facade:hover img { opacity: 0.8; }
+
+  .yt-facade .yt-play {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 68px; height: 48px;
+    background: rgba(0,0,0,0.75);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+    pointer-events: none;
+  }
+
+  .yt-facade:hover .yt-play { background: #c00; }
+
+  .yt-facade .yt-play svg {
+    width: 24px; height: 24px;
+    fill: #fff;
+    margin-left: 4px;
+  }
+
+  .yt-facade iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: none;
+  }
+
+  .trailer-cta {
+    text-align: center;
+    margin-top: 16px;
+  }
+
+  .trailer-cta a {
+    font-family: var(--font-display);
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--amber);
+    text-decoration: none;
+    border: 0.5px solid var(--border-glow);
+    padding: 8px 20px;
+    border-radius: 1px;
+    transition: background 0.2s, color 0.2s;
+    display: inline-block;
+  }
+
+  .trailer-cta a:hover {
+    background: rgba(239,159,39,0.08);
+  }
+
+  .section-divider {
+    max-width: 860px;
+    margin: 0 auto 3rem;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .section-divider-line {
+    flex: 1;
+    height: 0.5px;
+    background: var(--border);
+  }
+
+  .section-divider-label {
+    font-family: var(--font-display);
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    white-space: nowrap;
+  }
+
+  /* TIMELINE */
+  .tl-wrapper {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 2rem 6rem;
+  }
+
+  .tl-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 2rem;
+  }
+
+  .tl-search-wrap {
+    display: flex;
+    justify-content: center;
+  }
+
+  .tl-search-wrap input {
+    width: 100%;
+    max-width: 400px;
+    background: var(--slate-mid);
+    border: 0.5px solid var(--border);
+    border-radius: 2px;
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 14px;
+    padding: 10px 16px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .tl-search-wrap input:focus { border-color: var(--border-glow); }
+  .tl-search-wrap input::placeholder { color: var(--text-dim); font-style: italic; }
+
+  .tl-filters {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .filter-btn {
+    font-family: var(--font-display);
+    font-size: 9.5px;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 1px;
+    border: 0.5px solid var(--border);
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .filter-btn:hover, .filter-btn.active {
+    border-color: var(--amber);
+    color: var(--amber);
+    background: rgba(239,159,39,0.06);
+  }
+
+  .tl-count {
+    font-family: var(--font-display);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    color: var(--text-dim);
+    text-align: center;
+    padding-bottom: 1.5rem;
+    border-bottom: 0.5px solid var(--border);
+    margin-bottom: 2rem;
+  }
+
+  .tl-track {
+    position: relative;
+    padding-left: 90px;
+  }
+
+  .tl-spine {
+    position: absolute;
+    left: 40px; top: 0; bottom: 0;
+    width: 0.5px;
+    background: linear-gradient(to bottom, transparent, var(--border) 4%, var(--border) 96%, transparent);
+  }
+
+  .tl-gap {
+    position: relative;
+    margin-left: -50px;
+    padding: 14px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .tl-gap-line {
+    flex: 1;
+    height: 0;
+    border-top: 0.5px dashed var(--text-dim);
+    opacity: 0.3;
+    max-width: 36px;
+  }
+
+  .tl-gap-label {
+    font-family: var(--font-display);
+    font-size: 8.5px;
+    letter-spacing: 0.1em;
+    color: var(--text-dim);
+    white-space: nowrap;
+  }
+
+  .tl-node { position: relative; margin-bottom: 0; cursor: pointer; }
+
+  .tl-node-connector {
+    position: absolute;
+    left: -50px; top: 30px;
+    width: 50px; height: 0.5px;
+    background: var(--border);
+    transition: background 0.2s;
+  }
+
+  .tl-node:hover .tl-node-connector,
+  .tl-node.active .tl-node-connector { background: var(--border-glow); }
+
+  .tl-node-dot {
+    position: absolute;
+    left: -59px; top: 22px;
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    border: 1.5px solid var(--text-dim);
+    background: var(--slate);
+    transition: all 0.25s;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .tl-node-dot-inner {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--text-dim);
+    transition: all 0.25s;
+  }
+
+  .tl-node:hover .tl-node-dot,
+  .tl-node.active .tl-node-dot {
+    border-color: var(--amber);
+    box-shadow: 0 0 10px rgba(239,159,39,0.25);
+  }
+
+  .tl-node:hover .tl-node-dot-inner,
+  .tl-node.active .tl-node-dot-inner {
+    background: var(--amber);
+    width: 8px; height: 8px;
+  }
+
+  .tl-card {
+    background: var(--slate-mid);
+    border: 0.5px solid var(--border);
+    border-radius: 2px;
+    padding: 18px 22px;
+    margin-bottom: 2px;
+    transition: border-color 0.2s, background 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .tl-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 2px;
+    background: transparent;
+    transition: background 0.2s;
+  }
+
+  .tl-node:hover .tl-card,
+  .tl-node.active .tl-card {
+    border-color: var(--border-glow);
+    background: var(--slate-light);
+  }
+
+  .tl-node.active .tl-card::before { background: var(--amber); }
+
+  .tl-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+
+  .tl-timestamp {
+    font-family: var(--font-display);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--amber);
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .tl-label {
+    font-size: 16px;
+    color: var(--text-primary);
+    line-height: 1.4;
+    margin-bottom: 8px;
+  }
+
+  .tl-meta { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+
+  .tl-badge {
+    font-family: var(--font-display);
+    font-size: 8px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 1px;
+    border: 0.5px solid;
+  }
+
+  .badge-planetary_event { background: rgba(56,94,181,0.1); border-color: rgba(56,94,181,0.3); color: #7ba3d4; }
+  .badge-genetic_manipulation { background: rgba(181,56,56,0.1); border-color: rgba(181,56,56,0.3); color: #d47b7b; }
+  .badge-social_structure { background: rgba(56,181,130,0.1); border-color: rgba(56,181,130,0.3); color: #7bd4b0; }
+  .badge-conflict { background: rgba(239,120,39,0.12); border-color: rgba(239,120,39,0.3); color: #EF9F27; }
+  .badge-astronomical { background: rgba(150,56,181,0.1); border-color: rgba(150,56,181,0.3); color: #c07bd4; }
+  .badge-cultural_transmission { background: rgba(56,160,181,0.1); border-color: rgba(56,160,181,0.3); color: #7bcad4; }
+
+  .tl-status { font-size: 9.5px; font-style: italic; }
+  .status-established_text { color: #7bd4b0; }
+  .status-alternative_framework { color: #d4c87b; }
+  .status-disputed { color: #d47b7b; }
+
+  .tl-expand-icon {
+    color: var(--text-dim);
+    font-size: 18px;
+    flex-shrink: 0;
+    font-weight: 300;
+    margin-top: 2px;
+    transition: transform 0.3s, color 0.2s;
+    line-height: 1;
+    font-family: sans-serif;
+  }
+
+  .tl-node.active .tl-expand-icon { transform: rotate(45deg); color: var(--amber); }
+
+  .tl-detail { max-height: 0; overflow: hidden; transition: max-height 0.45s ease; }
+  .tl-node.active .tl-detail { max-height: 700px; }
+
+  .tl-detail-inner {
+    padding: 16px 22px 20px;
+    background: rgba(8,10,18,0.6);
+    border: 0.5px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 2px 2px;
+    margin-top: -2px;
+  }
+
+  .tl-lineage {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-style: italic;
+    margin-bottom: 12px;
+  }
+
+  .tl-lineage span {
+    font-style: normal;
+    font-family: var(--font-display);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--amber-light);
+  }
+
+  .tl-desc {
+    font-size: 14px;
+    line-height: 1.85;
+    color: var(--text-muted);
+    font-style: italic;
+    margin-bottom: 16px;
+  }
+
+  .tl-sources-label {
+    font-family: var(--font-display);
+    font-size: 8px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 8px;
+  }
+
+  .tl-source-tag {
+    display: inline-block;
+    font-size: 10.5px;
+    color: var(--text-muted);
+    padding: 3px 9px;
+    border: 0.5px solid var(--border);
+    border-radius: 1px;
+    margin: 0 4px 4px 0;
+    font-style: italic;
+  }
+
+  /* VIDEO EMBED — uses .yt-facade defined above */
+  .tl-node .yt-facade {
+    border-radius: 2px;
+    margin-top: 16px;
+  }
+
+  /* PLACEHOLDER */
+  .tl-video-placeholder {
+    background: rgba(8,10,18,0.7);
+    border: 0.5px solid var(--border);
+    border-radius: 2px;
+    height: 110px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .tl-video-placeholder-icon {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    border: 0.5px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-dim);
+    font-size: 13px;
+  }
+
+  .tl-video-placeholder-label {
+    font-family: var(--font-display);
+    font-size: 8px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+
+  .tl-yt-link {
+    display: inline-block;
+    margin-top: 10px;
+    font-family: var(--font-display);
+    font-size: 8.5px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--amber);
+    text-decoration: none;
+    border: 0.5px solid var(--border-glow);
+    padding: 6px 14px;
+    border-radius: 1px;
+    transition: background 0.2s;
+  }
+
+  .tl-yt-link:hover { background: rgba(239,159,39,0.08); }
+
+  .tl-empty {
+    text-align: center;
+    padding: 4rem 1rem;
+    font-style: italic;
+    color: var(--text-dim);
+    font-size: 14px;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 0.5px solid var(--border);
+    padding: 2.5rem 2rem;
+    text-align: center;
+  }
+
+  .footer-brand {
+    font-family: var(--font-display);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 6px;
+  }
+
+  .footer-note {
+    font-size: 11px;
+    color: var(--text-dim);
+    font-style: italic;
+  }
+
+  .footer-note a {
+    color: var(--amber);
+    text-decoration: none;
+  }
+
+  @media (max-width: 600px) {
+    .tl-track { padding-left: 60px; }
+    .tl-spine { left: 24px; }
+    .tl-node-connector { left: -36px; width: 36px; }
+    .tl-node-dot { left: -43px; }
+    .tl-gap { margin-left: -34px; }
+    nav { padding: 0 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="#">J.J. Aldren</a>
+  <span class="nav-subtitle">Where Do We Really Come From?</span>
+</nav>
+
+<section class="hero">
+  <span class="hero-eyebrow">The Documentary Series</span>
+  <h1 class="hero-title">Where Do We Really <em>Come From?</em></h1>
+  <p class="hero-desc">Watch the trailer. Then explore the full chronological record — 450,000 years of suppressed history, one node at a time.</p>
+</section>
+
+<div class="trailer-wrap">
+  <div class="trailer-label">Official Trailer</div>
+  <div class="yt-facade" onclick="loadVideo(this,'rxQQekEXpws')">
+    <img src="https://i.ytimg.com/vi/rxQQekEXpws/maxresdefault.jpg" alt="Where Do We Really Come From? — Official Trailer" loading="lazy">
+    <div class="yt-play">
+      <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+    </div>
+  </div>
+  <div class="trailer-cta">
+    <a href="https://www.amazon.com/dp/9798259421349" target="_blank" rel="noopener">Get the Book on Amazon &rarr;</a>
+  </div>
+</div>
+
+<div class="section-divider">
+  <div class="section-divider-line"></div>
+  <div class="section-divider-label">Chronological Record</div>
+  <div class="section-divider-line"></div>
+</div>
+
+<main class="tl-wrapper">
+  <div class="tl-controls">
+    <div class="tl-search-wrap">
+      <input type="text" id="search-input" placeholder="Search nodes, sources, descriptions..." oninput="render()">
+    </div>
+    <div class="tl-filters" id="filters"></div>
+  </div>
+  <div class="tl-count" id="node-count"></div>
+  <div class="tl-track">
+    <div class="tl-spine"></div>
+    <div id="nodes-container"></div>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-brand">J.J. Aldren</div>
+  <div class="footer-note"><a href="https://www.amazon.com/dp/9798259421349" target="_blank" rel="noopener">Where Do We Really Come From?</a> — Available on Amazon</div>
+</footer>
+
+<script>
+const DATA = {
+  nodes: [
+    {
+      id: "node_001",
+      label: "Initial Expedition Arrival",
+      timestamp: -450000,
+      category: "planetary_event",
+      lineage_branch: "enki",
+      video_id: "wEHBQhjJ1sY",
+      theory_status: "established_text",
+      description: "The first recorded arrival of the expedition force. Primary texts place the landing in the southern marshlands of what is now the Persian Gulf region — a location the Sumerians called Eridu, the first city. The question is not whether they arrived. The question is where they came from.",
+      sources: ["Eridu Genesis", "Sumerian King List", "Atrahasis Epic"]
+    },
+    {
+      id: "node_002",
+      label: "Establishment of the First Cities",
+      timestamp: -430000,
+      category: "social_structure",
+      lineage_branch: "enki",
+      video_id: "",
+      theory_status: "established_text",
+      description: "Five cities are established before the flood: Eridu, Bad-tibira, Larak, Sippar, and Shuruppak. Each city is assigned a divine overseer. The tablets record the descent of kingship from heaven — not as metaphor, but as administrative record.",
+      sources: ["Sumerian King List", "Nippur Tablet"]
+    },
+    {
+      id: "node_003",
+      label: "Cultural Transmission: The Apkallu",
+      timestamp: -250000,
+      category: "cultural_transmission",
+      lineage_branch: "enki",
+      video_id: "",
+      theory_status: "alternative_framework",
+      description: "The seven sages — the Apkallu — are recorded as transmitters of knowledge before the flood. Depicted in Assyrian palace reliefs as fish-robed figures, they are credited with teaching humanity writing, law, agriculture, and astronomy. No explanation is given for where they learned it.",
+      sources: ["Berossus, Babyloniaca", "Adapa and the South Wind", "Assyrian Palace Reliefs"]
+    },
+    {
+      id: "node_004",
+      label: "The Adamu Synthesis",
+      timestamp: -200000,
+      category: "genetic_manipulation",
+      lineage_branch: "ninhursag",
+      video_id: "YW7agxWiRKU",
+      theory_status: "alternative_framework",
+      description: "The creation event documented across multiple ancient traditions. The Atrahasis Epic records the mixing of divine essence with earthly matter. Ninhursag's lineage holds the primary record of the fourteen birth goddesses. Every major religious tradition on earth has a version of this moment.",
+      sources: ["Atrahasis Epic", "Enuma Elish", "Genesis 1-2"]
+    },
+    {
+      id: "node_005",
+      label: "The Revolt of the Igigi",
+      timestamp: -100000,
+      category: "conflict",
+      lineage_branch: "enlil",
+      video_id: "",
+      theory_status: "alternative_framework",
+      description: "The lower-ranking Igigi refuse to continue their labour. The Atrahasis Epic records their burning of tools and surrounding of Enlil's compound. This is not mythology. It is a labour dispute. And it changed the course of human history.",
+      sources: ["Atrahasis Epic", "Tablet II"]
+    },
+    {
+      id: "node_006",
+      label: "The Division of Domains",
+      timestamp: -50000,
+      category: "social_structure",
+      lineage_branch: "anu",
+      video_id: "",
+      theory_status: "established_text",
+      description: "Anu, Enlil, and Enki draw lots to divide the domains: heaven, earth, and the deep waters. The resulting authority structure underpins all subsequent political and theological organisation across Mesopotamia, Egypt, and beyond.",
+      sources: ["Atrahasis Epic", "Enuma Elish", "Gilgamesh Tablet"]
+    },
+    {
+      id: "node_007",
+      label: "Astronomical Alignment at Giza",
+      timestamp: -10500,
+      category: "astronomical",
+      lineage_branch: "thoth",
+      video_id: "",
+      theory_status: "alternative_framework",
+      description: "Robert Bauval's orion correlation theory places the construction date of the Giza plateau at approximately 10,500 BCE based on stellar alignment of the three main pyramids to Orion's belt at its lowest precessional point. The official date is 2,500 BCE. The difference is 8,000 years.",
+      sources: ["Bauval & Gilbert, The Orion Mystery", "Hamlet's Mill", "Keeper of Genesis"]
+    },
+    {
+      id: "node_008",
+      label: "The Great Flood Decree",
+      timestamp: -13000,
+      category: "planetary_event",
+      lineage_branch: "enlil",
+      video_id: "",
+      theory_status: "established_text",
+      description: "Enlil convenes the divine assembly and decrees the destruction of humanity. The Atrahasis Epic, the Gilgamesh flood tablet, and Genesis 6-9 all record this event independently. Enki's counter-action — warning Utnapishtim through the reed wall — is preserved across all three traditions word for word.",
+      sources: ["Gilgamesh Tablet XI", "Atrahasis Epic", "Genesis 6-9", "Ziusudra Text"]
+    },
+    {
+      id: "node_009",
+      label: "Post-Flood Kingship Restored",
+      timestamp: -11000,
+      category: "social_structure",
+      lineage_branch: "anu",
+      video_id: "",
+      theory_status: "established_text",
+      description: "After the waters recede, kingship descends again from heaven. The Sumerian King List records a sharp reduction in reign lengths after the flood — from tens of thousands of years to hundreds. Most scholars call this a shift from mythology to history. Others call it evidence of something else entirely.",
+      sources: ["Sumerian King List", "Kish Dynasty Records"]
+    },
+    {
+      id: "node_010",
+      label: "The Tower of Babel Event",
+      timestamp: -6000,
+      category: "conflict",
+      lineage_branch: "enlil",
+      video_id: "",
+      theory_status: "disputed",
+      description: "Genesis 11 records the scattering of peoples and the confusion of languages. The Etemenanki ziggurat in Babylon is the most commonly cited physical candidate. What the text describes is not punishment. It is containment.",
+      sources: ["Genesis 11", "Etemenanki Inscription", "Jubilees 10"]
+    }
+  ]
+};
+
+const CATEGORY_LABELS = {
+  planetary_event: "Planetary Event",
+  genetic_manipulation: "Genetic Event",
+  social_structure: "Social Structure",
+  conflict: "Conflict",
+  astronomical: "Astronomical",
+  cultural_transmission: "Cultural Transmission"
+};
+
+const STATUS_LABELS = {
+  established_text: "Established Text",
+  alternative_framework: "Alternative Framework",
+  disputed: "Disputed"
+};
+
+function formatTimestamp(t) {
+  const a = Math.abs(t);
+  if (a >= 1000000) return (a / 1000000).toFixed(1) + "M YBP";
+  if (a >= 1000) return Math.round(a / 1000) + "K YBP";
+  return a + " YBP";
+}
+
+function getGapLabel(a, b) {
+  const d = Math.abs(b.timestamp - a.timestamp);
+  return formatTimestamp(-d) + " interval";
+}
+
+let activeNode = null;
+let activeFilter = "all";
+
+function render() {
+  const q = (document.getElementById("search-input") || { value: "" }).value.toLowerCase();
+  let sorted = [...DATA.nodes].sort((a, b) => a.timestamp - b.timestamp);
+  if (activeFilter !== "all") sorted = sorted.filter(n => n.category === activeFilter);
+  if (q) sorted = sorted.filter(n =>
+    n.label.toLowerCase().includes(q) ||
+    (n.description || "").toLowerCase().includes(q) ||
+    (n.sources || []).join(" ").toLowerCase().includes(q)
+  );
+
+  const cats = [...new Set(DATA.nodes.map(n => n.category))];
+  const filterEl = document.getElementById("filters");
+  filterEl.innerHTML = "";
+
+  const allBtn = document.createElement("button");
+  allBtn.className = "filter-btn" + (activeFilter === "all" ? " active" : "");
+  allBtn.textContent = "All";
+  allBtn.onclick = () => { activeFilter = "all"; render(); };
+  filterEl.appendChild(allBtn);
+
+  cats.forEach(c => {
+    const btn = document.createElement("button");
+    btn.className = "filter-btn" + (activeFilter === c ? " active" : "");
+    btn.textContent = CATEGORY_LABELS[c] || c;
+    btn.onclick = () => { activeFilter = c; render(); };
+    filterEl.appendChild(btn);
+  });
+
+  document.getElementById("node-count").textContent =
+    sorted.length + " of " + DATA.nodes.length + " nodes";
+
+  const container = document.getElementById("nodes-container");
+  container.innerHTML = "";
+
+  if (sorted.length === 0) {
+    const e = document.createElement("div");
+    e.className = "tl-empty";
+    e.textContent = "No nodes match this filter.";
+    container.appendChild(e);
+    return;
+  }
+
+  sorted.forEach((node, i) => {
+    const isActive = activeNode === node.id;
+
+    if (i > 0) {
+      const gapDiv = document.createElement("div");
+      gapDiv.className = "tl-gap";
+      const l1 = document.createElement("div"); l1.className = "tl-gap-line";
+      const lbl = document.createElement("span"); lbl.className = "tl-gap-label";
+      lbl.textContent = getGapLabel(sorted[i - 1], node);
+      const l2 = document.createElement("div"); l2.className = "tl-gap-line";
+      gapDiv.append(l1, lbl, l2);
+      container.appendChild(gapDiv);
+    }
+
+    const sourcesHTML = (node.sources && node.sources.length)
+      ? `<div style="margin-bottom:16px">
+           <div class="tl-sources-label">Primary Sources</div>
+           ${node.sources.map(s => `<span class="tl-source-tag">${s}</span>`).join("")}
+         </div>`
+      : "";
+
+    const videoHTML = node.video_id
+      ? `<div class="yt-facade" onclick="loadVideo(this,'${node.video_id}')">
+           <img src="https://i.ytimg.com/vi/${node.video_id}/maxresdefault.jpg" alt="${node.label}" loading="lazy">
+           <div class="yt-play">
+             <svg viewBox="0 0 24 24" style="width:24px;height:24px;fill:#fff;margin-left:4px"><polygon points="5,3 19,12 5,21"/></svg>
+           </div>
+         </div>
+         <a class="tl-yt-link" href="https://www.youtube.com/watch?v=${node.video_id}" target="_blank" rel="noopener">Watch on YouTube &rarr;</a>`
+      : `<div class="tl-video-placeholder">
+           <div class="tl-video-placeholder-icon">&#9654;</div>
+           <div class="tl-video-placeholder-label">Chapter video coming soon</div>
+         </div>`;
+
+    const nodeDiv = document.createElement("div");
+    nodeDiv.className = "tl-node" + (isActive ? " active" : "");
+    nodeDiv.innerHTML = `
+      <div class="tl-node-connector"></div>
+      <div class="tl-node-dot"><div class="tl-node-dot-inner"></div></div>
+      <div class="tl-card">
+        <div class="tl-card-top">
+          <div style="flex:1">
+            <span class="tl-timestamp">${formatTimestamp(node.timestamp)}</span>
+            <div class="tl-label">${node.label}</div>
+            <div class="tl-meta">
+              <span class="tl-badge badge-${node.category}">${CATEGORY_LABELS[node.category] || node.category}</span>
+              <span class="tl-status status-${node.theory_status}">${STATUS_LABELS[node.theory_status] || node.theory_status}</span>
+            </div>
+          </div>
+          <div class="tl-expand-icon">+</div>
+        </div>
+      </div>
+      <div class="tl-detail">
+        <div class="tl-detail-inner">
+          <div class="tl-lineage">Lineage branch: <span>${node.lineage_branch}</span></div>
+          ${node.description ? `<p class="tl-desc">${node.description}</p>` : ""}
+          ${sourcesHTML}
+          ${videoHTML}
+        </div>
+      </div>`;
+
+    nodeDiv.querySelector(".tl-card").addEventListener("click", () => {
+      activeNode = isActive ? null : node.id;
+      render();
+    });
+
+    container.appendChild(nodeDiv);
+  });
+}
+
+function loadVideo(el, id) {
+  el.innerHTML = `<iframe
+    src="https://www.youtube.com/embed/${id}?rel=0&modestbranding=1&color=white&autoplay=1"
+    title="J.J. Aldren"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen></iframe>`;
+  el.style.cursor = 'default';
+}
+
+render();
+</script>
+</body>
+</html>
