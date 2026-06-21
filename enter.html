@@ -554,7 +554,7 @@
       <div id="consequence"></div>
       <div id="branch-label"></div>
       <div id="options"></div>
-      <button id="skip" onclick="skipToVideo()">[ TAP TO FORCE DECODE ]</button>
+      <button id="skip">[ TAP TO FORCE DECODE ]</button>
       <div id="seal-progress">
         <div class="seal-row" id="seal-row"></div>
         <div class="seal-meta">
@@ -1710,6 +1710,7 @@ function activateTrailer(el){
 }
 
 function skipToVideo(){
+  if(DOM.videoStage.classList.contains('visible')) return;
   skipQueued=true;
   setTimeout(()=>transitionToVideo(),300);
 }
@@ -1826,6 +1827,7 @@ setTimeout(()=>{
   DOM.statusBar.style.opacity=1;
   DOM.sealProgress.style.opacity=1;
   initSeals();
+  if(DOM.skip) DOM.skip.addEventListener('click', skipToVideo);
 },500);
 
 loadState(0);
