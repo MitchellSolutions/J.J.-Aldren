@@ -18,8 +18,8 @@
     --slate-mid: #1c2030;
     --slate-light: #252c3d;
     --text-primary: #e8e0cc;
-    --text-muted: #9a9080;
-    --text-dim: #4a4840;
+    --text-muted: #b8a898;
+    --text-dim: #6a6458;
     --border: rgba(239,159,39,0.15);
     --border-glow: rgba(239,159,39,0.4);
     --font-display: 'Cinzel', serif;
@@ -32,19 +32,19 @@
     background: var(--slate);
     color: var(--text-primary);
     font-family: var(--font-body);
+    font-size: 17px;
     min-height: 100vh;
   }
 
-  /* NAV */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
     z-index: 100;
-    background: rgba(18,21,31,0.92);
+    background: rgba(18,21,31,0.94);
     backdrop-filter: blur(8px);
     border-bottom: 0.5px solid var(--border);
     padding: 0 2rem;
-    height: 56px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -52,7 +52,7 @@
 
   .nav-brand {
     font-family: var(--font-display);
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 400;
     letter-spacing: 0.3em;
     text-transform: uppercase;
@@ -62,15 +62,14 @@
 
   .nav-subtitle {
     font-family: var(--font-display);
-    font-size: 9px;
+    font-size: 11px;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--text-dim);
   }
 
-  /* HERO */
   .hero {
-    padding: 100px 2rem 0;
+    padding: 108px 2rem 0;
     text-align: center;
     max-width: 860px;
     margin: 0 auto;
@@ -78,7 +77,7 @@
 
   .hero-eyebrow {
     font-family: var(--font-display);
-    font-size: 10px;
+    font-size: 12px;
     letter-spacing: 0.3em;
     text-transform: uppercase;
     color: var(--amber);
@@ -88,7 +87,7 @@
 
   .hero-title {
     font-family: var(--font-display);
-    font-size: clamp(26px, 5vw, 44px);
+    font-size: clamp(30px, 5vw, 48px);
     font-weight: 400;
     line-height: 1.2;
     color: var(--text-primary);
@@ -96,13 +95,10 @@
     letter-spacing: 0.05em;
   }
 
-  .hero-title em {
-    color: var(--amber);
-    font-style: normal;
-  }
+  .hero-title em { color: var(--amber); font-style: normal; }
 
   .hero-desc {
-    font-size: 15px;
+    font-size: 18px;
     line-height: 1.8;
     color: var(--text-muted);
     font-style: italic;
@@ -110,16 +106,15 @@
     margin: 0 auto 2.5rem;
   }
 
-  /* TRAILER */
   .trailer-wrap {
     max-width: 860px;
-    margin: 0 auto 0;
+    margin: 0 auto;
     padding: 0 2rem 3rem;
   }
 
   .trailer-label {
     font-family: var(--font-display);
-    font-size: 8.5px;
+    font-size: 11px;
     letter-spacing: 0.25em;
     text-transform: uppercase;
     color: var(--text-dim);
@@ -153,7 +148,7 @@
     position: absolute;
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
-    width: 68px; height: 48px;
+    width: 72px; height: 52px;
     background: rgba(0,0,0,0.75);
     border-radius: 12px;
     display: flex;
@@ -166,7 +161,7 @@
   .yt-facade:hover .yt-play { background: #c00; }
 
   .yt-facade .yt-play svg {
-    width: 24px; height: 24px;
+    width: 26px; height: 26px;
     fill: #fff;
     margin-left: 4px;
   }
@@ -180,101 +175,81 @@
 
   .trailer-cta {
     text-align: center;
-    margin-top: 16px;
+    margin-top: 18px;
   }
 
   .trailer-cta a {
     font-family: var(--font-display);
-    font-size: 9px;
+    font-size: 11px;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--amber);
     text-decoration: none;
     border: 0.5px solid var(--border-glow);
-    padding: 8px 20px;
+    padding: 10px 24px;
     border-radius: 1px;
-    transition: background 0.2s, color 0.2s;
+    transition: background 0.2s;
     display: inline-block;
   }
 
-  .trailer-cta a:hover {
-    background: rgba(239,159,39,0.08);
-  }
+  .trailer-cta a:hover { background: rgba(239,159,39,0.08); }
 
   .section-divider {
     max-width: 860px;
-    margin: 0 auto 3rem;
+    margin: 0 auto 2.5rem;
     padding: 0 2rem;
     display: flex;
     align-items: center;
     gap: 16px;
   }
 
-  .section-divider-line {
-    flex: 1;
-    height: 0.5px;
-    background: var(--border);
-  }
+  .section-divider-line { flex: 1; height: 0.5px; background: var(--border); }
 
   .section-divider-label {
     font-family: var(--font-display);
-    font-size: 9px;
+    font-size: 11px;
     letter-spacing: 0.25em;
     text-transform: uppercase;
     color: var(--text-dim);
     white-space: nowrap;
   }
 
-  /* TIMELINE */
   .tl-wrapper {
     max-width: 860px;
     margin: 0 auto;
     padding: 0 2rem 6rem;
   }
 
+  /* CONTROLS */
   .tl-controls {
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 12px;
     margin-bottom: 2rem;
   }
 
-  .tl-search-wrap {
-    display: flex;
-    justify-content: center;
+  .control-label {
+    font-family: var(--font-display);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 6px;
   }
-
-  .tl-search-wrap input {
-    width: 100%;
-    max-width: 400px;
-    background: var(--slate-mid);
-    border: 0.5px solid var(--border);
-    border-radius: 2px;
-    color: var(--text-primary);
-    font-family: var(--font-body);
-    font-size: 14px;
-    padding: 10px 16px;
-    outline: none;
-    transition: border-color 0.2s;
-  }
-
-  .tl-search-wrap input:focus { border-color: var(--border-glow); }
-  .tl-search-wrap input::placeholder { color: var(--text-dim); font-style: italic; }
 
   .tl-filters {
     display: flex;
     gap: 8px;
     flex-wrap: wrap;
-    justify-content: center;
   }
 
   .filter-btn {
     font-family: var(--font-display);
-    font-size: 9.5px;
+    font-size: 11px;
     font-weight: 400;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    padding: 6px 16px;
+    padding: 7px 16px;
     border-radius: 1px;
     border: 0.5px solid var(--border);
     background: transparent;
@@ -291,7 +266,7 @@
 
   .tl-count {
     font-family: var(--font-display);
-    font-size: 9px;
+    font-size: 11px;
     letter-spacing: 0.12em;
     color: var(--text-dim);
     text-align: center;
@@ -331,17 +306,17 @@
 
   .tl-gap-label {
     font-family: var(--font-display);
-    font-size: 8.5px;
+    font-size: 11px;
     letter-spacing: 0.1em;
     color: var(--text-dim);
     white-space: nowrap;
   }
 
-  .tl-node { position: relative; margin-bottom: 0; cursor: pointer; }
+  .tl-node { position: relative; cursor: pointer; }
 
   .tl-node-connector {
     position: absolute;
-    left: -50px; top: 30px;
+    left: -50px; top: 32px;
     width: 50px; height: 0.5px;
     background: var(--border);
     transition: background 0.2s;
@@ -352,7 +327,7 @@
 
   .tl-node-dot {
     position: absolute;
-    left: -59px; top: 22px;
+    left: -59px; top: 24px;
     width: 18px; height: 18px;
     border-radius: 50%;
     border: 1.5px solid var(--text-dim);
@@ -384,7 +359,7 @@
     background: var(--slate-mid);
     border: 0.5px solid var(--border);
     border-radius: 2px;
-    padding: 18px 22px;
+    padding: 20px 24px;
     margin-bottom: 2px;
     transition: border-color 0.2s, background 0.2s;
     position: relative;
@@ -412,28 +387,28 @@
 
   .tl-timestamp {
     font-family: var(--font-display);
-    font-size: 10px;
+    font-size: 12px;
     letter-spacing: 0.12em;
     color: var(--amber);
     display: block;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
   }
 
   .tl-label {
-    font-size: 16px;
+    font-size: 19px;
     color: var(--text-primary);
     line-height: 1.4;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
   }
 
   .tl-meta { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
 
   .tl-badge {
     font-family: var(--font-display);
-    font-size: 8px;
-    letter-spacing: 0.14em;
+    font-size: 10px;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    padding: 3px 9px;
+    padding: 4px 10px;
     border-radius: 1px;
     border: 0.5px solid;
   }
@@ -445,14 +420,14 @@
   .badge-astronomical { background: rgba(150,56,181,0.1); border-color: rgba(150,56,181,0.3); color: #c07bd4; }
   .badge-cultural_transmission { background: rgba(56,160,181,0.1); border-color: rgba(56,160,181,0.3); color: #7bcad4; }
 
-  .tl-status { font-size: 9.5px; font-style: italic; }
+  .tl-status { font-size: 11px; font-style: italic; }
   .status-established_text { color: #7bd4b0; }
   .status-alternative_framework { color: #d4c87b; }
   .status-disputed { color: #d47b7b; }
 
   .tl-expand-icon {
     color: var(--text-dim);
-    font-size: 18px;
+    font-size: 22px;
     flex-shrink: 0;
     font-weight: 300;
     margin-top: 2px;
@@ -467,7 +442,7 @@
   .tl-node.active .tl-detail { max-height: 700px; }
 
   .tl-detail-inner {
-    padding: 16px 22px 20px;
+    padding: 20px 24px 24px;
     background: rgba(8,10,18,0.6);
     border: 0.5px solid var(--border);
     border-top: none;
@@ -476,81 +451,79 @@
   }
 
   .tl-lineage {
-    font-size: 11px;
+    font-size: 13px;
     color: var(--text-muted);
     font-style: italic;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
   }
 
   .tl-lineage span {
     font-style: normal;
     font-family: var(--font-display);
-    font-size: 9px;
+    font-size: 11px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--amber-light);
   }
 
   .tl-desc {
-    font-size: 14px;
-    line-height: 1.85;
-    color: var(--text-muted);
+    font-size: 16px;
+    line-height: 1.9;
+    color: var(--text-primary);
     font-style: italic;
-    margin-bottom: 16px;
+    margin-bottom: 18px;
   }
 
   .tl-sources-label {
     font-family: var(--font-display);
-    font-size: 8px;
+    font-size: 10px;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--text-dim);
-    margin-bottom: 8px;
+    margin-bottom: 10px;
   }
 
   .tl-source-tag {
     display: inline-block;
-    font-size: 10.5px;
+    font-size: 13px;
     color: var(--text-muted);
-    padding: 3px 9px;
+    padding: 4px 10px;
     border: 0.5px solid var(--border);
     border-radius: 1px;
-    margin: 0 4px 4px 0;
+    margin: 0 5px 5px 0;
     font-style: italic;
   }
 
-  /* VIDEO EMBED — uses .yt-facade defined above */
-  .tl-node .yt-facade {
+  .yt-facade.node-vid {
     border-radius: 2px;
-    margin-top: 16px;
+    margin-top: 18px;
   }
 
-  /* PLACEHOLDER */
   .tl-video-placeholder {
     background: rgba(8,10,18,0.7);
     border: 0.5px solid var(--border);
     border-radius: 2px;
-    height: 110px;
+    height: 120px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    margin-top: 16px;
+    gap: 10px;
+    margin-top: 18px;
   }
 
   .tl-video-placeholder-icon {
-    width: 36px; height: 36px;
+    width: 40px; height: 40px;
     border-radius: 50%;
     border: 0.5px solid var(--border);
     display: flex; align-items: center; justify-content: center;
     color: var(--text-dim);
-    font-size: 13px;
+    font-size: 15px;
   }
 
   .tl-video-placeholder-label {
     font-family: var(--font-display);
-    font-size: 8px;
+    font-size: 10px;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--text-dim);
@@ -558,15 +531,15 @@
 
   .tl-yt-link {
     display: inline-block;
-    margin-top: 10px;
+    margin-top: 12px;
     font-family: var(--font-display);
-    font-size: 8.5px;
+    font-size: 10px;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--amber);
     text-decoration: none;
     border: 0.5px solid var(--border-glow);
-    padding: 6px 14px;
+    padding: 8px 16px;
     border-radius: 1px;
     transition: background 0.2s;
   }
@@ -578,10 +551,9 @@
     padding: 4rem 1rem;
     font-style: italic;
     color: var(--text-dim);
-    font-size: 14px;
+    font-size: 16px;
   }
 
-  /* FOOTER */
   footer {
     border-top: 0.5px solid var(--border);
     padding: 2.5rem 2rem;
@@ -590,23 +562,15 @@
 
   .footer-brand {
     font-family: var(--font-display);
-    font-size: 10px;
+    font-size: 12px;
     letter-spacing: 0.25em;
     text-transform: uppercase;
     color: var(--text-dim);
-    margin-bottom: 6px;
+    margin-bottom: 8px;
   }
 
-  .footer-note {
-    font-size: 11px;
-    color: var(--text-dim);
-    font-style: italic;
-  }
-
-  .footer-note a {
-    color: var(--amber);
-    text-decoration: none;
-  }
+  .footer-note { font-size: 13px; color: var(--text-dim); font-style: italic; }
+  .footer-note a { color: var(--amber); text-decoration: none; }
 
   @media (max-width: 600px) {
     .tl-track { padding-left: 60px; }
@@ -652,10 +616,14 @@
 
 <main class="tl-wrapper">
   <div class="tl-controls">
-    <div class="tl-search-wrap">
-      <input type="text" id="search-input" placeholder="Search nodes, sources, descriptions..." oninput="render()">
+    <div>
+      <div class="control-label">Filter by Lineage</div>
+      <div class="tl-filters" id="lineage-filters"></div>
     </div>
-    <div class="tl-filters" id="filters"></div>
+    <div>
+      <div class="control-label">Theory Status</div>
+      <div class="tl-filters" id="status-filters"></div>
+    </div>
   </div>
   <div class="tl-count" id="node-count"></div>
   <div class="tl-track">
@@ -740,17 +708,6 @@ const DATA = {
     },
     {
       id: "node_007",
-      label: "Astronomical Alignment at Giza",
-      timestamp: -10500,
-      category: "astronomical",
-      lineage_branch: "thoth",
-      video_id: "",
-      theory_status: "alternative_framework",
-      description: "Robert Bauval's orion correlation theory places the construction date of the Giza plateau at approximately 10,500 BCE based on stellar alignment of the three main pyramids to Orion's belt at its lowest precessional point. The official date is 2,500 BCE. The difference is 8,000 years.",
-      sources: ["Bauval & Gilbert, The Orion Mystery", "Hamlet's Mill", "Keeper of Genesis"]
-    },
-    {
-      id: "node_008",
       label: "The Great Flood Decree",
       timestamp: -13000,
       category: "planetary_event",
@@ -759,6 +716,17 @@ const DATA = {
       theory_status: "established_text",
       description: "Enlil convenes the divine assembly and decrees the destruction of humanity. The Atrahasis Epic, the Gilgamesh flood tablet, and Genesis 6-9 all record this event independently. Enki's counter-action — warning Utnapishtim through the reed wall — is preserved across all three traditions word for word.",
       sources: ["Gilgamesh Tablet XI", "Atrahasis Epic", "Genesis 6-9", "Ziusudra Text"]
+    },
+    {
+      id: "node_008",
+      label: "Astronomical Alignment at Giza",
+      timestamp: -10500,
+      category: "astronomical",
+      lineage_branch: "thoth",
+      video_id: "",
+      theory_status: "alternative_framework",
+      description: "Robert Bauval's orion correlation theory places the construction date of the Giza plateau at approximately 10,500 BCE based on stellar alignment of the three main pyramids to Orion's belt at its lowest precessional point. The official date is 2,500 BCE. The difference is 8,000 years.",
+      sources: ["Bauval & Gilbert, The Orion Mystery", "Hamlet's Mill", "Keeper of Genesis"]
     },
     {
       id: "node_009",
@@ -800,6 +768,14 @@ const STATUS_LABELS = {
   disputed: "Disputed"
 };
 
+const LINEAGE_LABELS = {
+  enki: "Enki",
+  enlil: "Enlil",
+  ninhursag: "Ninhursag",
+  anu: "Anu",
+  thoth: "Thoth"
+};
+
 function formatTimestamp(t) {
   const a = Math.abs(t);
   if (a >= 1000000) return (a / 1000000).toFixed(1) + "M YBP";
@@ -813,38 +789,49 @@ function getGapLabel(a, b) {
 }
 
 let activeNode = null;
-let activeFilter = "all";
+let activeLineage = "all";
+let activeStatus = "all";
 
 function render() {
-  const q = (document.getElementById("search-input") || { value: "" }).value.toLowerCase();
   let sorted = [...DATA.nodes].sort((a, b) => a.timestamp - b.timestamp);
-  if (activeFilter !== "all") sorted = sorted.filter(n => n.category === activeFilter);
-  if (q) sorted = sorted.filter(n =>
-    n.label.toLowerCase().includes(q) ||
-    (n.description || "").toLowerCase().includes(q) ||
-    (n.sources || []).join(" ").toLowerCase().includes(q)
-  );
+  if (activeLineage !== "all") sorted = sorted.filter(n => n.lineage_branch === activeLineage);
+  if (activeStatus !== "all") sorted = sorted.filter(n => n.theory_status === activeStatus);
 
-  const cats = [...new Set(DATA.nodes.map(n => n.category))];
-  const filterEl = document.getElementById("filters");
-  filterEl.innerHTML = "";
-
-  const allBtn = document.createElement("button");
-  allBtn.className = "filter-btn" + (activeFilter === "all" ? " active" : "");
-  allBtn.textContent = "All";
-  allBtn.onclick = () => { activeFilter = "all"; render(); };
-  filterEl.appendChild(allBtn);
-
-  cats.forEach(c => {
+  // Lineage filters
+  const lineages = [...new Set(DATA.nodes.map(n => n.lineage_branch))];
+  const lineageEl = document.getElementById("lineage-filters");
+  lineageEl.innerHTML = "";
+  const allLBtn = document.createElement("button");
+  allLBtn.className = "filter-btn" + (activeLineage === "all" ? " active" : "");
+  allLBtn.textContent = "All Lineages";
+  allLBtn.onclick = () => { activeLineage = "all"; render(); };
+  lineageEl.appendChild(allLBtn);
+  lineages.forEach(l => {
     const btn = document.createElement("button");
-    btn.className = "filter-btn" + (activeFilter === c ? " active" : "");
-    btn.textContent = CATEGORY_LABELS[c] || c;
-    btn.onclick = () => { activeFilter = c; render(); };
-    filterEl.appendChild(btn);
+    btn.className = "filter-btn" + (activeLineage === l ? " active" : "");
+    btn.textContent = LINEAGE_LABELS[l] || l;
+    btn.onclick = () => { activeLineage = l; render(); };
+    lineageEl.appendChild(btn);
+  });
+
+  // Status filters
+  const statusEl = document.getElementById("status-filters");
+  statusEl.innerHTML = "";
+  const allSBtn = document.createElement("button");
+  allSBtn.className = "filter-btn" + (activeStatus === "all" ? " active" : "");
+  allSBtn.textContent = "All Records";
+  allSBtn.onclick = () => { activeStatus = "all"; render(); };
+  statusEl.appendChild(allSBtn);
+  Object.entries(STATUS_LABELS).forEach(([key, label]) => {
+    const btn = document.createElement("button");
+    btn.className = "filter-btn" + (activeStatus === key ? " active" : "");
+    btn.textContent = label;
+    btn.onclick = () => { activeStatus = key; render(); };
+    statusEl.appendChild(btn);
   });
 
   document.getElementById("node-count").textContent =
-    sorted.length + " of " + DATA.nodes.length + " nodes";
+    sorted.length + " of " + DATA.nodes.length + " nodes in the record";
 
   const container = document.getElementById("nodes-container");
   container.innerHTML = "";
@@ -872,17 +859,17 @@ function render() {
     }
 
     const sourcesHTML = (node.sources && node.sources.length)
-      ? `<div style="margin-bottom:16px">
+      ? `<div style="margin-bottom:18px">
            <div class="tl-sources-label">Primary Sources</div>
            ${node.sources.map(s => `<span class="tl-source-tag">${s}</span>`).join("")}
          </div>`
       : "";
 
     const videoHTML = node.video_id
-      ? `<div class="yt-facade" onclick="loadVideo(this,'${node.video_id}')">
+      ? `<div class="yt-facade node-vid" onclick="loadVideo(this,'${node.video_id}')">
            <img src="https://i.ytimg.com/vi/${node.video_id}/hqdefault.jpg" alt="${node.label}" loading="lazy">
            <div class="yt-play">
-             <svg viewBox="0 0 24 24" style="width:24px;height:24px;fill:#fff;margin-left:4px"><polygon points="5,3 19,12 5,21"/></svg>
+             <svg viewBox="0 0 24 24" style="width:26px;height:26px;fill:#fff;margin-left:4px"><polygon points="5,3 19,12 5,21"/></svg>
            </div>
          </div>
          <a class="tl-yt-link" href="https://www.youtube.com/watch?v=${node.video_id}" target="_blank" rel="noopener">Watch on YouTube &rarr;</a>`
@@ -911,7 +898,7 @@ function render() {
       </div>
       <div class="tl-detail">
         <div class="tl-detail-inner">
-          <div class="tl-lineage">Lineage branch: <span>${node.lineage_branch}</span></div>
+          <div class="tl-lineage">Lineage branch: <span>${LINEAGE_LABELS[node.lineage_branch] || node.lineage_branch}</span></div>
           ${node.description ? `<p class="tl-desc">${node.description}</p>` : ""}
           ${sourcesHTML}
           ${videoHTML}
