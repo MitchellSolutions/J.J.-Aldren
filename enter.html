@@ -1,0 +1,1834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enter the Record — J.J. Aldren</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=VT323&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #061A10;
+    --bg-mid: #0D3320;
+    --bg-light: #1A5A3A;
+    --gold: #C9A961;
+    --gold-dim: rgba(201,169,97,0.35);
+    --gold-ghost: rgba(201,169,97,0.06);
+    --gold-glow: rgba(201,169,97,0.15);
+    --font-t: 'VT323', monospace;
+    --font-b: 'IM Fell English', serif;
+  }
+
+  html, body { height: 100%; background: var(--bg); color: var(--gold); font-family: var(--font-t); overflow: hidden; }
+  html { background: #061A10; }
+
+  body::after {
+    content: '';
+    position: fixed; inset: 0;
+    background: repeating-linear-gradient(to bottom, transparent 0px, transparent 3px, rgba(0,0,0,0.06) 3px, rgba(0,0,0,0.06) 4px);
+    pointer-events: none; z-index: 999;
+  }
+
+  @keyframes flicker {
+    0%,100%{opacity:1} 91%{opacity:1} 92%{opacity:0.96} 93%{opacity:1} 96%{opacity:0.98} 97%{opacity:1}
+  }
+  body { animation: flicker 10s infinite; }
+
+  @keyframes blink { 50%{opacity:0} }
+  @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+  @keyframes slideUp { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes glitch {
+    0%{transform:translate(0)} 20%{transform:translate(-2px,1px)} 40%{transform:translate(2px,-1px)} 60%{transform:translate(-1px,2px)} 80%{transform:translate(1px,-1px)} 100%{transform:translate(0)}
+  }
+  @keyframes restore {
+    0%{letter-spacing:0.3em;opacity:0.3;color:var(--gold-dim)}
+    50%{letter-spacing:0.1em;opacity:0.7}
+    100%{letter-spacing:normal;opacity:1;color:var(--gold)}
+  }
+  @keyframes symbolFadeIn { from{opacity:0;transform:translateY(-6px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes genomeScroll {
+    0%{stroke-dashoffset:200} 100%{stroke-dashoffset:0}
+  }
+  @keyframes fragmentGlow {
+    0%{box-shadow:0 0 0 rgba(201,169,97,0)} 30%{box-shadow:0 0 22px rgba(201,169,97,0.55)} 100%{box-shadow:0 0 0 rgba(201,169,97,0)}
+  }
+  @keyframes tabletReveal { from{opacity:0;transform:scale(0.94)} to{opacity:1;transform:scale(1)} }
+
+  /* GATE SYMBOLS */
+  .gate-symbol {
+    display: flex; justify-content: center; align-items: center;
+    margin-bottom: 1.4rem;
+    animation: symbolFadeIn 1s ease forwards;
+  }
+
+  .gate-symbol svg { display: block; }
+
+  /* GENOME LINE */
+  .genome-wrap {
+    margin-bottom: 1.4rem;
+    animation: symbolFadeIn 0.8s ease forwards;
+  }
+
+  .genome-line {
+    font-family: var(--font-t); font-size: 0.75rem;
+    letter-spacing: 0.06em; line-height: 1.5;
+    color: rgba(201,169,97,0.22);
+    overflow: hidden; word-break: break-all;
+    position: relative;
+  }
+
+  .genome-line .corrupted {
+    color: rgba(201,50,50,0.45);
+  }
+
+  .genome-line .cursor-seg {
+    color: var(--gold);
+    animation: blink 0.8s step-end infinite;
+  }
+
+  /* FRAGMENT GLOW */
+  .fragment-box.fragment-arriving {
+    animation: fragmentGlow 1.4s ease forwards;
+  }
+
+  /* TABLET */
+  .tablet-wrap {
+    display: flex; justify-content: center;
+    margin-bottom: 1.4rem;
+    animation: tabletReveal 0.9s ease forwards;
+  }
+
+  @keyframes slowSpin {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+  @keyframes slowSpinReverse {
+    from { transform: translate(-50%, -50%) rotate(360deg); }
+    to { transform: translate(-50%, -50%) rotate(0deg); }
+  }
+  @keyframes sealPulse {
+    0%,100%{opacity:0.055} 50%{opacity:0.085}
+  }
+  @keyframes dustDrift {
+    0%{transform:translateY(0) translateX(0);opacity:0}
+    10%{opacity:1}
+    90%{opacity:0.4}
+    100%{transform:translateY(-120px) translateX(30px);opacity:0}
+  }
+
+  /* RELIC BACKGROUND */
+  #relic-bg {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+    background:
+      radial-gradient(circle at 50% 45%, rgba(201,169,97,0.10), transparent 28%),
+      radial-gradient(circle at 50% 50%, rgba(0,0,0,0), rgba(0,0,0,0.65) 70%);
+  }
+
+  .relic-ring {
+    position: absolute;
+    left: 50%;
+    top: 48%;
+    transform: translate(-50%, -50%);
+    border: 1px solid rgba(201,169,97,0.10);
+    border-radius: 50%;
+    box-shadow: 0 0 40px rgba(201,169,97,0.04);
+  }
+
+  .ring-one {
+    width: 520px; height: 520px;
+    animation: slowSpin 90s linear infinite;
+  }
+
+  .ring-two {
+    width: 360px; height: 360px;
+    border-style: dashed;
+    animation: slowSpinReverse 120s linear infinite;
+  }
+
+  .ring-three {
+    width: 680px; height: 680px;
+    border: 0.5px solid rgba(201,169,97,0.05);
+    animation: slowSpin 160s linear infinite;
+  }
+
+  .relic-core {
+    position: absolute;
+    left: 50%;
+    top: 48%;
+    transform: translate(-50%, -50%);
+    font-size: 5rem;
+    color: rgba(201,169,97,0.055);
+    text-shadow: 0 0 40px rgba(201,169,97,0.18);
+    animation: sealPulse 8s ease-in-out infinite;
+    font-family: serif;
+  }
+
+  /* STAGE */
+  #stage {
+    position: fixed; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    padding: 2rem;
+    z-index: 2;
+  }
+
+  #terminal { width: 100%; max-width: 680px; }
+
+  /* STATUS BAR */
+  #status-bar {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 2rem;
+    opacity: 0; transition: opacity 0.8s;
+  }
+
+  .status-item { font-size: 11px; letter-spacing: 0.18em; color: var(--gold-dim); }
+  .status-item.highlight { color: var(--gold); }
+
+  #rank-display {
+    font-size: 12px; letter-spacing: 0.15em;
+    color: var(--gold-dim); transition: color 0.5s;
+  }
+
+  #rank-display.levelled {
+    color: var(--gold);
+    animation: glitch 0.3s ease;
+  }
+
+  /* GATE LABEL */
+  #gate-label {
+    font-size: 11px; letter-spacing: 0.25em;
+    color: var(--gold-dim); margin-bottom: 1.2rem;
+    opacity: 0; transition: opacity 0.5s; min-height: 16px;
+  }
+
+  /* OUTPUT */
+  #output {
+    font-size: 1.5rem; line-height: 1.8;
+    min-height: 100px;
+    text-shadow: 0 0 6px rgba(201,169,97,0.2);
+    white-space: pre-wrap;
+  }
+
+  /* REDACTED */
+  .redacted {
+    background: var(--gold); color: var(--gold);
+    cursor: default; letter-spacing: 0.05em;
+    padding: 0 2px; user-select: none;
+    animation: blink 2s step-end infinite;
+  }
+
+  .restored {
+    color: var(--gold);
+    animation: restore 0.8s ease forwards;
+    font-style: italic;
+  }
+
+  /* FRAGMENT NOTIFICATION */
+  #fragment-notify {
+    margin-top: 1.2rem; opacity: 0; transition: opacity 0.4s; min-height: 60px;
+  }
+
+  .fragment-box {
+    border: 0.5px solid var(--gold-dim);
+    background: var(--gold-ghost);
+    padding: 10px 14px; font-size: 0.95rem; line-height: 1.6;
+  }
+
+  .fragment-title { font-size: 10px; letter-spacing: 0.2em; color: var(--gold-dim); margin-bottom: 4px; }
+  .fragment-name { color: var(--gold); font-size: 1.1rem; }
+  .fragment-sub { color: var(--gold-dim); font-size: 0.85rem; }
+  .fragment-class { font-size: 9px; letter-spacing: 0.18em; color: var(--gold-dim); margin-top: 3px; text-transform: uppercase; }
+
+  /* RANK UP */
+  #rank-notify { margin-top: 0.8rem; opacity: 0; transition: opacity 0.4s; min-height: 30px; }
+
+  .rank-up-box {
+    font-size: 11px; letter-spacing: 0.2em;
+    color: var(--gold); border-left: 2px solid var(--gold);
+    padding: 6px 12px; animation: slideUp 0.4s ease;
+  }
+
+  /* CHOICE CONSEQUENCE */
+  #consequence {
+    margin-top: 0.6rem; opacity: 0; transition: opacity 0.4s;
+    min-height: 20px;
+  }
+
+  .consequence-text {
+    font-size: 0.9rem; letter-spacing: 0.1em;
+    color: var(--gold-dim); font-style: italic;
+    border-left: 1px solid rgba(201,169,97,0.15);
+    padding-left: 10px;
+  }
+
+  /* OPTIONS */
+  #branch-label {
+    font-size: 11px; letter-spacing: 0.18em;
+    color: var(--gold-dim); margin-top: 1.6rem; margin-bottom: 0.6rem;
+    opacity: 0; transition: opacity 0.4s; min-height: 16px;
+  }
+
+  #options { opacity: 0; transition: opacity 0.4s; margin-top: 0.4rem; }
+
+  .opt-btn {
+    display: block; width: 100%;
+    background: transparent;
+    border: none; border-left: 1.5px solid var(--gold-dim);
+    color: var(--gold-dim);
+    font-family: var(--font-t); font-size: 1.3rem;
+    cursor: pointer; text-align: left;
+    padding: 0.55rem 1rem; margin-bottom: 0.55rem;
+    letter-spacing: 0.04em; line-height: 1.4;
+    transition: color 0.15s, border-color 0.15s, background 0.15s, text-shadow 0.15s;
+    position: relative;
+  }
+
+  .opt-btn::before { content: '▶ '; font-size: 0.8em; opacity: 0.5; }
+  .opt-btn:hover {
+    color: var(--gold); border-color: var(--gold);
+    background: var(--gold-ghost);
+    text-shadow: 0 0 8px rgba(201,169,97,0.35);
+  }
+  .opt-btn:hover::before { opacity: 1; }
+
+  .opt-btn.restore-btn {
+    border-color: var(--gold); color: var(--gold);
+    background: var(--gold-ghost);
+    animation: blink 1.2s step-end infinite;
+  }
+
+  /* SEAL PROGRESS */
+  #seal-progress {
+    margin-top: 2rem; opacity: 0; transition: opacity 0.5s;
+  }
+
+  .seal-row {
+    display: flex; justify-content: center;
+    gap: 18px; margin-bottom: 10px; align-items: center;
+  }
+
+  .wax-seal-wrap {
+    display: inline-flex; align-items: center; justify-content: center;
+    transition: transform 0.3s, filter 0.3s;
+  }
+
+  .wax-seal-wrap.breaking {
+    animation: sealBreak 0.5s ease forwards;
+  }
+
+  @keyframes sealBreak {
+    0%{transform:scale(1)} 30%{transform:scale(1.25)} 60%{transform:scale(0.95) rotate(8deg)} 100%{transform:scale(1) rotate(0deg)}
+  }
+
+  .seal-meta { display: flex; justify-content: space-between; }
+  .seal-label { font-size: 11px; letter-spacing: 0.12em; color: var(--gold-dim); }
+
+  /* DOORS */
+  .doors-wrap {
+    display: flex; gap: 3rem; margin-top: 2rem;
+    justify-content: center; align-items: flex-end;
+  }
+
+  .door-col {
+    display: flex; flex-direction: column; align-items: center;
+    cursor: pointer; gap: 12px;
+  }
+
+  .door-svg { display: block; transition: filter 0.3s; }
+  .door-col:hover .door-svg { filter: drop-shadow(0 0 14px rgba(201,169,97,0.45)); }
+
+  .door-label {
+    font-family: var(--font-t); font-size: 1.2rem;
+    letter-spacing: 0.25em; color: var(--gold-dim);
+    transition: color 0.25s, text-shadow 0.25s; text-transform: uppercase;
+  }
+
+  .door-col:hover .door-label { color: var(--gold); text-shadow: 0 0 8px rgba(201,169,97,0.5); }
+
+  /* GATE */
+  .gate-wrap {
+    display: flex; flex-direction: column; align-items: center;
+    gap: 12px; margin-top: 1.5rem; cursor: pointer;
+  }
+
+  .gate-svg { display: block; transition: filter 0.3s; }
+  .gate-wrap:hover .gate-svg { filter: drop-shadow(0 0 14px rgba(201,169,97,0.35)); }
+
+  .gate-label {
+    font-family: var(--font-t); font-size: 1.1rem;
+    letter-spacing: 0.2em; color: var(--gold-dim); transition: color 0.25s;
+  }
+
+  .gate-wrap:hover .gate-label { color: var(--gold); }
+
+  /* CHAMBER */
+  .chamber-wrap {
+    border: 0.5px solid var(--gold-dim);
+    padding: 1.4rem 1.6rem; margin-top: 1.2rem;
+    background: rgba(201,169,97,0.03); position: relative;
+    animation: fadeIn 0.6s ease;
+  }
+
+  .chamber-wrap::before {
+    content: 'CHAMBER';
+    position: absolute; top: -9px; left: 1rem;
+    font-size: 9px; letter-spacing: 0.22em; color: var(--gold-dim);
+    background: var(--bg); padding: 0 6px; font-family: var(--font-t);
+  }
+
+  .chamber-text { font-size: 1.4rem; line-height: 1.8; white-space: pre-wrap; text-shadow: 0 0 6px rgba(201,169,97,0.15); }
+
+  /* VIDEO STAGE */
+  #video-stage {
+    display: none; position: fixed; inset: 0;
+    background: var(--bg);
+    flex-direction: column; align-items: center; justify-content: center;
+    padding: 2rem; overflow-y: auto; z-index: 2;
+  }
+  #video-stage.visible { display: flex; }
+
+  .v-eyebrow {
+    font-family: var(--font-t); font-size: 11px;
+    letter-spacing: 0.25em; color: var(--gold-dim);
+    margin-bottom: 1rem; text-align: center; animation: fadeIn 1s ease;
+  }
+
+  #yt-facade {
+    position: relative; width: 100%; max-width: 800px; height: 220px;
+    background: var(--bg-mid); border: 0.5px solid var(--gold-dim);
+    cursor: pointer; overflow: hidden; flex-shrink: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 14px;
+    transition: border-color 0.2s, background 0.2s; animation: fadeIn 1.2s ease;
+  }
+
+  #yt-facade:hover { border-color: var(--gold); background: var(--bg-light); }
+
+  .play-btn {
+    width: 78px; height: 56px; background: rgba(0,0,0,0.5);
+    border: 1px solid var(--gold-dim); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  #yt-facade:hover .play-btn { background: var(--gold-glow); border-color: var(--gold); }
+  .play-btn svg { width: 26px; height: 26px; fill: var(--gold); margin-left: 4px; }
+
+  .play-label {
+    font-family: var(--font-t); font-size: 12px;
+    letter-spacing: 0.25em; color: var(--gold-dim); transition: color 0.2s;
+  }
+
+  #yt-facade:hover .play-label { color: var(--gold); }
+  #yt-facade iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+
+  /* FRAGMENT VAULT */
+  #vault {
+    width: 100%; max-width: 800px; margin-top: 1.5rem;
+    opacity: 0; transition: opacity 1s ease; animation: fadeIn 1s ease;
+  }
+  #vault.visible { opacity: 1; }
+
+  .vault-title { font-family: var(--font-t); font-size: 11px; letter-spacing: 0.22em; color: var(--gold-dim); margin-bottom: 10px; }
+
+  .vault-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 8px; margin-bottom: 1.5rem;
+  }
+
+  .vault-fragment { border: 0.5px solid var(--gold-dim); background: var(--gold-ghost); padding: 10px 12px; font-family: var(--font-t); }
+  .vf-id { font-size: 9px; letter-spacing: 0.2em; color: var(--gold-dim); margin-bottom: 3px; }
+  .vf-name { font-size: 1rem; color: var(--gold); line-height: 1.3; }
+  .vf-date { font-size: 9px; color: var(--gold-dim); margin-top: 3px; }
+
+  /* CTA */
+  #cta {
+    width: 100%; max-width: 800px; text-align: center; margin-top: 1.5rem;
+    opacity: 0; transition: opacity 1.2s ease;
+  }
+  #cta.visible { opacity: 1; }
+
+  .cta-access-line {
+    font-family: var(--font-t); font-size: 14px; letter-spacing: 0.25em;
+    color: rgba(201,169,97,0.25); margin-bottom: 1.4rem;
+    border-top: 0.5px solid rgba(201,169,97,0.1);
+    padding-top: 1rem;
+  }
+
+  .cta-headline { font-family: var(--font-t); font-size: 1.2rem; letter-spacing: 0.08em; color: var(--gold-dim); margin-bottom: 0.3rem; }
+
+  .cta-fragment-note {
+    font-family: var(--font-t); font-size: 0.95rem;
+    color: rgba(201,169,97,0.4); margin-bottom: 1rem;
+    letter-spacing: 0.06em;
+  }
+
+  .cta-sub-line { font-family: var(--font-b); font-size: 13px; color: var(--gold-dim); font-style: italic; margin-bottom: 1.2rem; }
+  .cta-buttons { display: flex; flex-direction: column; gap: 10px; align-items: center; }
+
+  .cta-primary {
+    font-family: var(--font-t); font-size: 1.3rem;
+    letter-spacing: 0.15em; color: var(--bg);
+    background: var(--gold); text-decoration: none;
+    padding: 12px 32px; border: none; cursor: pointer;
+    transition: opacity 0.2s; display: inline-block;
+  }
+  .cta-primary:hover { opacity: 0.85; }
+
+  .cta-secondary {
+    font-family: var(--font-t); font-size: 1.1rem;
+    letter-spacing: 0.12em; color: var(--gold);
+    text-decoration: none; border: 0.5px solid var(--gold-dim);
+    padding: 10px 24px; display: inline-block;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .cta-secondary:hover { background: var(--gold-ghost); border-color: var(--gold); }
+
+  .cta-tertiary {
+    font-family: var(--font-t); font-size: 1rem;
+    letter-spacing: 0.1em; color: var(--gold-dim);
+    text-decoration: none; cursor: pointer;
+    background: none; border: none; transition: color 0.2s;
+  }
+  .cta-tertiary:hover { color: var(--gold); }
+
+  /* SKIP / FORCE DECODE */
+  #skip {
+    position: fixed; bottom: 1.5rem; right: 1.5rem;
+    font-family: var(--font-t); font-size: 11px;
+    letter-spacing: 0.15em; color: var(--gold-dim);
+    cursor: pointer; border: none; background: transparent;
+    transition: color 0.2s; z-index: 500;
+  }
+  #skip:hover { color: var(--gold); }
+
+  /* TERMINAL WRAP */
+  #terminal-wrap { opacity: 1; transition: opacity 0.6s; overflow-y: auto; max-height: 100vh; padding-bottom: 2rem; }
+  #terminal-wrap.fade-out { opacity: 0; }
+
+  @media (max-width: 600px) {
+    #output { font-size: 1.25rem; }
+    .opt-btn { font-size: 1.1rem; }
+    .cta-buttons { width: 100%; }
+    .cta-primary, .cta-secondary { width: 100%; text-align: center; }
+    .ring-one { width: 340px; height: 340px; }
+    .ring-two { width: 230px; height: 230px; }
+    .ring-three { width: 460px; height: 460px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    body { animation: none; }
+    .relic-ring, .relic-core { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- RELIC BACKGROUND -->
+<div id="relic-bg">
+  <div class="relic-ring ring-three"></div>
+  <div class="relic-ring ring-one"></div>
+  <div class="relic-ring ring-two"></div>
+  <div class="relic-core">𒀭</div>
+</div>
+
+<div id="stage">
+  <canvas id="beamCanvas" style="position:fixed;inset:0;pointer-events:none;z-index:1;"></canvas>
+  <div id="terminal-wrap">
+    <div id="terminal">
+      <div id="status-bar">
+        <span class="status-item" id="subject-status">SUBJECT: UNIDENTIFIED</span>
+        <span id="rank-display">RANK: UNINITIATED</span>
+        <span class="status-item" id="access-status">ACCESS: RESTRICTED</span>
+      </div>
+      <div id="gate-label"></div>
+      <div id="output"></div>
+      <div id="fragment-notify"></div>
+      <div id="rank-notify"></div>
+      <div id="consequence"></div>
+      <div id="branch-label"></div>
+      <div id="options"></div>
+      <div id="seal-progress">
+        <div class="seal-row" id="seal-row"></div>
+        <div class="seal-meta">
+          <span class="seal-label" id="seals-broken-label">SEALS BROKEN: 0 OF 5</span>
+          <span class="seal-label" id="fragments-label">FRAGMENTS: 0</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="video-stage">
+  <div class="v-eyebrow">TRANSMISSION UNLOCKED — PLAY TO RECEIVE</div>
+  <div id="yt-facade" onclick="activateTrailer(this)">
+    <div class="play-btn">
+      <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+    </div>
+    <div class="play-label">PLAY TRANSMISSION</div>
+  </div>
+  <div id="vault">
+    <div class="vault-title">ARCHIVE OBJECTS RECOVERED THIS SESSION</div>
+    <div class="vault-grid" id="vault-grid"></div>
+  </div>
+  <div id="cta">
+    <div class="cta-access-line">— PUBLIC ACCESS ENDS HERE —</div>
+    <div class="cta-headline">You have reached the limit of the open record.</div>
+    <div class="cta-fragment-note" id="cta-fragment-count"></div>
+    <div class="cta-sub-line">The full transmission continues in Where Do We Really Come From? by J.J. Aldren.</div>
+    <div class="cta-buttons">
+      <a href="https://www.amazon.com/dp/9798259421349" target="_blank" rel="noopener" class="cta-primary">[ CLAIM THE FULL RECORD ]</a>
+      <a href="/explore" class="cta-secondary">[ WATCH CHAPTER ONE ]</a>
+      <button class="cta-tertiary" onclick="restartExperience()">[ RETURN TO GATE 01 ]</button>
+    </div>
+  </div>
+</div>
+
+<button id="skip" onclick="skipToVideo()">[ TAP TO FORCE DECODE ]</button>
+
+<script>
+// ─── AUDIO ───────────────────────────────────────────────────
+const AC = new (window.AudioContext || window.webkitAudioContext)();
+function resume(){ if(AC.state==='suspended') AC.resume(); }
+
+function playClick(){
+  resume();
+  const buf = AC.createBuffer(1, Math.floor(AC.sampleRate*0.022), AC.sampleRate);
+  const d = buf.getChannelData(0);
+  for(let i=0;i<d.length;i++) d[i]=(Math.random()*2-1)*Math.pow(1-i/d.length,3)*0.3;
+  const s=AC.createBufferSource(), f=AC.createBiquadFilter();
+  f.type='bandpass'; f.frequency.value=2400; f.Q.value=0.9;
+  s.buffer=buf; s.connect(f); f.connect(AC.destination); s.start();
+}
+
+function playSelect(){
+  resume();
+  [200,300,400].forEach((fr,i)=>{
+    const o=AC.createOscillator(),g=AC.createGain();
+    o.type='sine'; o.frequency.value=fr;
+    g.gain.setValueAtTime(0,AC.currentTime+i*0.07);
+    g.gain.linearRampToValueAtTime(0.09,AC.currentTime+i*0.07+0.04);
+    g.gain.exponentialRampToValueAtTime(0.001,AC.currentTime+i*0.07+0.5);
+    o.connect(g); g.connect(AC.destination);
+    o.start(AC.currentTime+i*0.07); o.stop(AC.currentTime+i*0.07+0.55);
+  });
+}
+
+function playFragment(){
+  resume();
+  [260,390].forEach((fr,i)=>{
+    const o=AC.createOscillator(),g=AC.createGain();
+    o.type='sine'; o.frequency.value=fr;
+    g.gain.setValueAtTime(0,AC.currentTime+i*0.12);
+    g.gain.linearRampToValueAtTime(0.12,AC.currentTime+i*0.12+0.05);
+    g.gain.exponentialRampToValueAtTime(0.001,AC.currentTime+i*0.12+0.6);
+    o.connect(g); g.connect(AC.destination);
+    o.start(AC.currentTime+i*0.12); o.stop(AC.currentTime+i*0.12+0.65);
+  });
+}
+
+function playUnlock(){
+  resume();
+  [100,160,240,360,480].forEach((fr,i)=>{
+    const o=AC.createOscillator(),g=AC.createGain();
+    o.type='sine'; o.frequency.value=fr;
+    g.gain.setValueAtTime(0,AC.currentTime+i*0.1);
+    g.gain.linearRampToValueAtTime(0.15,AC.currentTime+i*0.1+0.06);
+    g.gain.exponentialRampToValueAtTime(0.001,AC.currentTime+i*0.1+0.5);
+    o.connect(g); g.connect(AC.destination);
+    o.start(AC.currentTime+i*0.1); o.stop(AC.currentTime+i*0.1+0.55);
+  });
+}
+
+function playRestore(){
+  resume();
+  const o=AC.createOscillator(),g=AC.createGain();
+  o.type='sine'; o.frequency.setValueAtTime(800,AC.currentTime);
+  o.frequency.exponentialRampToValueAtTime(200,AC.currentTime+0.4);
+  g.gain.setValueAtTime(0.15,AC.currentTime);
+  g.gain.exponentialRampToValueAtTime(0.001,AC.currentTime+0.4);
+  o.connect(g); g.connect(AC.destination);
+  o.start(); o.stop(AC.currentTime+0.45);
+}
+
+// ─── STATE ───────────────────────────────────────────────────
+const RANKS = ['UNINITIATED','OBSERVER','WITNESS','DECODER','KEEPER OF THE RECORD'];
+
+let currentGate = 0;
+let branch = null;
+let fragmentsCollected = [];
+let rankIndex = 0;
+let printing = false;
+let skipQueued = false;
+let sealsBroken = 0;
+
+const FRAGMENTS = {
+  f01: { id:'FRAGMENT 01', name:'The Late Story', date:'Signal age: 450,000 years', classification:'Origin Breach', status:'Sealed' },
+  f02: { id:'FRAGMENT 02', name:'The Reign Record', date:'Pre-flood. Approx. 241,200 years', classification:'Administrative Record', status:'Sealed' },
+  f03: { id:'FRAGMENT 03', name:'The Intervention', date:'Approx. 200,000 years ago', classification:'Genetic Event', status:'Sealed' },
+  f04: { id:'FRAGMENT 04', name:'The Convergence', date:'Six independent traditions', classification:'Cross-Signal Confirmation', status:'Sealed' },
+  f05: { id:'FRAGMENT 05', name:'The Descent', date:'Post-flood. Kingship restored', classification:'Authority Reset', status:'Withheld' },
+};
+
+// Choice consequence lines
+const CONSEQUENCES = {
+  H: `PATH RECORDED: HISTORY\nThe archive does not distinguish. Both roads enter the same chamber.`,
+  M: `PATH RECORDED: MYTH\nThe archive does not distinguish. Both roads enter the same chamber.`,
+  literal: `INTERPRETATION NOTED: LITERAL\nThe record does not require your belief. <span style="color:#cc2222;">Only your attention.</span>`,
+  symbolic: `INTERPRETATION NOTED: SYMBOLIC\nThe record does not require your belief. <span style="color:#cc2222;">Only your attention.</span>`,
+  irrelevant: `INTERPRETATION NOTED: IRRELEVANT\nThe record does not require your belief. <span style="color:#cc2222;">Only your attention.</span>`,
+  continue: `CONTINUATION ACCEPTED.\nYou may not return to what you were before you entered this gate.`,
+};
+
+// ─── GATES ───────────────────────────────────────────────────
+const GATES = [
+
+  // GATE 01
+  {
+    gate: '01', gateLabel: 'GATE 01 — THE LATE STORY',
+    rank: null,
+    symbol: 'seal',
+    text: `SUBJECT IDENTIFIED.\n\nYou have entered the human record at the wrong end.\n\nDo not look for the beginning in civilisation.\n\nThat is where the cover story starts.\n\nThe signal begins 450,000 years ago.\n\nEverything they taught you starts after the most important part is already over.`,
+    fragment: null,
+    branchLabel: 'OPEN THE FIRST SEAL',
+    doors: true,
+    options: [
+      { label:'HISTORY', next: 1, branch: 'H', consequence: 'H' },
+      { label:'MYTH', next: 1, branch: 'M', consequence: 'M' }
+    ]
+  },
+
+  // GATE 02
+  {
+    gate: '02', gateLabel: 'GATE 02 — THE SAME CHAMBER',
+    rank: 'OBSERVER',
+    chamber: true,
+    textH: `Both doors open into the same chamber.\n\nHistory calls it the Sumerian King List.\nMyth calls it the Age of the Gods.\n\nThey are the same document.\n\nThe list names eight kings who ruled before a global flood.\nCombined reign: 241,200 years.\n\nOrthodox academia classifies this as mythology.\n\nThey had to.\n\nIf the timeline is literal, the last two centuries of anthropology require rebuilding from the beginning.`,
+    textM: `Both doors open into the same chamber.\n\nMyth calls it the Age of the Gods.\nHistory calls it the Sumerian King List.\n\nThey are the same document.\n\nBefore the flood, eight kings ruled. Their combined reign: 241,200 years. After the flood, reign lengths collapse to decades. To human scale.\n\nEvery ancient tradition has a version of what happened between those two eras.\n\nNone of them agree on the details.\n\nAll of them agree on the event.`,
+    fragment: 'f01',
+    branchLabel: 'WHAT DO THE NUMBERS TELL YOU?',
+    options: [
+      { label:'[ THE NUMBERS ARE LITERAL ]', next: 2, branch: null, consequence: 'literal' },
+      { label:'[ THE NUMBERS ARE SYMBOLIC ]', next: 2, branch: null, consequence: 'symbolic' },
+      { label:'[ THE NUMBERS ARE IRRELEVANT ]', next: 2, branch: null, consequence: 'irrelevant' }
+    ]
+  },
+
+  // GATE 03 — REDACTED
+  {
+    gate: '03', gateLabel: 'GATE 03 — THE CORRUPTED LINE',
+    rank: 'WITNESS',
+    symbol: 'genome',
+    text: `All answers lead to the same gap.\n\nThe record says mankind evolved slowly over millions of years.\n\nThe older record says something `,
+    redacted: `████████████`,
+    textAfterRedacted: ` in the human genome.\n\nThe gap between those two statements is 200,000 years of missing explanation.`,
+    fragment: 'f02',
+    restoreLabel: '[ CLICK TO RESTORE SIGNAL ]',
+    restoredText: `<span style="color:#cc2222;font-style:italic;">intervened</span>`,
+    branchLabel: null,
+    options: [
+      { label:'[ CONTINUE TO GATE 04 ]', next: 3, branch: null, consequence: 'continue' }
+    ]
+  },
+
+  // GATE 04
+  {
+    gate: '04', gateLabel: 'GATE 04 — THE CONVERGENCE',
+    rank: null,
+    svgGate: true,
+    text: `\x00WARNING\x00\n\nContinuing will alter your reading of civilisation, scripture, and origin myths.\n\nSix independent ancient traditions describe the same event.\n\nThe Atrahasis Epic. The Enuma Elish. Genesis. The Book of Enoch. The Popol Vuh. The Rig Veda.\n\nNo shared author. No common language. No cultural contact.\n\nThe same event. Described the same way.\n\nAn external intelligence intervening in the biological development of a pre-existing hominid species.`,
+    fragment: 'f03',
+    branchLabel: 'DO YOU WISH TO CONTINUE?',
+    options: [
+      { label:'[ CONTINUE THE TRANSMISSION ]', next: 4, branch: null, consequence: 'continue' },
+      { label:'[ RETURN TO THE SURFACE ]', next: 'surface', branch: null, consequence: null }
+    ]
+  },
+
+  // GATE 05 — SURFACE DENIED
+  {
+    gate: '05', gateLabel: 'GATE 05 — THE DESCENT',
+    rank: 'DECODER',
+    symbol: 'tablet',
+    text: `After the flood, they returned.\n\nThe Sumerian King List records it precisely:\n\n"Then the flood swept over. After the flood had swept over, when kingship was lowered again from heaven, kingship was first in Kish."\n\nNot metaphor. Administrative notation.\n\nKingship was lowered from heaven.\n\nThe word translated as heaven is AN.U — a proper noun, not a location. It is a name.\n\nYou now hold four fragments of the suppressed record.\n\nThe fifth is in the book.`,
+    fragment: 'f04',
+    branchLabel: 'YOU HAVE REACHED THE LIMIT OF THE PUBLIC RECORD',
+    options: [
+      { label:'[ UNLOCK THE FULL TRANSMISSION ]', next: 'video', branch: null, consequence: null }
+    ]
+  }
+];
+
+// Surface denied
+const SURFACE_GATE = {
+  gate: '??', gateLabel: 'ACCESS DENIED',
+  rank: null,
+  text: `Surface access denied.\n\nYou have already seen the first fragment.\n\nThe record does not permit partial initiation.\n\nYou may not return to what you were before you entered this gate.`,
+  fragment: null,
+  branchLabel: null,
+  options: [
+    { label:'[ ACCEPT THE RECORD ]', next: 4, branch: null, consequence: null }
+  ]
+};
+
+// ─── DOM ─────────────────────────────────────────────────────
+const DOM = {
+  output: document.getElementById('output'),
+  options: document.getElementById('options'),
+  branchLabel: document.getElementById('branch-label'),
+  gateLabel: document.getElementById('gate-label'),
+  fragmentNotify: document.getElementById('fragment-notify'),
+  rankNotify: document.getElementById('rank-notify'),
+  consequence: document.getElementById('consequence'),
+  sealProgress: document.getElementById('seal-progress'),
+  sealsBrokenLabel: document.getElementById('seals-broken-label'),
+  fragmentsLabel: document.getElementById('fragments-label'),
+  statusBar: document.getElementById('status-bar'),
+  rankDisplay: document.getElementById('rank-display'),
+  subjectStatus: document.getElementById('subject-status'),
+  accessStatus: document.getElementById('access-status'),
+  terminalWrap: document.getElementById('terminal-wrap'),
+  videoStage: document.getElementById('video-stage'),
+  vault: document.getElementById('vault'),
+  vaultGrid: document.getElementById('vault-grid'),
+  cta: document.getElementById('cta'),
+  skip: document.getElementById('skip')
+};
+
+// ─── WAX SEAL SVG ────────────────────────────────────────────
+// Generates a scalloped wax seal path (16 petals around the edge)
+function scallopPath(cx, cy, outerR, innerR, petals) {
+  const pts = [];
+  const step = (Math.PI * 2) / (petals * 2);
+  for(let i = 0; i < petals * 2; i++) {
+    const angle = i * step - Math.PI / 2;
+    const r = i % 2 === 0 ? outerR : innerR;
+    pts.push(`${(cx + Math.cos(angle) * r).toFixed(2)},${(cy + Math.sin(angle) * r).toFixed(2)}`);
+  }
+  return 'M' + pts.join('L') + 'Z';
+}
+
+function waxSealSVG(broken) {
+  const id = Math.random().toString(36).slice(2,7);
+  const cx = 24, cy = 24, size = 48;
+
+  // scalloped outer edge: 16 petals
+  const outerEdge = scallopPath(cx, cy, 22, 18.5, 16);
+  // inner disc
+  const innerDisc = scallopPath(cx, cy, 15.5, 13.5, 16);
+
+  if(broken) {
+    return `<svg width="${size}" height="${size}" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="bg${id}" cx="38%" cy="32%" r="65%">
+          <stop offset="0%" stop-color="#6B1010"/>
+          <stop offset="50%" stop-color="#4A0808"/>
+          <stop offset="100%" stop-color="#1e0303"/>
+        </radialGradient>
+        <filter id="sh${id}"><feDropShadow dx="0" dy="1" stdDeviation="1.5" flood-color="rgba(0,0,0,0.7)"/></filter>
+      </defs>
+      <!-- scalloped body -->
+      <path d="${outerEdge}" fill="url(#bg${id})" filter="url(#sh${id})"/>
+      <!-- inner ring impression -->
+      <path d="${innerDisc}" fill="none" stroke="rgba(0,0,0,0.4)" stroke-width="0.6"/>
+      <!-- surface shadow texture -->
+      <circle cx="18" cy="16" r="5" fill="rgba(0,0,0,0.1)"/>
+      <circle cx="30" cy="15" r="3.5" fill="rgba(0,0,0,0.08)"/>
+      <circle cx="31" cy="30" r="4" fill="rgba(0,0,0,0.1)"/>
+      <circle cx="16" cy="31" r="3" fill="rgba(0,0,0,0.09)"/>
+      <!-- highlight -->
+      <ellipse cx="18" cy="15" rx="6" ry="3.5" fill="rgba(255,255,255,0.05)" transform="rotate(-20,18,15)"/>
+      <!-- main crack -->
+      <line x1="24" y1="4" x2="24" y2="44" stroke="rgba(0,0,0,0.7)" stroke-width="2" stroke-linecap="round"/>
+      <line x1="23.2" y1="4" x2="24.8" y2="44" stroke="rgba(80,0,0,0.15)" stroke-width="0.8"/>
+      <!-- branch cracks -->
+      <line x1="24" y1="22" x2="33" y2="16" stroke="rgba(0,0,0,0.45)" stroke-width="1" stroke-linecap="round"/>
+      <line x1="24" y1="26" x2="14" y2="32" stroke="rgba(0,0,0,0.4)" stroke-width="0.8" stroke-linecap="round"/>
+      <line x1="24" y1="18" x2="16" y2="13" stroke="rgba(0,0,0,0.3)" stroke-width="0.6" stroke-linecap="round"/>
+      <!-- glyph remnant, split and dimmed -->
+      <text x="17" y="27" text-anchor="middle" font-family="serif" font-size="9" fill="rgba(201,169,97,0.15)">𒀭</text>
+      <!-- dim outer ring -->
+      <circle cx="${cx}" cy="${cy}" r="21" fill="none" stroke="rgba(80,10,10,0.15)" stroke-width="1"/>
+    </svg>`;
+  } else {
+    return `<svg width="${size}" height="${size}" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="wg${id}" cx="36%" cy="30%" r="68%">
+          <stop offset="0%" stop-color="#D94030"/>
+          <stop offset="35%" stop-color="#B52A20"/>
+          <stop offset="70%" stop-color="#7A1810"/>
+          <stop offset="100%" stop-color="#3d0808"/>
+        </radialGradient>
+        <radialGradient id="ig${id}" cx="40%" cy="35%" r="60%">
+          <stop offset="0%" stop-color="#C03828"/>
+          <stop offset="60%" stop-color="#8a2018"/>
+          <stop offset="100%" stop-color="#5a1010"/>
+        </radialGradient>
+        <filter id="sf${id}" x="-25%" y="-25%" width="150%" height="150%">
+          <feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="rgba(0,0,0,0.7)"/>
+        </filter>
+        <!-- inner emboss filter -->
+        <filter id="emboss${id}">
+          <feGaussianBlur stdDeviation="0.4" result="blur"/>
+          <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+        </filter>
+      </defs>
+      <!-- scalloped outer body -->
+      <path d="${outerEdge}" fill="url(#wg${id})" filter="url(#sf${id})"/>
+      <!-- petal edge darkening -->
+      <path d="${outerEdge}" fill="none" stroke="rgba(40,5,5,0.55)" stroke-width="1.2"/>
+      <!-- raised inner disc -->
+      <circle cx="${cx}" cy="${cy}" r="15" fill="url(#ig${id})"/>
+      <!-- inner disc border ridge (embossed ring) -->
+      <circle cx="${cx}" cy="${cy}" r="15" fill="none" stroke="rgba(180,60,40,0.6)" stroke-width="1"/>
+      <circle cx="${cx}" cy="${cy}" r="14" fill="none" stroke="rgba(40,5,5,0.5)" stroke-width="0.6"/>
+      <!-- surface highlight on outer wax -->
+      <ellipse cx="18" cy="14" rx="7" ry="4" fill="rgba(255,255,255,0.08)" transform="rotate(-25,18,14)"/>
+      <!-- surface texture shadows -->
+      <circle cx="10" cy="18" r="4" fill="rgba(0,0,0,0.07)"/>
+      <circle cx="36" cy="14" r="3" fill="rgba(0,0,0,0.06)"/>
+      <circle cx="37" cy="32" r="3.5" fill="rgba(0,0,0,0.07)"/>
+      <circle cx="11" cy="31" r="3" fill="rgba(0,0,0,0.06)"/>
+      <!-- inner disc highlight -->
+      <ellipse cx="20" cy="17" rx="5" ry="3" fill="rgba(255,255,255,0.07)" transform="rotate(-15,20,17)"/>
+      <!-- stamped impression ring inside disc -->
+      <circle cx="${cx}" cy="${cy}" r="10" fill="none" stroke="rgba(50,10,8,0.65)" stroke-width="0.8"/>
+      <!-- cuneiform glyph pressed into wax -->
+      <text x="${cx}" y="${cy+5}" text-anchor="middle" font-family="serif" font-size="11"
+        fill="rgba(55,10,8,0.9)" filter="url(#emboss${id})">𒀭</text>
+      <!-- subtle glow ring -->
+      <circle cx="${cx}" cy="${cy}" r="22" fill="none" stroke="rgba(180,40,30,0.12)" stroke-width="1.5"/>
+    </svg>`;
+  }
+}
+
+// ─── SEAL PROGRESS ───────────────────────────────────────────
+function initSeals() {
+  const row = document.getElementById('seal-row');
+  if(!row) return;
+  row.innerHTML = '';
+  for(let i=1;i<=5;i++){
+    const wrap = document.createElement('div');
+    wrap.className = 'wax-seal-wrap';
+    wrap.id = 'wax-seal-' + i;
+    wrap.innerHTML = waxSealSVG(false);
+    row.appendChild(wrap);
+  }
+}
+
+function updateSeals(gateNum) {
+  const n = parseInt(gateNum) || 0;
+  sealsBroken = n;
+  for(let i=1;i<=5;i++){
+    const wrap = document.getElementById('wax-seal-' + i);
+    if(!wrap) continue;
+    const shouldBeBroken = i <= n;
+    const isBroken = wrap.dataset.broken === 'true';
+    if(shouldBeBroken && !isBroken) {
+      wrap.dataset.broken = 'true';
+      wrap.classList.add('breaking');
+      setTimeout(() => {
+        wrap.innerHTML = waxSealSVG(true);
+        wrap.classList.remove('breaking');
+      }, 250);
+    } else if(!shouldBeBroken && isBroken) {
+      wrap.dataset.broken = 'false';
+      wrap.innerHTML = waxSealSVG(false);
+    }
+  }
+  DOM.sealsBrokenLabel.textContent = `SEALS BROKEN: ${n} OF 5`;
+}
+
+// ─── TAP TO FORCE DECODE ─────────────────────────────────────
+document.addEventListener('click', function(e){
+  if(
+    printing &&
+    !e.target.closest('button') &&
+    !e.target.closest('a') &&
+    !e.target.closest('.door-col') &&
+    !e.target.closest('.gate-wrap')
+  ){
+    skipQueued = true;
+  }
+});
+
+// ─── PRINT ───────────────────────────────────────────────────
+function printText(text, onDone, i=0){
+  const processed = text.replace(/\x00WARNING\x00/g, '\x02WARNING\x02');
+  if(i===0 && processed !== text){
+    return printTextProcessed(processed, onDone, 0, false);
+  }
+  if(skipQueued){
+    DOM.output.innerHTML = text.replace(/\n/g,'<br>').replace(/\x00WARNING\x00/g,'<span style="color:#cc2222;text-shadow:0 0 8px rgba(200,30,30,0.5)">WARNING</span>');
+    skipQueued=false; printing=false;
+    if(onDone) onDone(); return;
+  }
+  if(i<text.length){
+    printing=true;
+    const ch=text[i];
+    if(ch==='\n') DOM.output.innerHTML+='<br>';
+    else { DOM.output.innerHTML+=ch; if(ch.trim()) playClick(); }
+    let delay=30;
+    if(['.','!','?'].includes(ch)) delay=480;
+    else if([',',':'].includes(ch)) delay=220;
+    else if(ch==='\n') delay=280;
+    setTimeout(()=>printText(text,onDone,i+1),delay);
+  } else {
+    printing=false; if(onDone) onDone();
+  }
+}
+
+function printTextProcessed(text, onDone, i=0, inRed=false){
+  if(skipQueued){
+    DOM.output.innerHTML = text.replace(/\n/g,'<br>').replace(/\x02WARNING\x02/g,'<span style="color:#cc2222;text-shadow:0 0 8px rgba(200,30,30,0.5)">WARNING</span>');
+    skipQueued=false; printing=false;
+    if(onDone) onDone(); return;
+  }
+  if(i<text.length){
+    printing=true;
+    const ch=text[i];
+    if(ch==='\x02'){
+      return printTextProcessed(text, onDone, i+1, !inRed);
+    }
+    if(ch==='\n'){
+      DOM.output.innerHTML+='<br>';
+    } else {
+      if(inRed){
+        const span = document.createElement('span');
+        span.style.color='#cc2222';
+        span.style.textShadow='0 0 8px rgba(200,30,30,0.5)';
+        span.textContent=ch;
+        DOM.output.appendChild(span);
+      } else {
+        DOM.output.innerHTML+=ch;
+      }
+      if(ch.trim()) playClick();
+    }
+    let delay=30;
+    if(['.','!','?'].includes(ch)) delay=480;
+    else if([',',':'].includes(ch)) delay=220;
+    else if(ch==='\n') delay=280;
+    setTimeout(()=>printTextProcessed(text,onDone,i+1,inRed),delay);
+  } else {
+    printing=false; if(onDone) onDone();
+  }
+}
+
+// ─── RANK UP ─────────────────────────────────────────────────
+function tryRankUp(newRank){
+  if(!newRank) return;
+  const idx = RANKS.indexOf(newRank);
+  if(idx<=rankIndex) return;
+  const old = RANKS[rankIndex];
+  rankIndex = idx;
+  DOM.rankDisplay.textContent = 'RANK: '+RANKS[rankIndex];
+  DOM.rankDisplay.classList.add('levelled');
+  setTimeout(()=>DOM.rankDisplay.classList.remove('levelled'),400);
+  DOM.rankNotify.innerHTML = `<div class="rank-up-box">ACCESS LEVEL CHANGED — ${old} → ${RANKS[rankIndex]}</div>`;
+  DOM.rankNotify.style.opacity=1;
+  setTimeout(()=>DOM.rankNotify.style.opacity=0,3500);
+}
+
+// ─── FRAGMENT ────────────────────────────────────────────────
+function showFragment(fKey){
+  if(!fKey||fragmentsCollected.includes(fKey)) return;
+  fragmentsCollected.push(fKey);
+  playFragment();
+  const f=FRAGMENTS[fKey];
+  DOM.fragmentNotify.innerHTML=`
+    <div class="fragment-box fragment-arriving">
+      <div class="fragment-title">ARCHIVE OBJECT RECOVERED</div>
+      <div class="fragment-name">${f.id} — ${f.name}</div>
+      <div class="fragment-sub">${f.date}</div>
+      <div class="fragment-class">Classification: ${f.classification} &nbsp;|&nbsp; Status: ${f.status}</div>
+    </div>`;
+  DOM.fragmentNotify.style.opacity=1;
+  DOM.fragmentsLabel.textContent=`FRAGMENTS: ${fragmentsCollected.length}`;
+}
+
+// ─── CONSEQUENCE ─────────────────────────────────────────────
+function showConsequence(key){
+  if(!key || !CONSEQUENCES[key]) return;
+  const text = CONSEQUENCES[key];
+  DOM.consequence.innerHTML=`<div class="consequence-text">${text.replace(/\n/g,'<br>')}</div>`;
+  DOM.consequence.style.opacity=1;
+  setTimeout(()=>DOM.consequence.style.opacity=0,7000);
+}
+
+// ─── REDACTED GATE ───────────────────────────────────────────
+function loadRedactedGate(data){
+  const existingSymbol = document.getElementById('gate-symbol-container');
+  if(existingSymbol) existingSymbol.remove();
+
+  DOM.output.innerHTML='';
+  DOM.options.style.opacity=0; DOM.options.innerHTML='';
+  DOM.branchLabel.style.opacity=0; DOM.branchLabel.textContent='';
+  DOM.fragmentNotify.style.opacity=0; DOM.fragmentNotify.innerHTML='';
+  DOM.gateLabel.textContent=data.gateLabel;
+  DOM.gateLabel.style.opacity=1;
+
+  // Inject genome symbol above output
+  if(data.symbol) {
+    const symWrap = document.createElement('div');
+    symWrap.id = 'gate-symbol-container';
+    symWrap.innerHTML = genomeSVG();
+    DOM.output.parentNode.insertBefore(symWrap, DOM.output);
+  }
+
+  printText(data.text, ()=>{
+    const span=document.createElement('span');
+    span.className='redacted';
+    span.textContent=data.redacted;
+    DOM.output.appendChild(span);
+
+    setTimeout(()=>{
+      const rest=document.createElement('span');
+      DOM.output.appendChild(rest);
+      printIntoEl(rest, data.textAfterRedacted, ()=>{
+        showFragment(data.fragment);
+        setTimeout(()=>{
+          const restoreBtn=document.createElement('button');
+          restoreBtn.className='opt-btn restore-btn';
+          restoreBtn.textContent=data.restoreLabel;
+          restoreBtn.onclick=()=>{
+            playRestore();
+            span.className='restored';
+            span.innerHTML=data.restoredText;
+
+            // Show restored confirmation
+            setTimeout(()=>{
+              const confirmEl = document.createElement('div');
+              confirmEl.style.cssText='font-size:0.85rem;letter-spacing:0.12em;color:rgba(201,169,97,0.5);margin-top:6px;font-style:italic;';
+              confirmEl.textContent='RESTORED TERM: INTERVENED — Confidence: unstable';
+              restoreBtn.parentNode.insertBefore(confirmEl, restoreBtn.nextSibling);
+              restoreBtn.remove();
+              setTimeout(()=>{
+                renderOptions(data.options);
+              },1000);
+            },300);
+          };
+          DOM.options.appendChild(restoreBtn);
+          DOM.options.style.opacity=1;
+        },600);
+      });
+    },300);
+  });
+}
+
+function printIntoEl(el, text, onDone, i=0){
+  if(i<text.length){
+    const ch=text[i];
+    if(ch==='\n') el.innerHTML+='<br>';
+    else { el.innerHTML+=ch; if(ch.trim()) playClick(); }
+    let delay=30;
+    if(['.','!','?'].includes(ch)) delay=480;
+    else if([',',':'].includes(ch)) delay=220;
+    else if(ch==='\n') delay=280;
+    setTimeout(()=>printIntoEl(el,text,onDone,i+1),delay);
+  } else { if(onDone) onDone(); }
+}
+
+// ─── GATE 01 SEAL SVG ────────────────────────────────────────
+function sealSVG() {
+  return `<div class="gate-symbol">
+    <svg width="110" height="110" viewBox="0 0 110 110" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <style>
+          @keyframes sealSpin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+          @keyframes sealSpinR { from{transform:rotate(360deg)} to{transform:rotate(0deg)} }
+          .seal-outer { transform-origin:55px 55px; animation:sealSpin 40s linear infinite; }
+          .seal-inner { transform-origin:55px 55px; animation:sealSpinR 28s linear infinite; }
+        </style>
+      </defs>
+      <!-- outer ring -->
+      <circle cx="55" cy="55" r="50" fill="none" stroke="rgba(201,169,97,0.18)" stroke-width="1"/>
+      <!-- rotating outer glyph ring -->
+      <g class="seal-outer">
+        <circle cx="55" cy="55" r="44" fill="none" stroke="rgba(201,169,97,0.12)" stroke-width="0.5" stroke-dasharray="4 6"/>
+        <text x="55" y="12" text-anchor="middle" font-size="7" fill="rgba(201,169,97,0.35)" font-family="serif">𒀭</text>
+        <text x="98" y="58" text-anchor="middle" font-size="7" fill="rgba(201,169,97,0.35)" font-family="serif">𒁹</text>
+        <text x="55" y="103" text-anchor="middle" font-size="7" fill="rgba(201,169,97,0.35)" font-family="serif">𒀭</text>
+        <text x="12" y="58" text-anchor="middle" font-size="7" fill="rgba(201,169,97,0.35)" font-family="serif">𒁹</text>
+        <text x="82" y="20" text-anchor="middle" font-size="6" fill="rgba(201,169,97,0.2)" font-family="serif">𒌋</text>
+        <text x="93" y="82" text-anchor="middle" font-size="6" fill="rgba(201,169,97,0.2)" font-family="serif">𒌋</text>
+        <text x="28" y="95" text-anchor="middle" font-size="6" fill="rgba(201,169,97,0.2)" font-family="serif">𒌋</text>
+        <text x="17" y="33" text-anchor="middle" font-size="6" fill="rgba(201,169,97,0.2)" font-family="serif">𒌋</text>
+      </g>
+      <!-- rotating inner ring -->
+      <g class="seal-inner">
+        <circle cx="55" cy="55" r="28" fill="none" stroke="rgba(201,169,97,0.15)" stroke-width="0.5"/>
+        <line x1="55" y1="27" x2="55" y2="83" stroke="rgba(201,169,97,0.08)" stroke-width="0.5"/>
+        <line x1="27" y1="55" x2="83" y2="55" stroke="rgba(201,169,97,0.08)" stroke-width="0.5"/>
+        <line x1="35" y1="35" x2="75" y2="75" stroke="rgba(201,169,97,0.06)" stroke-width="0.5"/>
+        <line x1="75" y1="35" x2="35" y2="75" stroke="rgba(201,169,97,0.06)" stroke-width="0.5"/>
+      </g>
+      <!-- static core -->
+      <circle cx="55" cy="55" r="8" fill="none" stroke="rgba(201,169,97,0.3)" stroke-width="1"/>
+      <circle cx="55" cy="55" r="3" fill="rgba(201,169,97,0.4)"/>
+      <text x="55" y="59" text-anchor="middle" font-size="8" fill="rgba(201,169,97,0.5)" font-family="serif">𒀭</text>
+    </svg>
+  </div>`;
+}
+
+// ─── GATE 03 GENOME LINE ─────────────────────────────────────
+function genomeSVG() {
+  const bases = 'ATCGATCGATCGATCGAATCGAT';
+  const corrupt = [4,5,9,10,16,17];
+  let chars = '';
+  for(let i=0;i<bases.length;i++){
+    if(corrupt.includes(i)){
+      chars += `<tspan fill="rgba(201,50,50,0.55)">█</tspan>`;
+    } else {
+      chars += `<tspan fill="rgba(201,169,97,0.28)">${bases[i]}</tspan>`;
+    }
+  }
+  return `<div class="genome-wrap">
+    <svg width="100%" height="48" viewBox="0 0 400 48" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+      <text x="0" y="14" font-family="'VT323',monospace" font-size="11" letter-spacing="3">${chars}</text>
+      <text x="0" y="28" font-family="'VT323',monospace" font-size="11" letter-spacing="3">
+        <tspan fill="rgba(201,169,97,0.18)">HOMO SAPIENS — CHROMOSOME 7 — SEGMENT 4.2 — </tspan><tspan fill="rgba(201,50,50,0.4)">GAP: 200,000Y</tspan>
+      </text>
+      <text x="0" y="42" font-family="'VT323',monospace" font-size="10" letter-spacing="2" fill="rgba(201,169,97,0.15)">SIGNAL CORRUPTED — MANUAL RESTORATION REQUIRED</text>
+      <!-- scanning line -->
+      <line x1="0" y1="0" x2="400" y2="0" stroke="rgba(201,169,97,0.06)" stroke-width="48">
+        <animate attributeName="x1" values="-400;400" dur="3s" repeatCount="indefinite"/>
+        <animate attributeName="x2" values="0;800" dur="3s" repeatCount="indefinite"/>
+      </line>
+    </svg>
+  </div>`;
+}
+
+// ─── GATE 05 ARCHIVE TABLET ──────────────────────────────────
+function tabletSVG() {
+  return `<div class="tablet-wrap">
+    <svg width="180" height="120" viewBox="0 0 180 120" xmlns="http://www.w3.org/2000/svg">
+      <!-- tablet body -->
+      <rect x="10" y="8" width="160" height="104" rx="4" fill="#0a1408" stroke="rgba(201,169,97,0.25)" stroke-width="1"/>
+      <rect x="14" y="12" width="152" height="96" rx="3" fill="none" stroke="rgba(201,169,97,0.08)" stroke-width="0.5"/>
+      <!-- cuneiform rows -->
+      <text x="22" y="30" font-family="serif" font-size="9" fill="rgba(201,169,97,0.35)" letter-spacing="4">𒀭 𒁹 𒌋 𒀭 𒁹</text>
+      <text x="22" y="44" font-family="serif" font-size="9" fill="rgba(201,169,97,0.28)" letter-spacing="4">𒌋 𒀭 𒁹 𒌋 𒀭</text>
+      <text x="22" y="58" font-family="serif" font-size="9" fill="rgba(201,169,97,0.22)" letter-spacing="4">𒁹 𒌋 𒀭 𒁹 𒌋</text>
+      <!-- divider -->
+      <line x1="22" y1="66" x2="158" y2="66" stroke="rgba(201,169,97,0.12)" stroke-width="0.5"/>
+      <!-- sealed label -->
+      <text x="90" y="80" text-anchor="middle" font-family="'VT323',monospace" font-size="9" fill="rgba(201,169,97,0.5)" letter-spacing="3">FRAGMENT 05</text>
+      <text x="90" y="93" text-anchor="middle" font-family="'VT323',monospace" font-size="8" fill="rgba(201,50,50,0.45)" letter-spacing="2">ACCESS WITHHELD</text>
+      <!-- seal stamp -->
+      <circle cx="90" cy="84" r="30" fill="none" stroke="rgba(201,50,50,0.08)" stroke-width="8"/>
+      <!-- corner wear -->
+      <rect x="10" y="8" width="10" height="10" rx="4" fill="#061A10" opacity="0.6"/>
+      <rect x="160" y="8" width="10" height="10" rx="4" fill="#061A10" opacity="0.6"/>
+      <rect x="10" y="102" width="10" height="10" rx="4" fill="#061A10" opacity="0.6"/>
+      <rect x="160" y="102" width="10" height="10" rx="4" fill="#061A10" opacity="0.6"/>
+      <!-- glow pulse -->
+      <rect x="10" y="8" width="160" height="104" rx="4" fill="none" stroke="rgba(201,169,97,0.1)" stroke-width="2">
+        <animate attributeName="opacity" values="0.4;1;0.4" dur="4s" repeatCount="indefinite"/>
+      </rect>
+    </svg>
+  </div>`;
+}
+
+// ─── SVG DOOR ────────────────────────────────────────────────
+function playDoorOpen(){
+  resume();
+  const now = AC.currentTime;
+  const duration = 1.25;
+  const buf = AC.createBuffer(1, Math.floor(AC.sampleRate * duration), AC.sampleRate);
+  const data = buf.getChannelData(0);
+  for(let i=0;i<data.length;i++){
+    const t = i / data.length;
+    data[i] = (Math.random()*2-1) * Math.sin(Math.PI * t) * Math.pow(1 - t * 0.55, 1.4) * 0.32;
+  }
+  const src = AC.createBufferSource();
+  const scrapeFilter = AC.createBiquadFilter();
+  const scrapeGain = AC.createGain();
+  scrapeFilter.type = 'bandpass';
+  scrapeFilter.frequency.setValueAtTime(85, now);
+  scrapeFilter.frequency.exponentialRampToValueAtTime(520, now + duration);
+  scrapeFilter.Q.value = 1.6;
+  scrapeGain.gain.setValueAtTime(0.0001, now);
+  scrapeGain.gain.exponentialRampToValueAtTime(0.14, now + 0.08);
+  scrapeGain.gain.exponentialRampToValueAtTime(0.02, now + duration);
+  src.buffer = buf;
+  src.connect(scrapeFilter); scrapeFilter.connect(scrapeGain); scrapeGain.connect(AC.destination);
+  src.start(now); src.stop(now + duration);
+  [54, 81, 132].forEach((fr, i) => {
+    const o = AC.createOscillator(), g = AC.createGain();
+    o.type = i === 0 ? 'sawtooth' : 'triangle';
+    o.frequency.setValueAtTime(fr, now);
+    o.frequency.exponentialRampToValueAtTime(fr * 0.78, now + 1.1);
+    g.gain.setValueAtTime(0.0001, now + i * 0.04);
+    g.gain.exponentialRampToValueAtTime(i === 0 ? 0.09 : 0.045, now + 0.18 + i * 0.04);
+    g.gain.exponentialRampToValueAtTime(0.001, now + 1.45);
+    o.connect(g); g.connect(AC.destination);
+    o.start(now + i * 0.04); o.stop(now + 1.5);
+  });
+  setTimeout(() => {
+    const o = AC.createOscillator(), g = AC.createGain();
+    o.type = 'sine';
+    o.frequency.setValueAtTime(72, AC.currentTime);
+    o.frequency.exponentialRampToValueAtTime(38, AC.currentTime + 0.22);
+    g.gain.setValueAtTime(0.16, AC.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.001, AC.currentTime + 0.28);
+    o.connect(g); g.connect(AC.destination);
+    o.start(); o.stop(AC.currentTime + 0.3);
+  }, 870);
+}
+
+function doorSVG(id, handleSide) {
+  const isEnki = id.includes('door0');
+  const hx = handleSide === 'right' ? 92 : 18;
+  const deityGlyph = isEnki ? '𒀭𒂗𒆠' : '𒀭𒂗𒍪';
+  const title = isEnki ? 'ENKI' : 'ENLIL';
+  const glyphs1 = isEnki ? '𒀭 𒂗 𒌋 𒁹 𒅗 𒆠 𒀭' : '𒀭 𒍪 𒌋 𒁹 𒅗 𒆠 𒀭';
+  const glyphs2 = isEnki ? '𒂗 𒌋 𒁹 𒅗 𒀭 𒆠 𒂗' : '𒍪 𒌋 𒁹 𒅗 𒀭 𒆠 𒍪';
+  const glyphs3 = isEnki ? '𒌋 𒁹 𒀭 𒂗 𒅗 𒌋 𒁹' : '𒌋 𒁹 𒀭 𒍪 𒅗 𒌋 𒁹';
+  const bigGlyph = isEnki ? '𒂗' : '𒍪';
+  return `<svg class="door-svg" id="${id}" width="130" height="360" viewBox="0 0 130 360" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="gg${id}" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#3a2808"/><stop offset="50%" stop-color="#6a4e18"/><stop offset="100%" stop-color="#2a1e08"/>
+      </linearGradient>
+      <linearGradient id="gd${id}" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#2a1e08"/><stop offset="30%" stop-color="#5a4010"/><stop offset="60%" stop-color="#7a5a18"/><stop offset="100%" stop-color="#2a1e08"/>
+      </linearGradient>
+      <linearGradient id="gl${id}" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#5a4010"/><stop offset="100%" stop-color="#2a1e08"/>
+      </linearGradient>
+    </defs>
+    <!-- outer frame -->
+    <rect x="0" y="0" width="130" height="360" fill="url(#gl${id})" rx="1"/>
+    <rect x="2" y="2" width="126" height="356" fill="none" stroke="rgba(201,169,97,0.45)" stroke-width="0.8"/>
+    <rect x="6" y="6" width="118" height="348" fill="none" stroke="rgba(201,169,97,0.18)" stroke-width="0.5"/>
+    <!-- left column strip -->
+    <rect x="4" y="30" width="14" height="290" fill="rgba(0,0,0,0.25)" stroke="rgba(201,169,97,0.12)" stroke-width="0.4"/>
+    <text x="11" y="52"  text-anchor="middle" font-family="serif" font-size="9" fill="rgba(201,169,97,0.6)">𒀭</text>
+    <text x="11" y="70"  text-anchor="middle" font-family="serif" font-size="9" fill="rgba(201,169,97,0.52)">𒂗</text>
+    <text x="11" y="88"  text-anchor="middle" font-family="serif" font-size="9" fill="rgba(201,169,97,0.46)">𒌋</text>
+    <text x="11" y="106" text-anchor="middle" font-family="serif" font-size="9" fill="rgba(201,169,97,0.4)">𒁹</text>
+    <text x="11" y="124" text-anchor="middle" font-family="serif" font-size="8" fill="rgba(201,169,97,0.34)">𒅗</text>
+    <text x="11" y="140" text-anchor="middle" font-family="serif" font-size="8" fill="rgba(201,169,97,0.28)">𒆠</text>
+    <text x="11" y="156" text-anchor="middle" font-family="serif" font-size="8" fill="rgba(201,169,97,0.22)">𒀭</text>
+    <text x="11" y="172" text-anchor="middle" font-family="serif" font-size="7" fill="rgba(201,169,97,0.18)">𒂗</text>
+    <text x="11" y="188" text-anchor="middle" font-family="serif" font-size="7" fill="rgba(201,169,97,0.14)">𒌋</text>
+    <text x="11" y="204" text-anchor="middle" font-family="serif" font-size="7" fill="rgba(201,169,97,0.11)">𒁹</text>
+    <text x="11" y="220" text-anchor="middle" font-family="serif" font-size="7" fill="rgba(201,169,97,0.09)">𒅗</text>
+    <!-- right column strip -->
+    <rect x="112" y="30" width="14" height="290" fill="rgba(0,0,0,0.25)" stroke="rgba(201,169,97,0.12)" stroke-width="0.4"/>
+    <text x="119" y="52"  text-anchor="middle" font-family="serif" font-size="9" fill="rgba(201,169,97,0.6)">𒀭</text>
+    <text x="119" y="70"  text-anchor="middle" font-family="serif" font-size="9" fill="rgba(201,169,97,0.52)">${isEnki?'𒂗':'𒍪'}</text>
+    <text x="119" y="88"  text-anchor="middle" font-family="serif" font-size="9" fill="rgba(201,169,97,0.46)">𒌋</text>
+    <text x="119" y="106" text-anchor="middle" font-family="serif" font-size="9" fill="rgba(201,169,97,0.4)">𒁹</text>
+    <text x="119" y="124" text-anchor="middle" font-family="serif" font-size="8" fill="rgba(201,169,97,0.34)">𒅗</text>
+    <text x="119" y="140" text-anchor="middle" font-family="serif" font-size="8" fill="rgba(201,169,97,0.28)">𒆠</text>
+    <text x="119" y="156" text-anchor="middle" font-family="serif" font-size="8" fill="rgba(201,169,97,0.22)">𒀭</text>
+    <text x="119" y="172" text-anchor="middle" font-family="serif" font-size="7" fill="rgba(201,169,97,0.18)">${isEnki?'𒂗':'𒍪'}</text>
+    <text x="119" y="188" text-anchor="middle" font-family="serif" font-size="7" fill="rgba(201,169,97,0.14)">𒌋</text>
+    <text x="119" y="204" text-anchor="middle" font-family="serif" font-size="7" fill="rgba(201,169,97,0.11)">𒁹</text>
+    <!-- lintel -->
+    <rect x="18" y="8" width="94" height="22" fill="rgba(0,0,0,0.3)" stroke="rgba(201,169,97,0.2)" stroke-width="0.5"/>
+    <text x="65" y="22" text-anchor="middle" font-family="serif" font-size="8" fill="rgba(201,169,97,0.55)" letter-spacing="2">${deityGlyph} 𒀭 𒌋</text>
+    <!-- winged disc -->
+    <ellipse cx="65" cy="30" rx="14" ry="5" fill="rgba(100,70,10,0.25)" stroke="rgba(201,169,97,0.45)" stroke-width="0.7"/>
+    <ellipse cx="65" cy="30" rx="7" ry="3" fill="rgba(120,85,15,0.25)"/>
+    <line x1="51" y1="30" x2="28" y2="24" stroke="rgba(201,169,97,0.35)" stroke-width="0.6"/>
+    <line x1="51" y1="30" x2="28" y2="36" stroke="rgba(201,169,97,0.35)" stroke-width="0.6"/>
+    <line x1="79" y1="30" x2="102" y2="24" stroke="rgba(201,169,97,0.35)" stroke-width="0.6"/>
+    <line x1="79" y1="30" x2="102" y2="36" stroke="rgba(201,169,97,0.35)" stroke-width="0.6"/>
+    <!-- door body -->
+    <rect x="18" y="34" width="94" height="316" fill="url(#gd${id})"/>
+    <rect x="18" y="34" width="94" height="316" fill="none" stroke="rgba(201,169,97,0.28)" stroke-width="0.5"/>
+    <rect x="22" y="38" width="86" height="308" fill="none" stroke="rgba(201,169,97,0.12)" stroke-width="0.4"/>
+    <line x1="20" y1="80"  x2="112" y2="80"  stroke="rgba(201,169,97,0.2)" stroke-width="0.5"/>
+    <line x1="20" y1="186" x2="112" y2="186" stroke="rgba(201,169,97,0.2)" stroke-width="0.5"/>
+    <line x1="20" y1="290" x2="112" y2="290" stroke="rgba(201,169,97,0.15)" stroke-width="0.5"/>
+    <!-- big glyph -->
+    <text x="65" y="68" text-anchor="middle" font-family="serif" font-size="24" fill="rgba(201,169,97,0.68)">${bigGlyph}</text>
+    <!-- dense rows section 1 -->
+    <text x="65" y="96"  text-anchor="middle" font-family="serif" font-size="8" fill="rgba(201,169,97,0.5)" letter-spacing="2">${glyphs1}</text>
+    <text x="65" y="110" text-anchor="middle" font-family="serif" font-size="8" fill="rgba(201,169,97,0.44)" letter-spacing="2">${glyphs2}</text>
+    <text x="65" y="124" text-anchor="middle" font-family="serif" font-size="7" fill="rgba(201,169,97,0.38)" letter-spacing="2">${glyphs3}</text>
+    <text x="65" y="137" text-anchor="middle" font-family="serif" font-size="7" fill="rgba(201,169,97,0.3)" letter-spacing="2">${glyphs1}</text>
+    <text x="65" y="150" text-anchor="middle" font-family="serif" font-size="7" fill="rgba(201,169,97,0.24)" letter-spacing="2">${glyphs2}</text>
+    <text x="65" y="163" text-anchor="middle" font-family="serif" font-size="6" fill="rgba(201,169,97,0.18)" letter-spacing="2">${glyphs3}</text>
+    <text x="65" y="176" text-anchor="middle" font-family="serif" font-size="6" fill="rgba(201,169,97,0.13)" letter-spacing="2">${glyphs1}</text>
+    <!-- name section -->
+    <text x="65" y="204" text-anchor="middle" font-family="'VT323',monospace" font-size="13" fill="rgba(201,169,97,0.65)" letter-spacing="0.2em">${title}</text>
+    <text x="65" y="220" text-anchor="middle" font-family="serif" font-size="9" fill="rgba(201,169,97,0.48)" letter-spacing="3">${deityGlyph}</text>
+    <line x1="30" y1="226" x2="100" y2="226" stroke="rgba(201,169,97,0.18)" stroke-width="0.5"/>
+    <!-- dense rows section 2 -->
+    <text x="65" y="240" text-anchor="middle" font-family="serif" font-size="7" fill="rgba(201,169,97,0.3)" letter-spacing="2">${glyphs2}</text>
+    <text x="65" y="252" text-anchor="middle" font-family="serif" font-size="7" fill="rgba(201,169,97,0.24)" letter-spacing="2">${glyphs3}</text>
+    <text x="65" y="264" text-anchor="middle" font-family="serif" font-size="6" fill="rgba(201,169,97,0.18)" letter-spacing="2">${glyphs1}</text>
+    <text x="65" y="276" text-anchor="middle" font-family="serif" font-size="6" fill="rgba(201,169,97,0.13)" letter-spacing="2">${glyphs2}</text>
+    <!-- bottom section -->
+    <text x="65" y="308" text-anchor="middle" font-family="serif" font-size="16" fill="rgba(201,169,97,0.48)">𒀭𒌋𒁹</text>
+    <text x="65" y="326" text-anchor="middle" font-family="serif" font-size="6" fill="rgba(201,169,97,0.2)" letter-spacing="2">${glyphs3}</text>
+    <text x="65" y="338" text-anchor="middle" font-family="serif" font-size="6" fill="rgba(201,169,97,0.14)" letter-spacing="2">${glyphs1}</text>
+    <text x="65" y="348" text-anchor="middle" font-family="serif" font-size="6" fill="rgba(201,169,97,0.09)" letter-spacing="2">${glyphs2}</text>
+    <!-- handle -->
+    <rect x="${hx}" y="178" width="14" height="18" fill="#2a1e08" rx="1" stroke="rgba(201,169,97,0.5)" stroke-width="0.8"/>
+    <circle cx="${hx+7}" cy="187" r="4" fill="rgba(201,169,97,0.45)"/>
+    <circle cx="${hx+7}" cy="187" r="1.5" fill="#2a1e08"/>
+  </svg>`;
+}
+
+// ─── SVG GATE ────────────────────────────────────────────────
+function gateSVG() {
+  return `<svg class="gate-svg" id="svgGate" width="340" height="280" viewBox="0 0 340 280" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="gbarG" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#1a1208"/>
+        <stop offset="25%" stop-color="#9a7a3a"/>
+        <stop offset="50%" stop-color="#C9A961"/>
+        <stop offset="75%" stop-color="#9a7a3a"/>
+        <stop offset="100%" stop-color="#1a1208"/>
+      </linearGradient>
+      <linearGradient id="gframeG" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#0a0800"/>
+        <stop offset="15%" stop-color="#C9A961"/>
+        <stop offset="85%" stop-color="#C9A961"/>
+        <stop offset="100%" stop-color="#0a0800"/>
+      </linearGradient>
+    </defs>
+    <g id="gleft">
+      <rect x="10" y="20" width="12" height="250" fill="url(#gframeG)" rx="2"/>
+      <rect x="10" y="20" width="150" height="10" fill="url(#gframeG)" rx="1"/>
+      <rect x="10" y="260" width="150" height="10" fill="url(#gframeG)" rx="1"/>
+      <rect x="10" y="130" width="150" height="8" fill="url(#gframeG)" rx="1"/>
+      <rect x="32" y="30" width="10" height="238" fill="url(#gbarG)" rx="3"/>
+      <rect x="52" y="30" width="10" height="238" fill="url(#gbarG)" rx="3"/>
+      <rect x="72" y="30" width="10" height="238" fill="url(#gbarG)" rx="3"/>
+      <rect x="92" y="30" width="10" height="238" fill="url(#gbarG)" rx="3"/>
+      <rect x="112" y="30" width="10" height="238" fill="url(#gbarG)" rx="3"/>
+      <rect x="132" y="30" width="10" height="238" fill="url(#gbarG)" rx="3"/>
+      <polygon points="32,30 37,18 42,30" fill="#C9A961" opacity="0.85"/>
+      <polygon points="52,30 57,18 62,30" fill="#C9A961" opacity="0.85"/>
+      <polygon points="72,30 77,18 82,30" fill="#C9A961" opacity="0.85"/>
+      <polygon points="92,30 97,18 102,30" fill="#C9A961" opacity="0.85"/>
+      <polygon points="112,30 117,18 122,30" fill="#C9A961" opacity="0.85"/>
+      <polygon points="132,30 137,18 142,30" fill="#C9A961" opacity="0.85"/>
+      <circle cx="37" cy="85" r="4" fill="#8a6a30"/><circle cx="37" cy="85" r="2" fill="#C9A961" opacity="0.6"/>
+      <circle cx="87" cy="85" r="4" fill="#8a6a30"/><circle cx="87" cy="85" r="2" fill="#C9A961" opacity="0.6"/>
+      <circle cx="137" cy="85" r="4" fill="#8a6a30"/><circle cx="137" cy="85" r="2" fill="#C9A961" opacity="0.6"/>
+      <circle cx="37" cy="185" r="4" fill="#8a6a30"/><circle cx="37" cy="185" r="2" fill="#C9A961" opacity="0.6"/>
+      <circle cx="87" cy="185" r="4" fill="#8a6a30"/><circle cx="87" cy="185" r="2" fill="#C9A961" opacity="0.6"/>
+      <circle cx="137" cy="185" r="4" fill="#8a6a30"/><circle cx="137" cy="185" r="2" fill="#C9A961" opacity="0.6"/>
+    </g>
+    <g id="gright">
+      <rect x="318" y="20" width="12" height="250" fill="url(#gframeG)" rx="2"/>
+      <rect x="180" y="20" width="150" height="10" fill="url(#gframeG)" rx="1"/>
+      <rect x="180" y="260" width="150" height="10" fill="url(#gframeG)" rx="1"/>
+      <rect x="180" y="130" width="150" height="8" fill="url(#gframeG)" rx="1"/>
+      <rect x="198" y="30" width="10" height="238" fill="url(#gbarG)" rx="3"/>
+      <rect x="218" y="30" width="10" height="238" fill="url(#gbarG)" rx="3"/>
+      <rect x="238" y="30" width="10" height="238" fill="url(#gbarG)" rx="3"/>
+      <rect x="258" y="30" width="10" height="238" fill="url(#gbarG)" rx="3"/>
+      <rect x="278" y="30" width="10" height="238" fill="url(#gbarG)" rx="3"/>
+      <rect x="298" y="30" width="10" height="238" fill="url(#gbarG)" rx="3"/>
+      <polygon points="198,30 203,18 208,30" fill="#C9A961" opacity="0.85"/>
+      <polygon points="218,30 223,18 228,30" fill="#C9A961" opacity="0.85"/>
+      <polygon points="238,30 243,18 248,30" fill="#C9A961" opacity="0.85"/>
+      <polygon points="258,30 263,18 268,30" fill="#C9A961" opacity="0.85"/>
+      <polygon points="278,30 283,18 288,30" fill="#C9A961" opacity="0.85"/>
+      <polygon points="298,30 303,18 308,30" fill="#C9A961" opacity="0.85"/>
+      <circle cx="203" cy="85" r="4" fill="#8a6a30"/><circle cx="203" cy="85" r="2" fill="#C9A961" opacity="0.6"/>
+      <circle cx="253" cy="85" r="4" fill="#8a6a30"/><circle cx="253" cy="85" r="2" fill="#C9A961" opacity="0.6"/>
+      <circle cx="303" cy="85" r="4" fill="#8a6a30"/><circle cx="303" cy="85" r="2" fill="#C9A961" opacity="0.6"/>
+      <circle cx="203" cy="185" r="4" fill="#8a6a30"/><circle cx="203" cy="185" r="2" fill="#C9A961" opacity="0.6"/>
+      <circle cx="253" cy="185" r="4" fill="#8a6a30"/><circle cx="253" cy="185" r="2" fill="#C9A961" opacity="0.6"/>
+      <circle cx="303" cy="185" r="4" fill="#8a6a30"/><circle cx="303" cy="185" r="2" fill="#C9A961" opacity="0.6"/>
+    </g>
+    <g id="glatch">
+      <rect x="154" y="115" width="32" height="64" fill="#0d0a04" stroke="#C9A961" stroke-width="1.5" rx="2"/>
+      <rect x="158" y="125" width="24" height="8" fill="#8a6a30" rx="1"/>
+      <rect x="158" y="137" width="24" height="8" fill="#8a6a30" rx="1"/>
+      <rect x="158" y="149" width="24" height="8" fill="#8a6a30" rx="1"/>
+      <circle cx="170" cy="158" r="6" fill="#C9A961"/>
+      <circle cx="170" cy="158" r="3" fill="#0d0a04"/>
+      <rect x="166" y="115" width="8" height="8" fill="#C9A961" rx="1"/>
+      <rect x="166" y="171" width="8" height="8" fill="#C9A961" rx="1"/>
+    </g>
+  </svg>`;
+}
+
+// ─── RENDER DOORS ────────────────────────────────────────────
+function renderDoors(opts) {
+  const wrap = document.createElement('div');
+  wrap.className = 'doors-wrap';
+  opts.forEach((opt, idx) => {
+    const col = document.createElement('div');
+    col.className = 'door-col';
+    col.id = 'dcol-' + idx;
+    const handleSide = idx === 0 ? 'right' : 'left';
+    col.innerHTML = doorSVG('door' + idx, handleSide) + `<div class="door-label">[ ${opt.label} ]</div>`;
+    col.onclick = () => {
+      playDoorOpen();
+      if(opt.branch) branch = opt.branch;
+      if(opt.consequence) showConsequence(opt.consequence);
+      const svg = col.querySelector('.door-svg');
+      const originX = idx === 0 ? '130px' : '0px';
+      const rotDir = idx === 0 ? '-75deg' : '75deg';
+      svg.style.transition = 'transform 1.15s cubic-bezier(0.18,0.82,0.28,1), filter 0.3s';
+      svg.style.filter = 'drop-shadow(0 0 20px rgba(201,169,97,0.6))';
+      svg.style.transformOrigin = originX + ' 180px';
+      setTimeout(() => {
+        svg.style.transform = `perspective(600px) rotateY(${rotDir})`;
+      }, 80);
+      wrap.querySelectorAll('.door-col:not(#dcol-' + idx + ')').forEach(d => {
+        d.style.transition = 'opacity 0.5s';
+        d.style.opacity = '0.08';
+      });
+      setTimeout(() => loadState(opt.next), 1100);
+    };
+    wrap.appendChild(col);
+  });
+  DOM.options.appendChild(wrap);
+  setTimeout(() => DOM.options.style.opacity = 1, 100);
+}
+
+// ─── RENDER GATE ─────────────────────────────────────────────
+function renderGate(opts, text, branchLabel, onFragment) {
+  DOM.output.innerHTML = '';
+  const wrap = document.createElement('div');
+  wrap.className = 'gate-wrap';
+  wrap.innerHTML = gateSVG() + `<div class="gate-label" id="gate-prompt-label">[ APPROACH THE GATE ]</div>`;
+  wrap.onclick = () => {
+    playSelect();
+    const latch = wrap.querySelector('#glatch');
+    const left = wrap.querySelector('#gleft');
+    const right = wrap.querySelector('#gright');
+    const label = wrap.querySelector('#gate-prompt-label');
+    latch.style.transition = 'opacity 0.2s';
+    latch.style.opacity = '0';
+    left.style.transition = 'transform 0.9s cubic-bezier(0.4,0,0.2,1)';
+    right.style.transition = 'transform 0.9s cubic-bezier(0.4,0,0.2,1)';
+    left.style.transformOrigin = '22px 140px';
+    right.style.transformOrigin = '318px 140px';
+    setTimeout(() => {
+      left.style.transform = 'perspective(800px) rotateY(75deg)';
+      right.style.transform = 'perspective(800px) rotateY(-75deg)';
+    }, 200);
+    label.textContent = 'ENTERING...';
+    label.style.color = 'var(--gold)';
+    wrap.onclick = null;
+    setTimeout(() => {
+      wrap.style.transition = 'opacity 0.5s';
+      wrap.style.opacity = '0';
+      setTimeout(() => {
+        DOM.output.innerHTML = '';
+        if(onFragment) onFragment();
+        printText(text, () => {
+          if(branchLabel) {
+            DOM.branchLabel.textContent = branchLabel;
+            DOM.branchLabel.style.opacity = 1;
+          }
+          setTimeout(() => {
+            renderOptions(opts);
+            setTimeout(() => DOM.options.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 200);
+          }, 1200);
+        });
+      }, 500);
+    }, 1100);
+  };
+  DOM.output.appendChild(wrap);
+}
+
+function renderChamber(text, opts, branchLabel) {
+  DOM.output.innerHTML = '';
+  const wrap = document.createElement('div');
+  wrap.className = 'chamber-wrap';
+  const inner = document.createElement('div');
+  inner.className = 'chamber-text';
+  wrap.appendChild(inner);
+  DOM.output.appendChild(wrap);
+  printIntoEl(inner, text, () => {
+    if(branchLabel) {
+      DOM.branchLabel.textContent = branchLabel;
+      DOM.branchLabel.style.opacity = 1;
+    }
+    setTimeout(() => renderOptions(opts), 1200);
+  });
+}
+
+// ─── RENDER OPTIONS ──────────────────────────────────────────
+function renderOptions(opts){
+  opts.forEach(opt=>{
+    const btn=document.createElement('button');
+    btn.className='opt-btn';
+    btn.textContent=opt.label;
+    btn.onclick=()=>{
+      if(printing){ skipQueued=true; return; }
+      playSelect();
+      if(opt.branch!==null&&opt.branch!==undefined) branch=opt.branch;
+      if(opt.consequence) showConsequence(opt.consequence);
+      DOM.options.style.opacity=0;
+      DOM.branchLabel.style.opacity=0;
+      if(opt.next==='video'){ setTimeout(()=>transitionToVideo(),500); return; }
+      if(opt.next==='surface'){ setTimeout(()=>loadGateData(SURFACE_GATE),500); return; }
+      setTimeout(()=>loadState(opt.next),500);
+    };
+    DOM.options.appendChild(btn);
+  });
+  setTimeout(()=>DOM.options.style.opacity=1,100);
+}
+
+// ─── INJECT SYMBOL ───────────────────────────────────────────
+function injectSymbol(symbolKey) {
+  if(!symbolKey) return;
+  const container = document.createElement('div');
+  if(symbolKey === 'seal') container.innerHTML = sealSVG();
+  else if(symbolKey === 'genome') container.innerHTML = genomeSVG();
+  else if(symbolKey === 'tablet') container.innerHTML = tabletSVG();
+  if(container.firstElementChild) {
+    DOM.output.parentNode.insertBefore(container.firstElementChild, DOM.output);
+  }
+}
+
+// ─── LOAD STATE ──────────────────────────────────────────────
+function loadState(index){
+  const data=GATES[index];
+  if(!data) return;
+  currentGate=index;
+  if(data.redacted) { loadRedactedGate(data); return; }
+  loadGateData(data);
+}
+
+function loadGateData(data){
+  // Remove any existing symbol
+  const existingSymbol = document.getElementById('gate-symbol-container');
+  if(existingSymbol) existingSymbol.remove();
+
+  DOM.output.innerHTML='';
+  DOM.options.style.opacity=0; DOM.options.innerHTML='';
+  DOM.branchLabel.style.opacity=0; DOM.branchLabel.textContent='';
+  DOM.fragmentNotify.style.opacity=0; DOM.fragmentNotify.innerHTML='';
+  DOM.consequence.style.opacity=0; DOM.consequence.innerHTML='';
+
+  if(data.gate!=='??') updateSeals(data.gate);
+  DOM.gateLabel.textContent=data.gateLabel||'';
+  DOM.gateLabel.style.opacity=1;
+
+  // Inject symbol above output
+  if(data.symbol) {
+    const symWrap = document.createElement('div');
+    symWrap.id = 'gate-symbol-container';
+    if(data.symbol === 'seal') symWrap.innerHTML = sealSVG();
+    else if(data.symbol === 'genome') symWrap.innerHTML = genomeSVG();
+    else if(data.symbol === 'tablet') symWrap.innerHTML = tabletSVG();
+    DOM.output.parentNode.insertBefore(symWrap, DOM.output);
+  }
+
+  let text=data.text;
+  if(data.textH&&data.textM) text = branch==='M' ? data.textM : data.textH;
+
+  if(data.chamber) {
+    tryRankUp(data.rank);
+    if(data.fragment) showFragment(data.fragment);
+    setTimeout(()=>renderChamber(text, data.options||[], data.branchLabel), 400);
+    return;
+  }
+
+  if(data.svgGate) {
+    renderGate(data.options||[], text, data.branchLabel, () => {
+      tryRankUp(data.rank);
+      if(data.fragment) showFragment(data.fragment);
+    });
+    return;
+  }
+
+  printText(text, ()=>{
+    tryRankUp(data.rank);
+    if(data.fragment) showFragment(data.fragment);
+    setTimeout(()=>{
+      if(data.branchLabel){
+        DOM.branchLabel.textContent=data.branchLabel;
+        DOM.branchLabel.style.opacity=1;
+      }
+      setTimeout(()=>{
+        if(data.doors) {
+          renderDoors(data.options||[]);
+        } else {
+          renderOptions(data.options||[]);
+        }
+        setTimeout(()=>{
+          DOM.options.scrollIntoView({ behavior:'smooth', block:'nearest' });
+        }, 200);
+      },1200);
+    },700);
+  });
+}
+
+// ─── VIDEO TRANSITION ────────────────────────────────────────
+function transitionToVideo(){
+  tryRankUp('KEEPER OF THE RECORD');
+  playUnlock();
+  updateSeals(5);
+  DOM.sealsBrokenLabel.textContent='SEALS BROKEN: 5 OF 5 — ALL SEALS BROKEN';
+
+  setTimeout(()=>DOM.terminalWrap.classList.add('fade-out'),600);
+
+  setTimeout(()=>{
+    DOM.terminalWrap.style.display='none';
+    DOM.videoStage.classList.add('visible');
+    DOM.skip.style.display='none';
+    buildVault();
+    setTimeout(()=>{
+      DOM.vault.classList.add('visible');
+      const ctaFragCount = document.getElementById('cta-fragment-count');
+      if(ctaFragCount){
+        const withheld = 5 - fragmentsCollected.length;
+        ctaFragCount.textContent = `${fragmentsCollected.length} archive objects recovered. ${withheld} fragment${withheld!==1?'s':''} withheld.`;
+      }
+      DOM.cta.classList.add('visible');
+    },1200);
+  },1200);
+}
+
+function buildVault(){
+  DOM.vaultGrid.innerHTML='';
+  if(fragmentsCollected.length===0){ DOM.vault.style.display='none'; return; }
+  fragmentsCollected.forEach(fKey=>{
+    const f=FRAGMENTS[fKey];
+    const div=document.createElement('div');
+    div.className='vault-fragment';
+    div.innerHTML=`<div class="vf-id">${f.id}</div><div class="vf-name">${f.name}</div><div class="vf-date">${f.classification}</div>`;
+    DOM.vaultGrid.appendChild(div);
+  });
+}
+
+function activateTrailer(el){
+  el.style.height='450px';
+  el.innerHTML=`<iframe src="https://www.youtube.com/embed/rxQQekEXpws?rel=0&modestbranding=1&autoplay=1&color=white" title="Where Do We Really Come From? — J.J. Aldren" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none"></iframe>`;
+  el.style.cursor='default';
+}
+
+function skipToVideo(){
+  skipQueued=true;
+  setTimeout(()=>transitionToVideo(),300);
+}
+
+function restartExperience(){
+  branch=null; fragmentsCollected=[]; rankIndex=0; currentGate=0; printing=false; skipQueued=false; sealsBroken=0;
+  const existingSymbol = document.getElementById('gate-symbol-container');
+  if(existingSymbol) existingSymbol.remove();
+  DOM.videoStage.classList.remove('visible');
+  DOM.terminalWrap.style.display='';
+  DOM.terminalWrap.classList.remove('fade-out');
+  DOM.skip.style.display='';
+  DOM.rankDisplay.textContent='RANK: UNINITIATED';
+  initSeals();
+  updateSeals(0);
+  DOM.fragmentsLabel.textContent='FRAGMENTS: 0';
+  DOM.vault.classList.remove('visible');
+  DOM.cta.classList.remove('visible');
+  setTimeout(()=>loadState(0),200);
+}
+
+// ─── BEAM EFFECT ─────────────────────────────────────────────
+(function(){
+  const canvas = document.getElementById('beamCanvas');
+  const ctx = canvas.getContext('2d');
+  let mx = window.innerWidth/2, my = window.innerHeight - 40;
+  let smoothX = mx, smoothY = my;
+  let active = false;
+
+  function resize(){
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+  document.addEventListener('touchmove', e => {
+    mx = e.touches[0].clientX;
+    my = e.touches[0].clientY;
+  }, { passive: true });
+
+  function getGateCenter(){
+    const g = document.getElementById('svgGate');
+    if(!g) return null;
+    const r = g.getBoundingClientRect();
+    if(r.width === 0) return null;
+    return { x: r.left + r.width/2, y: r.top + r.height/2 };
+  }
+
+  function draw(){
+    requestAnimationFrame(draw);
+    smoothX += (mx - smoothX) * 0.1;
+    smoothY += (my - smoothY) * 0.1;
+
+    const gc = getGateCenter();
+    if(!gc){ ctx.clearRect(0,0,canvas.width,canvas.height); return; }
+
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    const dx = gc.x - smoothX;
+    const dy = gc.y - smoothY;
+    const dist = Math.sqrt(dx*dx + dy*dy);
+    const maxDist = Math.sqrt(canvas.width*canvas.width + canvas.height*canvas.height);
+    const proximity = Math.max(0, 1 - dist/(maxDist * 0.65));
+    const angle = Math.atan2(dy, dx);
+    const spread = 0.15 + proximity * 0.5;
+
+    const lx1 = smoothX + Math.cos(angle - spread) * dist;
+    const ly1 = smoothY + Math.sin(angle - spread) * dist;
+    const lx2 = smoothX + Math.cos(angle + spread) * dist;
+    const ly2 = smoothY + Math.sin(angle + spread) * dist;
+
+    const alpha = 0.03 + proximity * 0.18;
+    const grad = ctx.createRadialGradient(smoothX, smoothY, 0, smoothX, smoothY, dist);
+    grad.addColorStop(0, `rgba(201,169,97,${alpha*2.5})`);
+    grad.addColorStop(0.25, `rgba(201,169,97,${alpha})`);
+    grad.addColorStop(1, `rgba(201,169,97,0)`);
+
+    ctx.beginPath();
+    ctx.moveTo(smoothX, smoothY);
+    ctx.lineTo(lx1, ly1);
+    ctx.lineTo(lx2, ly2);
+    ctx.closePath();
+    ctx.fillStyle = grad;
+    ctx.fill();
+
+    // cursor glow
+    const cg = ctx.createRadialGradient(smoothX, smoothY, 0, smoothX, smoothY, 8 + proximity*10);
+    cg.addColorStop(0, `rgba(201,169,97,${0.35 + proximity*0.4})`);
+    cg.addColorStop(1, 'rgba(201,169,97,0)');
+    ctx.beginPath();
+    ctx.arc(smoothX, smoothY, 8 + proximity*10, 0, Math.PI*2);
+    ctx.fillStyle = cg;
+    ctx.fill();
+
+    // floor reflection below gate
+    if(proximity > 0.08){
+      const floorY = gc.y + 140;
+      const fw = 40 + proximity * 100;
+      const fg = ctx.createLinearGradient(gc.x - fw, floorY, gc.x + fw, floorY);
+      fg.addColorStop(0, 'rgba(201,169,97,0)');
+      fg.addColorStop(0.5, `rgba(201,169,97,${proximity * 0.1})`);
+      fg.addColorStop(1, 'rgba(201,169,97,0)');
+      ctx.fillStyle = fg;
+      ctx.fillRect(gc.x - fw, floorY, fw*2, 2);
+    }
+  }
+  draw();
+})();
+
+// ─── INIT ────────────────────────────────────────────────────
+setTimeout(()=>{
+  DOM.statusBar.style.opacity=1;
+  DOM.sealProgress.style.opacity=1;
+  initSeals();
+},500);
+
+loadState(0);
+</script>
+</body>
+</html>
