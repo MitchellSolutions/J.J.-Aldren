@@ -4,34 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Enter the Record — J.J. Aldren</title>
-<!-- SOCIAL PREVIEW START -->
-<meta name="description" content="An interactive descent into 450,000 years of hidden human history. Open the first gate.">
-<link rel="canonical" href="https://jjaldren.com/enter">
-
-<meta property="og:title" content="Enter the Record — J.J. Aldren">
-<meta property="og:description" content="An interactive descent into 450,000 years of hidden human history. Open the first gate.">
-<meta property="og:image" content="https://jjaldren.com/images/enter-preview.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:url" content="https://jjaldren.com/enter">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="J.J. Aldren">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Enter the Record — J.J. Aldren">
-<meta name="twitter:description" content="An interactive descent into 450,000 years of hidden human history. Open the first gate.">
-<meta name="twitter:image" content="https://jjaldren.com/images/enter-preview.jpg">
-<!-- SOCIAL PREVIEW END -->
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=VT323&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --bg: #061A10;
-    --bg-mid: #0D3320;
-    --bg-light: #1A5A3A;
+    --bg: #0f3520;
+    --bg-mid: #1e5238;
+    --bg-light: #2e6a50;
     --gold: #C9A961;
     --gold-dim: rgba(201,169,97,0.35);
     --gold-ghost: rgba(201,169,97,0.06);
@@ -41,7 +22,7 @@
   }
 
   html, body { height: 100%; background: var(--bg); color: var(--gold); font-family: var(--font-t); overflow: hidden; }
-  html { background: #061A10; }
+  html { background: #0f3520; }
 
   body::after {
     content: '';
@@ -518,8 +499,9 @@
 
   /* SKIP / FORCE DECODE */
   #skip {
-    position: fixed; bottom: 1.5rem; right: 1.5rem;
-    font-family: var(--font-t); font-size: 11px;
+    display: block; width: 100%; text-align: center;
+    margin-bottom: 0.8rem;
+    font-family: var(--font-t); font-size: 12px;
     letter-spacing: 0.15em; color: var(--gold-dim);
     cursor: pointer; border: none; background: transparent;
     transition: color 0.2s; z-index: 500;
@@ -572,6 +554,7 @@
       <div id="consequence"></div>
       <div id="branch-label"></div>
       <div id="options"></div>
+      <button id="skip" onclick="skipToVideo()">[ TAP TO FORCE DECODE ]</button>
       <div id="seal-progress">
         <div class="seal-row" id="seal-row"></div>
         <div class="seal-meta">
@@ -608,9 +591,7 @@
   </div>
 </div>
 
-<button id="skip" onclick="skipToVideo()">[ TAP TO FORCE DECODE ]</button>
 
-<script>
 // ─── AUDIO ───────────────────────────────────────────────────
 const AC = new (window.AudioContext || window.webkitAudioContext)();
 function resume(){ if(AC.state==='suspended') AC.resume(); }
@@ -1241,10 +1222,10 @@ function tabletSVG() {
       <!-- seal stamp -->
       <circle cx="90" cy="84" r="30" fill="none" stroke="rgba(201,50,50,0.08)" stroke-width="8"/>
       <!-- corner wear -->
-      <rect x="10" y="8" width="10" height="10" rx="4" fill="#061A10" opacity="0.6"/>
-      <rect x="160" y="8" width="10" height="10" rx="4" fill="#061A10" opacity="0.6"/>
-      <rect x="10" y="102" width="10" height="10" rx="4" fill="#061A10" opacity="0.6"/>
-      <rect x="160" y="102" width="10" height="10" rx="4" fill="#061A10" opacity="0.6"/>
+      <rect x="10" y="8" width="10" height="10" rx="4" fill="#0f3520" opacity="0.6"/>
+      <rect x="160" y="8" width="10" height="10" rx="4" fill="#0f3520" opacity="0.6"/>
+      <rect x="10" y="102" width="10" height="10" rx="4" fill="#0f3520" opacity="0.6"/>
+      <rect x="160" y="102" width="10" height="10" rx="4" fill="#0f3520" opacity="0.6"/>
       <!-- glow pulse -->
       <rect x="10" y="8" width="160" height="104" rx="4" fill="none" stroke="rgba(201,169,97,0.1)" stroke-width="2">
         <animate attributeName="opacity" values="0.4;1;0.4" dur="4s" repeatCount="indefinite"/>
