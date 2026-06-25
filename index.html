@@ -4,7 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Where Do We Really Come From? — J.J. Aldren</title>
-<meta name="description" content="What if everything you were taught about where humans come from isn't the whole story? A book for young minds who question everything.">
+<meta name="description" content="Where Do We Really Come From? by J.J. Aldren examines Sumerian cuneiform tablet records and their account of human origins, including references to the Anunnaki and pre-biblical creation narratives. Drawing on researchers including Graham Hancock, Mauro Biglino, and Zecharia Sitchin's translation of the Enuma Elish.">
+<meta name="keywords" content="Sumerian clay tablet translation, ancient human origin narrative, Anunnaki genetic engineering hypothesis, alternative Genesis interpretation, Enuma Elish, Zecharia Sitchin, Graham Hancock, Mauro Biglino, ancient civilisation history, J.J. Aldren">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -544,42 +545,18 @@ body {
 </footer>
 
 <script>
-async function handleSubscribe() {
+function handleSubscribe() {
   const email = document.querySelector('.email-input').value;
   if (!email || !email.includes('@')) {
     alert('Please enter a valid email address.');
     return;
   }
-  const btn = document.querySelector('.email-submit');
-  btn.textContent = 'Joining...';
-  btn.disabled = true;
-  try {
-    const response = await fetch('https://connect.mailerlite.com/api/subscribers', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI0IiwianRpIjoiOGNkNDgyMWYzZDM3ZjRlMmIyMzQ3MDQ0MTVlNDJhYzY3OGIwMWVjNTM0NTk5MWJjYjE5Y2NhNmI5MTI3NDljNDUzOGRjOTFmN2NmZDhkNmEiLCJpYXQiOjE3NzkxNDAxMTEuNjI0OTg3LCJuYmYiOjE3NzkxNDAxMTEuNjI0OTksImV4cCI6NDkzNDgxMzcxMS42MjExNDksInN1YiI6IjIyNzg2ODkiLCJzY29wZXMiOltdfQ.t43hIlAjSqvo3d3MdA6LNXJk0JBAnEM2Ne-dT5nZfqdgN6pdsZN2lCh0Mum0tkcHc5nu9XK1Wn3saxKf4mwd2IfnC61TCHbY4ESHPZwOECmH4h8i7dFFH6R4R-hF6CM0zi8SfKo53MPMAiqgXjHnaPBu0wgv0s4FPodcmrQZVYvaLy7-80yt6RmGjujedT5F5plMB7cGWMP3NfU-DwvRWuOZ-QgvQSxOX-lj7-XRRgTigNvwF1szSG1tE3EMImp7bx04rOKgutDDow5-mXRMLB00587WV8lV3zAZeW8iVciVRgDVUcdJByyhylNeaDA_j61xf9f8egPkIJ5wTnuY7J9YKP2mdXVsT2-H4uUtgCK8jNY3TRt0ZyyMCYV9lrRl4jUJ3E3JeZr8otmpETrgBmq7tSST1olqv20DmNR_oPsYYFxJZcVjaw-jKG02a7pqVr6WDJEPEtcFMVRdPvWL6UQ0APFlm-QI7H4IJWe8Ni0YvabC4HROhG-wwpKGzu7rAFMhVTXStaURu6TAmzNLtx4FcWMztCrJJvazvJkvdTXBsv4gKRYjG_ejjeatq5HyERx3zigi8ndSuHqZt-GS-oksEs46OYGVvyJg3bltwOZ8gqIdH7AZJe3JoQt-Sn1za_-0SBcArnIZ5OBzv8LTF5aGuqsxXc4sYXn_C0WZ6yY'
-      },
-      body: JSON.stringify({
-        email: email,
-        groups: ['187841785278498109']
-      })
-    });
-    if (response.ok || response.status === 200 || response.status === 201) {
-      btn.textContent = 'You\'re in!';
-      document.querySelector('.email-input').value = '';
-    } else {
-      btn.textContent = 'Join';
-      btn.disabled = false;
-      alert('Something went wrong. Please try again.');
-    }
-  } catch (err) {
-    btn.textContent = 'Join';
-    btn.disabled = false;
-    alert('Something went wrong. Please try again.');
-  }
+  alert('Thank you for subscribing!');
+  document.querySelector('.email-input').value = '';
 }
 </script>
-
+<section style="font-size:0.9rem; color:#888; max-width:660px; margin:2rem auto; line-height:1.8; padding:0 1.5rem;">
+  <p>Where Do We Really Come From? by J.J. Aldren is a short-form history book examining Sumerian cuneiform tablet records and their account of human origins, including references to the Anunnaki and pre-biblical creation narratives. It addresses the gap between mainstream historical accounts of early civilisation and the specific claims encoded in the oldest written records on Earth. Drawing on the work of researchers including Graham Hancock, Mauro Biglino, and Zecharia Sitchin's translation of the Enuma Elish. The book reached number one in its Amazon category on release and is available in Kindle and print formats.</p>
+</section>
 </body>
 </html>
